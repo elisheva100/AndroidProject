@@ -1,7 +1,9 @@
-package com.example.owner.takeandgo;
+package controller;
 
 import android.app.Activity;
 import android.os.Bundle;
+
+import com.example.owner.takeandgo.R;
 
 public class MainActivity extends Activity {
 
