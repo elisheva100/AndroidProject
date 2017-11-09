@@ -6,4 +6,5 @@ package com.example.owner.takeandgo.model.backEnd;
 
 public class gvkf {
     int d= 1;
+    int s=2;
 }
