@@ -99,13 +99,8 @@ public class AgencyConsts {
         contentValues.put(ClientConst.EMAIL, client.getEmail());
         contentValues.put(ClientConst.CREDIT_CARD, client.getCreditCard());
         DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss"); // like MySQL Format
-        String dateString = contentValues.getAsString(ClientConst.BIRTHDAY);
-        try {
-            client.setBirthday(dateFormat.parse(dateString));
-        } catch (ParseException e) {
-            e.printStackTrace();
-        }
-
+        String dateString = dateFormat.format(client.getBirthday());
+        contentValues.put(ClientConst.BIRTHDAY, dateString);
 
         return contentValues;
     }
@@ -115,19 +110,12 @@ public class AgencyConsts {
         contentValues.put(OrderConst.CLIENT_NUMBER, order.getClientNumber());
         contentValues.put(OrderConst.OPEN, order.isOpen());
         contentValues.put(OrderConst.CAR_NUMBER, order.getCarNumber());
-        DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss"); // like MySQL Format
-        String dateStartString = contentValues.getAsString(OrderConst.RENT_START);
-        try {
-            order.setRentStart(dateFormat.parse(dateStartString));
-        } catch (ParseException e) {
-            e.printStackTrace();
-        }
-        String dateEndString = contentValues.getAsString(OrderConst.RENT_END);
-        try {
-            order.setRentEnd(dateFormat.parse(dateEndString));
-        } catch (ParseException e) {
-            e.printStackTrace();
-        }
+        DateFormat dateStartFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss"); // like MySQL Format
+        String dateStartString = dateStartFormat.format(order.getRentStart());
+        contentValues.put(OrderConst.RENT_START, dateStartString);
+        DateFormat dateEndFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss"); // like MySQL Format
+        String dateEndString = dateEndFormat.format(order.getRentEnd());
+        contentValues.put(OrderConst.RENT_END, dateEndString);
         contentValues.put(OrderConst.MILEAGE_START, order.getMileageStart());
         contentValues.put(OrderConst.MILEAGE_END, order.getMileageEnd());
         contentValues.put(OrderConst.GAS_FILLED, order.isGasFilled());
@@ -138,5 +126,35 @@ public class AgencyConsts {
 
 
         return contentValues;
+    }
+
+    public static Branch ContentValuesToBranch(ContentValues contentValues) {
+
+        Branch branch = new Branch();
+        branch.setAdress(contentValues.getAsString(BranchConst.ADRESS));//TODO: how to add - get as adress - temp function right now.
+        branch.setParking(contentValues.getAsInteger(BranchConst.PARKING));
+        branch.setBranchNumber(contentValues.getAsInteger(BranchConst.BRANCH_NUMBER));
+
+        return branch;
+    }
+    public static Car ContentValuesToCar(ContentValues contentValues) {
+
+        Car car = new Car();
+        car.setBranchNumber(contentValues.getAsInteger(CarConst.BRANCH_NUMBER));
+        car.setModelType(contentValues.getAsString(CarConst.MODEL_TYPE));
+        car.setMileage(contentValues.getAsDouble(CarConst.MILEAGE));
+        car.setNumber(contentValues.getAsLong(CarConst.NUMBER));
+
+        return car;
+    }
+    public static CarModel ContentValuesToCarModel(ContentValues contentValues) {
+
+        CarModel carModel = new CarModel();
+        student.setId(contentValues.getAsLong(AcademyConst.StudentConst.ID));
+        student.setName(contentValues.getAsString(AcademyConst.StudentConst.NAME));
+        student.setPhone(contentValues.getAsString(AcademyConst.StudentConst.PHONE));
+        student.setYear(Year.valueOf(contentValues.getAsString(AcademyConst.StudentConst.YEAR)));
+
+        return student;
     }
 }

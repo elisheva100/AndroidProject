@@ -10,6 +10,10 @@ public class Car {
     private double mileage;
     private long number;
 
+    public Car() {
+
+    }
+
     public int getBranchNumber() {
         return branchNumber;
     }

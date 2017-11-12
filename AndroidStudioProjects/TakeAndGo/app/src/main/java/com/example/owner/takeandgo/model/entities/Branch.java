@@ -9,6 +9,10 @@ public class Branch {
     private int parking;
     private int branchNumber;
 
+    public Branch() {
+        
+    }
+
     public Adress getAdress() {
         return adress;
     }
@@ -37,5 +41,8 @@ public class Branch {
         this.adress = adress;
         this.parking = parking;
         this.branchNumber = branchNumber;
+    }
+
+    public void setAdress(String asString) {
     }
 }
