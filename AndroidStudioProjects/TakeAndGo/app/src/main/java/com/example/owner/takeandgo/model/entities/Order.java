@@ -19,6 +19,10 @@ public class Order {
     private double finalBilling;
     private int orderNumber;
 
+    public Order() {
+
+    }
+
     public int getClientNumber() {
         return clientNumber;
     }
