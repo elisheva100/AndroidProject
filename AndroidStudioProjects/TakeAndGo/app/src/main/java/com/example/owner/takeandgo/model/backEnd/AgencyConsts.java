@@ -8,13 +8,17 @@ import com.example.owner.takeandgo.model.entities.CarModel;
 import com.example.owner.takeandgo.model.entities.Client;
 import com.example.owner.takeandgo.model.entities.Order;
 
+import java.text.DateFormat;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+
 
 /**
  * Created by Owner on 11/11/2017.
  */
 
 //TODO: Take care of casting all the formats like: dates, enums and classes
-public class AgencyConst {
+public class AgencyConsts {
     public static class BranchConst {
         public static final String ADRESS = "adress";
         public static final String PARKING = "parking";
@@ -41,6 +45,7 @@ public class AgencyConst {
         public static final String ID = "_id";
         public static final String EMAIL = "email";
         public static final String CREDIT_CARD = "creditCard";
+        public static final String BIRTHDAY = "birthday";
     }
     public static class OrderConst {
         public static final String CLIENT_NUMBER = "clientNumber";
@@ -93,6 +98,13 @@ public class AgencyConst {
         contentValues.put(ClientConst.ID, client.getId());
         contentValues.put(ClientConst.EMAIL, client.getEmail());
         contentValues.put(ClientConst.CREDIT_CARD, client.getCreditCard());
+        DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss"); // like MySQL Format
+        String dateString = contentValues.getAsString(ClientConst.BIRTHDAY);
+        try {
+            client.setBirthday(dateFormat.parse(dateString));
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }
 
 
         return contentValues;
@@ -103,8 +115,19 @@ public class AgencyConst {
         contentValues.put(OrderConst.CLIENT_NUMBER, order.getClientNumber());
         contentValues.put(OrderConst.OPEN, order.isOpen());
         contentValues.put(OrderConst.CAR_NUMBER, order.getCarNumber());
-        contentValues.put(OrderConst.RENT_START, String.valueOf(order.getRentStart()));
-        contentValues.put(OrderConst.RENT_END, String.valueOf(order.getRentEnd()));
+        DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss"); // like MySQL Format
+        String dateStartString = contentValues.getAsString(OrderConst.RENT_START);
+        try {
+            order.setRentStart(dateFormat.parse(dateStartString));
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }
+        String dateEndString = contentValues.getAsString(OrderConst.RENT_END);
+        try {
+            order.setRentEnd(dateFormat.parse(dateEndString));
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }
         contentValues.put(OrderConst.MILEAGE_START, order.getMileageStart());
         contentValues.put(OrderConst.MILEAGE_END, order.getMileageEnd());
         contentValues.put(OrderConst.GAS_FILLED, order.isGasFilled());
