@@ -1,5 +1,7 @@
 package com.example.owner.takeandgo.model.entities;
 
+import java.util.Date;
+
 /**
  * Created by Owner on 08/11/2017.
  */
@@ -10,6 +12,7 @@ public class Client {
     private String id;//TODO: copy the id algorithm from c# to get legal id.
     private String email;
     private long creditCard;
+    private Date birthday;
 
     public String getFirstName() {
         return firstName;
@@ -51,11 +54,20 @@ public class Client {
         this.creditCard = creditCard;
     }
 
-    public Client(String firstName, String lastName, String id, String email, long creditCard) {
+    public Date getBirthday() {
+        return birthday;
+    }
+
+    public void setBirthday(Date birthday) {
+        this.birthday = birthday;
+    }
+
+    public Client(String firstName, String lastName, String id, String email, long creditCard, Date birthday) {
         this.firstName = firstName;
         this.lastName = lastName;
         this.id = id;
         this.email = email;
         this.creditCard = creditCard;
+        this.birthday = birthday;
     }
 }
