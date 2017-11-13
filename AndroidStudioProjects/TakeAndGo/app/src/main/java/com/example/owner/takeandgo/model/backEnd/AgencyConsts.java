@@ -13,6 +13,8 @@ import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 
+import static android.R.attr.src;
+
 
 /**
  * Created by Owner on 11/11/2017.
@@ -99,12 +101,9 @@ public class AgencyConsts {
         contentValues.put(ClientConst.ID, client.getId());
         contentValues.put(ClientConst.EMAIL, client.getEmail());
         contentValues.put(ClientConst.CREDIT_CARD, client.getCreditCard());
-<<<<<<< HEAD:AndroidStudioProjects/TakeAndGo/app/src/main/java/com/example/owner/takeandgo/model/backEnd/AgencyConst.java
-=======
         DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss"); // like MySQL Format
         String dateString = dateFormat.format(client.getBirthday());
         contentValues.put(ClientConst.BIRTHDAY, dateString);
->>>>>>> 8bcf2fd4d2a846d640149360668e0805480209be:AndroidStudioProjects/TakeAndGo/app/src/main/java/com/example/owner/takeandgo/model/backEnd/AgencyConsts.java
 
         return contentValues;
     }

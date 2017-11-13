@@ -7,7 +7,7 @@ import java.util.Date;
  */
 
 public class Order {
-    private int clientNumber;
+    private String clientId;
     private boolean open;
     private int carNumber;
     private Date rentStart;
@@ -23,13 +23,9 @@ public class Order {
 
     }
 
-    public int getClientNumber() {
-        return clientNumber;
-    }
+    public String getClientId() { return clientId; }
 
-    public void setClientNumber(int clientNumber) {
-        this.clientNumber = clientNumber;
-    }
+    public void setClientId(String clientId) {this.clientId = clientId;}
 
     public boolean isOpen() {
         return open;
@@ -111,8 +107,8 @@ public class Order {
         this.orderNumber = orderNumber;
     }
 
-    public Order(int clientNumber, boolean open, int carNumber, Date rentStart, Date rentEnd, double mileageStart, double mileageEnd, boolean gasFilled, double gasLiters, double finalBilling, int orderNumber) {
-        this.clientNumber = clientNumber;
+    public Order(String clientId, boolean open, int carNumber, Date rentStart, Date rentEnd, double mileageStart, double mileageEnd, boolean gasFilled, double gasLiters, double finalBilling, int orderNumber) {
+        this.clientId = clientId;
         this.open = open;
         this.carNumber = carNumber;
         this.rentStart = rentStart;

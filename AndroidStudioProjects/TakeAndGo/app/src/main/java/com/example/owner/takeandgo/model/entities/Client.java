@@ -11,6 +11,7 @@ public class Client {
     private String lastName;
     private String id;//TODO: copy the id algorithm from c# to get legal id.
     private String email;
+    private String cellphoneNumber;
     private long creditCard;
     private Date birthday;
 
@@ -65,6 +66,11 @@ public class Client {
     public void setBirthday(Date birthday) {
         this.birthday = birthday;
     }
+
+
+    public String getCellphoneNumber() { return cellphoneNumber; }
+
+    public void setCellphoneNumber(String cellphoneNumber) { this.cellphoneNumber = cellphoneNumber; }
 
     public Client(String firstName, String lastName, String id, String email, long creditCard, Date birthday) {
         this.firstName = firstName;
