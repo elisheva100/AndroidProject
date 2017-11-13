@@ -110,7 +110,7 @@ public class AgencyConsts {
     public static ContentValues OrderToContentValues(Order order) {
 
         ContentValues contentValues = new ContentValues();
-        contentValues.put(OrderConst.CLIENT_NUMBER, order.getClientNumber());
+        contentValues.put(OrderConst.CLIENT_NUMBER, order.getClientId());
         contentValues.put(OrderConst.OPEN, order.isOpen());
         contentValues.put(OrderConst.CAR_NUMBER, order.getCarNumber());
         DateFormat dateStartFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss"); // like MySQL Format
@@ -181,7 +181,7 @@ public class AgencyConsts {
     public static Order ContentValuesToOrder(ContentValues contentValues) {
 
         Order order = new Order();
-        order.setClientNumber(contentValues.getAsInteger(OrderConst.CLIENT_NUMBER));
+        order.setClientId(contentValues.getAsString(OrderConst.CLIENT_NUMBER));
         order.setOpen(contentValues.getAsBoolean(OrderConst.OPEN));
         order.setCarNumber(contentValues.getAsInteger(OrderConst.CAR_NUMBER));
         DateFormat startDateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss"); // like MySQL Format
