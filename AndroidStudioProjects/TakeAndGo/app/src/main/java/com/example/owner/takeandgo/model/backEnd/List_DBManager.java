@@ -6,7 +6,7 @@ import com.example.owner.takeandgo.model.entities.CarModel;
 import com.example.owner.takeandgo.model.entities.Client;
 import java.util.ArrayList;
 import java.util.List;
-import static com.example.owner.takeandgo.model.backEnd.AgencyConst.CarToContentValues;
+//import static com.example.owner.takeandgo.model.backEnd.AgencyConst.CarToContentValues;
 
 
 public class List_DBManager implements DB_manager{
@@ -29,7 +29,7 @@ public class List_DBManager implements DB_manager{
     @Override
     //add car to cars' list
     public long addCar(ContentValues car) {
-        Car item = ContentValuesToCar(car);//TODO: to create this func
+        Car item = null;//ContentValuesToCar(car);//TODO: to create this func
         cars.add(item);
         return item.getNumber();
     }
@@ -49,7 +49,7 @@ public class List_DBManager implements DB_manager{
     @Override
     //updates item in cars' list
     public boolean updateCar(long num, ContentValues values) {
-        Car car = ContentValuesToCar(values); //sets car details
+        Car car = null;//ContentValuesToCar(values); //sets car details
         car.setNumber(num);
         for (int i = 0; i < cars.size(); i++)
             if (cars.get(i).getNumber() == num) {
@@ -69,7 +69,7 @@ public class List_DBManager implements DB_manager{
     @Override
     //adds client to clients' list
     public String addClient(ContentValues client) {
-        Client item = ContentValuesToClient(client);//TODO: to create this func
+        Client item = null;//ContentValuesToClient(client);//TODO: to create this func
         clients.add(item);
         return item.getId();
     }
@@ -89,7 +89,7 @@ public class List_DBManager implements DB_manager{
     @Override
     //updates item in clients' list
     public boolean updateClient(String id, ContentValues values) {
-        Client client = ContentValuesToClient(values); //sets client details
+        Client client = null;//ContentValuesToClient(values); //sets client details
         client.setId(id);
         for (int i = 0; i < clients.size(); i++)
             if (clients.get(i).getId() == id) {
@@ -109,7 +109,7 @@ public class List_DBManager implements DB_manager{
     @Override
     //adds branch to branches' list
     public int addBranch(ContentValues branch) {
-        Branch item = ContentValuesToBranch(branch);//TODO: to create this func
+        Branch item = null;//ContentValuesToBranch(branch);//TODO: to create this func
         branches.add(item);
         return item.getBranchNumber();
     }
@@ -129,7 +129,7 @@ public class List_DBManager implements DB_manager{
     @Override
     //updates item in branches' list
     public boolean updateBranch(int num, ContentValues values) {
-        Branch branch = ContentValuesToBranch(values); //sets branch details
+        Branch branch = null;//ContentValuesToBranch(values); //sets branch details
         branch.setBranchNumber(num);
         for (int i = 0; i < branches.size(); i++)
             if (branches.get(i).getBranchNumber() == num) {
@@ -147,7 +147,7 @@ public class List_DBManager implements DB_manager{
     @Override
     //adds model to car models' list
     public int addCarModel(ContentValues model) {
-        CarModel item = ContentValuesToCarModel(model); //TODO: to create this func
+        CarModel item = null;//ContentValuesToCarModel(model); //TODO: to create this func
         carModels.add(item);
         return item.getCode();
     }
@@ -167,7 +167,7 @@ public class List_DBManager implements DB_manager{
     @Override
     //updates item in car models' list
     public boolean updateCarModel(int num, ContentValues values) {
-        CarModel carModel = ContentValuesToCarModel(values); //sets car model details
+        CarModel carModel = null;//ContentValuesToCarModel(values); //sets car model details
         carModel.setCode(num);
         for (int i = 0; i < carModels.size(); i++)
             if (carModels.get(i).getCode() == num) {

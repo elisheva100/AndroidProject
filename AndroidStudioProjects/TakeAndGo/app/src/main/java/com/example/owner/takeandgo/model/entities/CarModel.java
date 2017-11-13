@@ -12,6 +12,10 @@ public class CarModel {
     private GEARBOX gearbox;
     private int seats;
 
+    public CarModel() {
+
+    }
+
     public int getCode() {
         return code;
     }

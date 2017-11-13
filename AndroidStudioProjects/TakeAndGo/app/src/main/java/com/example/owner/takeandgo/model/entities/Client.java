@@ -14,6 +14,10 @@ public class Client {
     private long creditCard;
     private Date birthday;
 
+    public Client() {
+
+    }
+
     public String getFirstName() {
         return firstName;
     }
