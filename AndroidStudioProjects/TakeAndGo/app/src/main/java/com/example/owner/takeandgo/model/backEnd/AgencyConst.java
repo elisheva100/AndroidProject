@@ -94,7 +94,6 @@ public class AgencyConst {
         contentValues.put(ClientConst.EMAIL, client.getEmail());
         contentValues.put(ClientConst.CREDIT_CARD, client.getCreditCard());
 
-
         return contentValues;
     }
     public static ContentValues OrderToContentValues(Order order) {
@@ -111,8 +110,6 @@ public class AgencyConst {
         contentValues.put(OrderConst.GAS_LITERS, order.getGasLiters());
         contentValues.put(OrderConst.FINAL_BILLING, order.getFinalBilling());
         contentValues.put(OrderConst.ORDER_NUMBER, order.getOrderNumber());
-
-
 
         return contentValues;
     }
