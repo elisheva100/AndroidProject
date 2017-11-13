@@ -124,8 +124,6 @@ public class AgencyConsts {
         contentValues.put(OrderConst.FINAL_BILLING, order.getFinalBilling());
         contentValues.put(OrderConst.ORDER_NUMBER, order.getOrderNumber());
 
-
-
         return contentValues;
     }
 
