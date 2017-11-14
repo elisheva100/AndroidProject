@@ -14,25 +14,36 @@ import java.util.List;
  */
 
 public interface DB_manager {
-    //Car
+    //region Car
     long addCar(ContentValues car) throws Exception;
-    boolean removeCar(long num);
-    boolean updateCar(long num, ContentValues values);
+    boolean removeCar(long num) throws Exception;
+    boolean updateCar(long num, ContentValues values) throws Exception;
+    boolean isExistCar(long n);
     List<Car> getCars();
-    //client
-    String addClient(ContentValues client);
-    boolean removeClient(String id);
-    boolean updateClient(String id, ContentValues values);
+    //endregion
+
+    //region client
+    String addClient(ContentValues client) throws Exception;
+    boolean removeClient(String id) throws Exception;
+    boolean updateClient(String id, ContentValues values) throws Exception;
+    boolean isExistClient(String i);
     List<Client> getClients();
-    //branch
-    int addBranch(ContentValues branch);
-    boolean removeBranch(int num);
-    boolean updateBranch(int num, ContentValues values);
+    //endregion
+
+    //region branch
+    int addBranch(ContentValues branch) throws Exception;
+    boolean removeBranch(int num) throws Exception;
+    boolean updateBranch(int num, ContentValues values) throws Exception;
+    boolean isExistBranch(int n);
     List<Branch> getBranches();
-    //model
-    int addCarModel(ContentValues model);
+    //endregion
+
+    //region model
+    int addCarModel(ContentValues model) throws Exception;
     boolean removeCarModel(int num);
     boolean updateCarModel(int num, ContentValues values);
+    boolean isExistModel(int n);
     List<CarModel> getCarModels();
+    //endregion
 
 }

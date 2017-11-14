@@ -30,7 +30,7 @@ public class List_DBManager implements DB_manager {
         clients = new ArrayList<>();
     }
 
-    //car***********
+    //region car
     @Override
     //add car to cars' list
     public long addCar(ContentValues car) throws Exception {
@@ -42,7 +42,9 @@ public class List_DBManager implements DB_manager {
 
     @Override
     //removes car from cars' list
-    public boolean removeCar(long num) {
+    public boolean removeCar(long num) throws Exception {
+        if(!isExistCar(num)) //checks if that car exists in the data
+            throw new Exception("This car number isn't exist");
         Car carToRemove = null;
         for (Car item : cars) //search for item with the same number
             if (item.getNumber() == num) {
@@ -54,7 +56,9 @@ public class List_DBManager implements DB_manager {
 
     @Override
     //updates item in cars' list
-    public boolean updateCar(long num, ContentValues values) {
+    public boolean updateCar(long num, ContentValues values) throws Exception {
+        if(!isExistCar(num)) //checks if that car exists in the data
+            throw new Exception("This car number isn't exist");
         Car car = ContentValuesToCar(values); //sets car details
         car.setNumber(num);
         for (int i = 0; i < cars.size(); i++)
@@ -66,23 +70,34 @@ public class List_DBManager implements DB_manager {
     }
 
     @Override
-    //returns cars' list
-    public List<Car> getCars() {
-        return cars;
+    //checks if there is a car with the same number
+    public boolean isExistCar(long n) {
+        for (Car item : cars)
+            if(item.getNumber()==n)
+                return true;
+        return false;
     }
 
-    //client**************
+    @Override
+    //returns cars' list
+    public List<Car> getCars() {return cars;}
+    //endregion
+
+    //region client
     @Override
     //adds client to clients' list
-    public String addClient(ContentValues client) {
+    public String addClient(ContentValues client) throws Exception {
         Client item = ContentValuesToClient(client);//TODO: to create this func
-        clients.add(item);
+        try{clients.add(item);}
+        catch (Exception e){ throw new Exception(e.getMessage());}
         return item.getId();
     }
 
     @Override
     //removes client from the list
-    public boolean removeClient(String id) {
+    public boolean removeClient(String id) throws Exception {
+        if (!isExistClient(id)) //checks if there is a client with that id
+            throw new Exception("This client id isn't exist");
         Client clientToRemove = null;
         for (Client item : clients) //search for item with the same number
             if (item.getId() == id) {
@@ -94,7 +109,9 @@ public class List_DBManager implements DB_manager {
 
     @Override
     //updates item in clients' list
-    public boolean updateClient(String id, ContentValues values) {
+    public boolean updateClient(String id, ContentValues values) throws Exception {
+        if (!isExistClient(id)) //checks if there is a client with that id
+            throw new Exception("This client id isn't exist");
         Client client = ContentValuesToClient(values); //sets client details
         client.setId(id);
         for (int i = 0; i < clients.size(); i++)
@@ -106,23 +123,37 @@ public class List_DBManager implements DB_manager {
     }
 
     @Override
+    //checks if there is a client with that id
+    public boolean isExistClient(String i)
+    {
+        for (Client item : clients)
+            if(item.getId()==i)
+                return true;
+        return false;
+    }
+
+    @Override
     //returns clients' list
     public List<Client> getClients() {
         return clients;
     }
+    //endregion
 
-    //branch*************
+    //region branch
     @Override
     //adds branch to branches' list
-    public int addBranch(ContentValues branch) {
+    public int addBranch(ContentValues branch) throws Exception {
         Branch item = ContentValuesToBranch(branch);//TODO: to create this func
-        branches.add(item);
+        try {branches.add(item);}
+        catch (Exception e){ throw new Exception(e.getMessage());}
         return item.getBranchNumber();
     }
 
     @Override
     //removes branch from branches' list
-    public boolean removeBranch(int num) {
+    public boolean removeBranch(int num) throws Exception {
+        if (! isExistBranch(num)) //checks if there is a branch with that number
+            throw new Exception("This branch number isn't exist");
         Branch branchToRemove = null;
         for (Branch item : branches) //search for item with the same number
             if (item.getBranchNumber() == num) {
@@ -134,7 +165,9 @@ public class List_DBManager implements DB_manager {
 
     @Override
     //updates item in branches' list
-    public boolean updateBranch(int num, ContentValues values) {
+    public boolean updateBranch(int num, ContentValues values) throws Exception {
+        if (! isExistBranch(num)) //checks if there is a branch with that number
+            throw new Exception("This branch number isn't exist");
         Branch branch = ContentValuesToBranch(values); //sets branch details
         branch.setBranchNumber(num);
         for (int i = 0; i < branches.size(); i++)
@@ -146,15 +179,27 @@ public class List_DBManager implements DB_manager {
     }
 
     @Override
+    //checks if there is a client with that id
+    public boolean isExistBranch(int n)
+    {
+        for (Branch item : branches)
+            if(item.getBranchNumber()==n)
+                return true;
+        return false;
+    }
+
+    @Override
     //returns branches' list
     public List<Branch> getBranches() { return branches; }
+    //endregion
 
-    //model**********
+    //region model
     @Override
     //adds model to car models' list
-    public int addCarModel(ContentValues model) {
+    public int addCarModel(ContentValues model) throws Exception {
         CarModel item = ContentValuesToCarModel(model); //TODO: to create this func
-        carModels.add(item);
+        try {carModels.add(item);}
+        catch (Exception e){ throw new Exception(e.getMessage());}
         return item.getCode();
     }
 
@@ -184,133 +229,23 @@ public class List_DBManager implements DB_manager {
     }
 
     @Override
+    //checks if there is a model with that code
+    public boolean isExistModel(int n)
+    {
+        for (CarModel item : carModels)
+            if(item.getCode()==n)
+                return true;
+        return false;
+    }
+
+    @Override
     //returns car models' list
     public List<CarModel> getCarModels() {
         return carModels;
     }
+    //endregion
+
 }
 
 
-/*
-  class Legal
-    {
-        /// <summary>
-        ///
-        /// </summary>
-        /// <param name="s"></param>
-        /// <returns></returns>
-        public static bool legalId(string s)
-        {
-            if (s == null)
-            {
-                return false;
-            }
 
-            int x;
-            if (!int.TryParse(s, out x))
-                return false;
-            if (s.Length < 5 || s.Length > 9)
-                return false;
-            for (int i = s.Length; i < 9; i++)
-                s = "0" + s;
-            int sum = 0;
-            for (int i = 0; i < 9; i++)
-            {
-                int k = ((i % 2) + 1) * (Convert.ToInt32(s[i]) - '0');
-                if (k > 9)
-                    k -= 9;
-                sum += k;
-            }
-            return sum % 10 == 0;
-        }
-        /// <summary>
-        /// This function checks if an input is a string
-        /// </summary>
-        /// <param name="st"></param>
-        /// <returns></returns>
-        public static bool isString(string st)
-        {
-            if (st != null)
-            {
-                foreach (var item in st)
-                {
-                    if (('A' <= item && item < 'z') || item == ' ' || item == '-')
-                        return true;
-                }
-            }
-
-            return false;
-        }
-        /// <summary>
-        /// This function checks if the input is a number
-        /// </summary>
-        /// <param name="n"></param>
-        /// <returns></returns>
-        public static bool isNum(string n)
-        {
-
-            int num;
-            if (!int.TryParse(n, out num))
-            {
-                return false;
-            }
-            return true;
-        }
-
-        public static bool isDate(string d)
-        {
-            DateTime date;
-            if (!DateTime.TryParse(d, out date))
-            {
-                return false;
-            }
-            return true;
-        }
-        /// <summary>
-        /// This function checks if an input is a legal cellphone number.
-        /// </summary>
-        /// <param name="pel"></param>
-        /// <returns></returns>
-        public static bool isCellPhone(string pel)
-        {
-            if (pel == null)
-            {
-                return false;
-            }
-
-            if (pel.Length != 10)
-            {
-                return false;
-            }
-            foreach (var item in pel)
-            {
-                if (item > '9' || item < '0')
-                    return false;
-            }
-            return true;
-        }
-        /// <summary>
-        /// This function checks if an input is a legal telephone number.
-        /// </summary>
-        /// <param name="tel"></param>
-        /// <returns></returns>
-        public static bool isTelPhone(string tel)
-        {
-            if (tel == null)
-            {
-                return false;
-            }
-
-            if (tel.Length != 7)
-            {
-                return false;
-            }
-            foreach (var item in tel)
-            {
-                if (item > '9' || item < '0')
-                    return false;
-            }
-            return true;
-        }
-    }
- */
