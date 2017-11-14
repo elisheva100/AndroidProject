@@ -15,7 +15,7 @@ import java.util.List;
 
 public interface DB_manager {
     //Car
-    long addCar(ContentValues car);
+    long addCar(ContentValues car) throws Exception;
     boolean removeCar(long num);
     boolean updateCar(long num, ContentValues values);
     List<Car> getCars();

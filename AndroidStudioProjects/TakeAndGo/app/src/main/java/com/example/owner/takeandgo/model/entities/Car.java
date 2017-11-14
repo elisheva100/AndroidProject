@@ -6,7 +6,7 @@ package com.example.owner.takeandgo.model.entities;
 
 public class Car {
     private int branchNumber;
-    private String modelType;
+    private int modelType;
     private double mileage;
     private long number;
 
@@ -22,13 +22,11 @@ public class Car {
         this.branchNumber = branchNumber;
     }
 
-    public String getModelType() {
+    public int getModelType() {
         return modelType;
     }
 
-    public void setModelType(String modelType) {
-        this.modelType = modelType;
-    }
+    public void setModelType(int modelType) {this.modelType = modelType;}
 
     public double getMileage() {
         return mileage;
@@ -46,7 +44,7 @@ public class Car {
         this.number = number;
     }
 
-    public Car(int branchNumber, String modelType, double mileage, long number) {
+    public Car(int branchNumber, int modelType, double mileage, long number) {
         this.branchNumber = branchNumber;
         this.modelType = modelType;
         this.mileage = mileage;

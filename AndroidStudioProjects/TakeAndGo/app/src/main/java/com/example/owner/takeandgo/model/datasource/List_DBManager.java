@@ -1,5 +1,7 @@
-package com.example.owner.takeandgo.model.backEnd;
+package com.example.owner.takeandgo.model.datasource;
 import android.content.ContentValues;
+
+import com.example.owner.takeandgo.model.backEnd.DB_manager;
 import com.example.owner.takeandgo.model.entities.Branch;
 import com.example.owner.takeandgo.model.entities.Car;
 import com.example.owner.takeandgo.model.entities.CarModel;
@@ -12,7 +14,7 @@ import static com.example.owner.takeandgo.model.backEnd.AgencyConsts.ContentValu
 import static com.example.owner.takeandgo.model.backEnd.AgencyConsts.ContentValuesToClient;
 
 
-public class List_DBManager implements DB_manager{
+public class List_DBManager implements DB_manager {
 
     //static lists
     static List<Car> cars;
@@ -31,9 +33,10 @@ public class List_DBManager implements DB_manager{
     //car***********
     @Override
     //add car to cars' list
-    public long addCar(ContentValues car) {
-        Car item = ContentValuesToCar(car);//TODO: to create this func
-        cars.add(item);
+    public long addCar(ContentValues car) throws Exception {
+        Car item = ContentValuesToCar(car);
+        try{ cars.add(item);}
+        catch (Exception e){ throw new Exception(e.getMessage());}
         return item.getNumber();
     }
 
@@ -186,3 +189,128 @@ public class List_DBManager implements DB_manager{
         return carModels;
     }
 }
+
+
+/*
+  class Legal
+    {
+        /// <summary>
+        ///
+        /// </summary>
+        /// <param name="s"></param>
+        /// <returns></returns>
+        public static bool legalId(string s)
+        {
+            if (s == null)
+            {
+                return false;
+            }
+
+            int x;
+            if (!int.TryParse(s, out x))
+                return false;
+            if (s.Length < 5 || s.Length > 9)
+                return false;
+            for (int i = s.Length; i < 9; i++)
+                s = "0" + s;
+            int sum = 0;
+            for (int i = 0; i < 9; i++)
+            {
+                int k = ((i % 2) + 1) * (Convert.ToInt32(s[i]) - '0');
+                if (k > 9)
+                    k -= 9;
+                sum += k;
+            }
+            return sum % 10 == 0;
+        }
+        /// <summary>
+        /// This function checks if an input is a string
+        /// </summary>
+        /// <param name="st"></param>
+        /// <returns></returns>
+        public static bool isString(string st)
+        {
+            if (st != null)
+            {
+                foreach (var item in st)
+                {
+                    if (('A' <= item && item < 'z') || item == ' ' || item == '-')
+                        return true;
+                }
+            }
+
+            return false;
+        }
+        /// <summary>
+        /// This function checks if the input is a number
+        /// </summary>
+        /// <param name="n"></param>
+        /// <returns></returns>
+        public static bool isNum(string n)
+        {
+
+            int num;
+            if (!int.TryParse(n, out num))
+            {
+                return false;
+            }
+            return true;
+        }
+
+        public static bool isDate(string d)
+        {
+            DateTime date;
+            if (!DateTime.TryParse(d, out date))
+            {
+                return false;
+            }
+            return true;
+        }
+        /// <summary>
+        /// This function checks if an input is a legal cellphone number.
+        /// </summary>
+        /// <param name="pel"></param>
+        /// <returns></returns>
+        public static bool isCellPhone(string pel)
+        {
+            if (pel == null)
+            {
+                return false;
+            }
+
+            if (pel.Length != 10)
+            {
+                return false;
+            }
+            foreach (var item in pel)
+            {
+                if (item > '9' || item < '0')
+                    return false;
+            }
+            return true;
+        }
+        /// <summary>
+        /// This function checks if an input is a legal telephone number.
+        /// </summary>
+        /// <param name="tel"></param>
+        /// <returns></returns>
+        public static bool isTelPhone(string tel)
+        {
+            if (tel == null)
+            {
+                return false;
+            }
+
+            if (tel.Length != 7)
+            {
+                return false;
+            }
+            foreach (var item in tel)
+            {
+                if (item > '9' || item < '0')
+                    return false;
+            }
+            return true;
+        }
+    }
+ */

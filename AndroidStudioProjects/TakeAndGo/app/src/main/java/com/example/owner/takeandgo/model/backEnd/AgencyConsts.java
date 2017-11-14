@@ -142,7 +142,7 @@ public class AgencyConsts {
 
         Car car = new Car();
         car.setBranchNumber(contentValues.getAsInteger(CarConst.BRANCH_NUMBER));
-        car.setModelType(contentValues.getAsString(CarConst.MODEL_TYPE));
+        car.setModelType(contentValues.getAsInteger(CarConst.MODEL_TYPE));
         car.setMileage(contentValues.getAsDouble(CarConst.MILEAGE));
         car.setNumber(contentValues.getAsLong(CarConst.NUMBER));
 
