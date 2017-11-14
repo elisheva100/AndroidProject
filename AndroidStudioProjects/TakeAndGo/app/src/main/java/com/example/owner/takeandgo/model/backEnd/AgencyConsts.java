@@ -2,7 +2,9 @@ package com.example.owner.takeandgo.model.backEnd;
 
 import android.content.ContentValues;
 
+import com.example.owner.takeandgo.model.entities.Adress;
 import com.example.owner.takeandgo.model.entities.Branch;
+import com.example.owner.takeandgo.model.entities.COLOR;
 import com.example.owner.takeandgo.model.entities.Car;
 import com.example.owner.takeandgo.model.entities.CarModel;
 import com.example.owner.takeandgo.model.entities.Client;
@@ -22,6 +24,8 @@ import static android.R.attr.src;
 
 //TODO: Take care of casting all the formats like: dates, enums and classes
 public class AgencyConsts {
+
+    //region Static consts
     public static class BranchConst {
         public static final String ADRESS = "adress";
         public static final String PARKING = "parking";
@@ -41,6 +45,7 @@ public class AgencyConsts {
         public static final String ENGINE_CAPACITY = "engineCapacity";
         public static final String GEARBOX = "gearbox";
         public static final String SEATS = "seats";
+        public static final String COLOR = "color";
     }
     public static class ClientConst {
         public static final String FIRST_NAME = "firstName";
@@ -63,8 +68,10 @@ public class AgencyConsts {
         public static final String FINAL_BILLING= "finalBilling";
         public static final String ORDER_NUMBER= "orderNumber";
     }
-    public static ContentValues BranchToContentValues(Branch branch) {
+    //endregion
 
+    //region Types to Content values casting
+    public static ContentValues BranchToContentValues(Branch branch) {
         ContentValues contentValues = new ContentValues();
         contentValues.put(BranchConst.ADRESS, String.valueOf(branch.getAdress()));
         contentValues.put(BranchConst.PARKING, branch.getParking());
@@ -91,6 +98,7 @@ public class AgencyConsts {
         contentValues.put(CarModelConst.ENGINE_CAPACITY,carModel.getEngineCapacity());
         contentValues.put(CarModelConst.GEARBOX, String.valueOf(carModel.getGearbox()));
         contentValues.put(CarModelConst.SEATS,carModel.getSeats());
+        contentValues.put(CarModelConst.COLOR, String.valueOf(carModel.getColor()));
         return contentValues;
     }
     public static ContentValues ClientToContentValues(Client client) {
@@ -128,11 +136,13 @@ public class AgencyConsts {
 
         return contentValues;
     }
+    //endregion
 
+    //region Content values to types casting
     public static Branch ContentValuesToBranch(ContentValues contentValues) {
 
         Branch branch = new Branch();
-        branch.setAdress(contentValues.getAsString(BranchConst.ADRESS));//TODO: how to add - get as adress - temp function right now.
+        branch.setAdress(Adress.class.cast(contentValues.getAsString(BranchConst.ADRESS)));//TODO: how to add - get as adress - temp function right now.
         branch.setParking(contentValues.getAsInteger(BranchConst.PARKING));
         branch.setBranchNumber(contentValues.getAsInteger(BranchConst.BRANCH_NUMBER));
 
@@ -157,6 +167,7 @@ public class AgencyConsts {
         carModel.setEngineCapacity(contentValues.getAsDouble(CarModelConst.ENGINE_CAPACITY));
         carModel.setGearbox(GEARBOX.valueOf(contentValues.getAsString(CarModelConst.GEARBOX)));
         carModel.setSeats(contentValues.getAsInteger(CarModelConst.SEATS));
+        carModel.setColor(COLOR.valueOf(contentValues.getAsString(CarModelConst.COLOR)));
 
         return carModel;
     }
@@ -207,5 +218,6 @@ public class AgencyConsts {
 
         return order;
     }
+    //endregion
 
 }
