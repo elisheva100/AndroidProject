@@ -1,6 +1,7 @@
 package com.example.owner.takeandgo.controller;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -24,8 +25,6 @@ public class MainActivity extends Activity implements View.OnClickListener {
     /**
      * Find the Views in the layout<br />
      * <br />
-     * Auto-created on 2017-11-21 20:13:22 by Android Layout Finder
-     * (http://www.buzzingandroid.com/tools/android-layout-finder)
      */
     private void findViews() {
         CarButton = (Button)findViewById( R.id.CarButton );
@@ -34,32 +33,44 @@ public class MainActivity extends Activity implements View.OnClickListener {
         ClientButton = (Button)findViewById( R.id.ClientButton );
 
         CarButton.setOnClickListener(this);
-        BranchButton.setOnClickListener( this );
-        CarModelButton.setOnClickListener( this );
-        ClientButton.setOnClickListener( this );
+        BranchButton.setOnClickListener(this);
+        CarModelButton.setOnClickListener(this);
+        ClientButton.setOnClickListener(this);
     }
 
     private void Car() {
-        Intent intent = new Intent(this,AddLecturerActivity.class);
+        Intent intent = new Intent(this,CarActivity.class);
+        startActivity(intent);
+    }
+
+    private void Branch() {
+        Intent intent = new Intent(this,BranchActivity.class);
+        startActivity(intent);
+    }
+
+    private void CarModel() {
+        Intent intent = new Intent(this,CarModelActivity.class);
+        startActivity(intent);
+    }
+
+    private void Client() {
+        Intent intent = new Intent(this,ClientActivity.class);
         startActivity(intent);
     }
     /**
      * Handle button click events<br />
      * <br />
-     * Auto-created on 2017-11-21 20:13:22 by Android Layout Finder
-     * (http://www.buzzingandroid.com/tools/android-layout-finder)
      */
     @Override
     public void onClick(View v) {
         if ( v == CarButton ) {
-            // Handle clicks for CarButton
+            Car() ;// Handle clicks for CarButton
         } else if ( v == BranchButton ) {
-            // Handle clicks for BranchButton
+            Branch(); // Handle clicks for BranchButton
         } else if ( v == CarModelButton ) {
-            // Handle clicks for CarModelButton
+            CarModel(); // Handle clicks for CarModelButton
         } else if ( v == ClientButton ) {
-            // Handle clicks for ClientButton
+            Client(); // Handle clicks for ClientButton
         }
     }
-
 }
