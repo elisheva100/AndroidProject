@@ -244,9 +244,13 @@ public class List_DBManager implements DB_manager {
     public List<CarModel> getCarModels() {
         return carModels;
     }
+<<<<<<< HEAD
 
     //endregion
 
+=======
+    //endregion
+>>>>>>> cf30a1906a0456cad623c53b65f837edfb12e854
 }
 
 

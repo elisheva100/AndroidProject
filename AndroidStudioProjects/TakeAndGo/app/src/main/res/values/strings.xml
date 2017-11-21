@@ -1,3 +1,13 @@
 <resources>
     <string name="app_name">TakeAndGo</string>
+    <string name="branch">branch</string>
+    <string name="model">model</string>
+    <string name="mileage">mileage</string>
+    <string name="number">number</string>
+    <string name="add_car">add_car</string>
+    <string name="city">city</string>
+    <string name="Adress">Adress</string>
+    <string name="street">street</string>
+    <string name="add_branch">Add Branch</string>
+    <string name="parking">parking</string>
 </resources>

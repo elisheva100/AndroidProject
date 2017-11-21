@@ -16,6 +16,15 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity android:name=".controller.AddCarActivity" />
+        <activity android:name=".controller.AddBranchActivity" />
+        <activity android:name=".controller.AddClientActivity" />
+        <activity android:name=".controller.AddCarModelActivity" />
+        <activity android:name=".controller.Car" />
+        <activity android:name=".controller.ClientActivity" />
+        <activity android:name=".controller.CarModelActivity" />
+        <activity android:name=".controller.CarActivity" />
+        <activity android:name=".controller.BranchActivity"></activity>
     </application>
 
 </manifest>
