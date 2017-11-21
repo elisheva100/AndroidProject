@@ -128,6 +128,18 @@ public class Legal {
             }
             return true;
         }
+    public static boolean trying(String email)
+    {
+        if(email == null)
+        {
+            return false;
+        }
+        if(!email.contains("@")) {
+            return false;
+        }
+        return true;
+    }
+
     }
 
 
