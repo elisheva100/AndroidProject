@@ -14,11 +14,12 @@ public class BranchActivity extends Activity implements View.OnClickListener {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_branch);
+        findViews();
     }
 
     private Button AddBranchButton;
-    private Button RemoveBranchButton;
-    private Button UpdateBranchButton;
+    //private Button RemoveBranchButton;
+    //private Button UpdateBranchButton;
     private Button showBranchListButton;
 
     /**
@@ -29,13 +30,13 @@ public class BranchActivity extends Activity implements View.OnClickListener {
      */
     private void findViews() {
         AddBranchButton = (Button)findViewById( R.id.AddBranchButton );
-        RemoveBranchButton = (Button)findViewById( R.id.RemoveBranchButton );
-        UpdateBranchButton = (Button)findViewById( R.id.UpdateBranchButton );
+        //RemoveBranchButton = (Button)findViewById( R.id.RemoveBranchButton );
+        //UpdateBranchButton = (Button)findViewById( R.id.UpdateBranchButton );
         showBranchListButton = (Button)findViewById( R.id.showBranchListButton );
 
         AddBranchButton.setOnClickListener( this );
-        RemoveBranchButton.setOnClickListener( this );
-        UpdateBranchButton.setOnClickListener( this );
+        //RemoveBranchButton.setOnClickListener( this );
+        //UpdateBranchButton.setOnClickListener( this );
         showBranchListButton.setOnClickListener( this );
     }
 

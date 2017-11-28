@@ -14,11 +14,12 @@ public class ClientActivity extends Activity implements View.OnClickListener {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_client);
+        findViews();
     }
 
     private Button AddClientButton;
-    private Button RemoveClientButton;
-    private Button UpdateClientButton;
+    //private Button RemoveClientButton;
+    //private Button UpdateClientButton;
     private Button showClientListButton;
 
     /**
@@ -29,13 +30,13 @@ public class ClientActivity extends Activity implements View.OnClickListener {
      */
     private void findViews() {
         AddClientButton = (Button)findViewById( R.id.AddClientButton );
-        RemoveClientButton = (Button)findViewById( R.id.RemoveClientButton );
-        UpdateClientButton = (Button)findViewById( R.id.UpdateClientButton );
+        //RemoveClientButton = (Button)findViewById( R.id.RemoveClientButton );
+        //UpdateClientButton = (Button)findViewById( R.id.UpdateClientButton );
         showClientListButton = (Button)findViewById( R.id.showClientListButton );
 
         AddClientButton.setOnClickListener( this );
-        RemoveClientButton.setOnClickListener( this );
-        UpdateClientButton.setOnClickListener( this );
+        //RemoveClientButton.setOnClickListener( this );
+        //UpdateClientButton.setOnClickListener( this );
         showClientListButton.setOnClickListener( this );
     }
 
@@ -59,9 +60,9 @@ public class ClientActivity extends Activity implements View.OnClickListener {
     public void onClick(View v) {
         if ( v == AddClientButton ) {
             AddClient(); // Handle clicks for AddClientButton
-        } else if ( v == RemoveClientButton ) {
+       // } else if ( v == RemoveClientButton ) {
             // Handle clicks for RemoveClientButton
-        } else if ( v == UpdateClientButton ) {
+        //} else if ( v == UpdateClientButton ) {
             // Handle clicks for UpdateClientButton
         } else if ( v == showClientListButton ) {
             ShowClientList();// Handle clicks for showClientListButton

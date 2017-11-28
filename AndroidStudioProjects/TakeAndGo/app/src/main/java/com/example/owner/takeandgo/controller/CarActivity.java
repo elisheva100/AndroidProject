@@ -14,11 +14,12 @@ public class CarActivity extends Activity implements View.OnClickListener {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_car);
+        findViews();
     }
 
     private Button AddCarButton;
-    private Button RemoveCarButton;
-    private Button UpdateCarButton;
+    //private Button RemoveCarButton;
+    //private Button UpdateCarButton;
     private Button showCarListButton;
 
     /**
@@ -29,13 +30,13 @@ public class CarActivity extends Activity implements View.OnClickListener {
      */
     private void findViews() {
         AddCarButton = (Button)findViewById( R.id.AddCarButton );
-        RemoveCarButton = (Button)findViewById( R.id.RemoveCarButton );
-        UpdateCarButton = (Button)findViewById( R.id.UpdateCarButton );
+       // RemoveCarButton = (Button)findViewById( R.id.RemoveCarButton );
+       // UpdateCarButton = (Button)findViewById( R.id.UpdateCarButton );
         showCarListButton = (Button)findViewById( R.id.showCarListButton );
 
         AddCarButton.setOnClickListener( this );
-        RemoveCarButton.setOnClickListener( this );
-        UpdateCarButton.setOnClickListener( this );
+       // RemoveCarButton.setOnClickListener( this );
+       // UpdateCarButton.setOnClickListener( this );
         showCarListButton.setOnClickListener( this );
     }
 

@@ -18,7 +18,7 @@
             android:layout_height="wrap_content"
             android:text="Add Car" />
 
-        <Button
+        <!--<Button
             android:id="@+id/RemoveCarButton"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -28,7 +28,7 @@
             android:id="@+id/UpdateCarButton"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Update Car" />
+            android:text="Update Car" />-->
 
         <Button
             android:id="@+id/showCarListButton"

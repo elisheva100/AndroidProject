@@ -18,7 +18,7 @@
             android:layout_height="wrap_content"
             android:text="Add Car Model" />
 
-        <Button
+        <!--<Button
             android:id="@+id/RemoveCarModelButton"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -28,7 +28,7 @@
             android:id="@+id/UpdateCarModelButton"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Update Car Model" />
+            android:text="Update Car Model" />-->
 
         <Button
             android:id="@+id/showCarModelListButton"
