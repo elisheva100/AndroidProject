@@ -18,7 +18,7 @@
             android:layout_height="wrap_content"
             android:text="Add Branch" />
 
-        <Button
+        <!--<Button
             android:id="@+id/RemoveBranchButton"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -28,7 +28,7 @@
             android:id="@+id/UpdateBranchButton"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Update Branch" />
+            android:text="Update Branch" />-->
 
         <Button
             android:id="@+id/showBranchListButton"

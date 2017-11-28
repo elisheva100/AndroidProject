@@ -18,7 +18,7 @@
             android:layout_height="wrap_content"
             android:text="Add Client" />
 
-        <Button
+        <!--<Button
             android:id="@+id/RemoveClientButton"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -28,7 +28,7 @@
             android:id="@+id/UpdateClientButton"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Update Client" />
+            android:text="Update Client" />-->
 
         <Button
             android:id="@+id/showClientListButton"
