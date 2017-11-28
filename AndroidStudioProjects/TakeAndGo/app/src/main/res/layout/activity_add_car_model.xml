@@ -1,9 +1,106 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/activity_add_car_model"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.example.owner.takeandgo.controller.AddCarModelActivity">
+    android:orientation="vertical"
+    tools:context="com.example.owner.takeandgo.controller.AddCarActivity"
+    android:weightSum="1">
 
-</android.support.constraint.ConstraintLayout>
+    <EditText
+        android:id="@+id/CodeEditText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:hint="@string/Code"
+        android:inputType="number" />
+
+
+    <EditText
+        android:id="@+id/ModelNameEditText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:hint="@string/modelName"
+        android:inputType="text" />
+
+    <EditText
+        android:id="@+id/CompanyNameEditText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:hint="@string/companyName"
+        android:inputType="text" />
+    <EditText
+        android:id="@+id/EngineCApicityEditText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:hint="@string/engineCapacity"
+        android:inputType="numberDecimal" />
+
+    <LinearLayout
+        android:layout_width="369dp"
+        android:layout_height="wrap_content">
+
+        <TextView
+            android:id="@+id/gearboxTextView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/GearBox"
+            android:textSize="18sp"
+            android:gravity="left"/>
+        <Space
+            android:layout_width="10dp"
+            android:layout_height="wrap_content" />
+
+        <Spinner
+            android:id="@+id/gearboxSpinner"
+            android:layout_width="138dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="right"
+            />
+
+    </LinearLayout>
+
+    <EditText
+        android:id="@+id/SeatsEditText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:hint="@string/seats"
+        android:inputType="number" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_weight="0.75"
+        android:weightSum="1">
+
+        <TextView
+            android:id="@+id/colorTextView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/Color"
+            android:textSize="18sp"
+            android:gravity="left"/>
+        <Space
+            android:layout_width="20dp"
+            android:layout_height="wrap_content" />
+
+        <Spinner
+            android:id="@+id/colorSpinner"
+            android:layout_width="147dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="0.03"
+            android:layout_gravity="right"/>
+    </LinearLayout>
+
+    <Button
+        android:id="@+id/addClientButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/AddClient" />
+
+</LinearLayout>

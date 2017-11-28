@@ -9,6 +9,10 @@ public class Adress {
     private String street;
     private int number;
 
+    public Adress() {
+
+    }
+
     public String getCity() {
         return city;
     }
@@ -37,5 +41,10 @@ public class Adress {
         this.city = city;
         this.street = street;
         this.number = number;
+    }
+
+    @Override
+    public String toString() {
+        return this.number + " " + this.street + " " + this.city;
     }
 }

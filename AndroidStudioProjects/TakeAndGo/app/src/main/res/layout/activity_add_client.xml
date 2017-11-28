@@ -1,9 +1,99 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/activity_add_client"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.example.owner.takeandgo.controller.AddClientActivity">
+    android:orientation="vertical"
+    tools:context="com.example.owner.takeandgo.controller.AddCarActivity"
+    android:weightSum="1">
 
-</android.support.constraint.ConstraintLayout>
+    <EditText
+        android:id="@+id/clientIdEditText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:hint="@string/clientId"
+        android:inputType="number" />
+
+
+    <EditText
+        android:id="@+id/FirstNameEditText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:hint="@string/firsName"
+        android:inputType="text" />
+
+    <EditText
+        android:id="@+id/LastNameEditText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:hint="@string/lastName"
+        android:inputType="text" />
+    <EditText
+        android:id="@+id/PhoneNumberEditText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:hint="@string/phoneNumber"
+        android:inputType="phone" />
+
+    <EditText
+        android:id="@+id/EmailEditText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:hint="@string/Email"
+        android:inputType="textEmailAddress" />
+    <LinearLayout
+        android:layout_width="369dp"
+        android:layout_height="wrap_content"
+        android:weightSum="1">
+
+        <TextView
+            android:id="@+id/birthdayTextView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/birthday"
+            android:textSize="18sp"
+            android:gravity="left"
+
+            />
+        <Space
+            android:layout_width="10dp"
+            android:layout_height="wrap_content" />
+
+        <DatePicker
+            android:id="@+id/datePicker2"
+            android:layout_width="119dp"
+            android:layout_height="33dp"
+            android:layout_weight="0.15"
+            android:layout_gravity="right"
+            />
+    </LinearLayout>
+
+
+    <EditText
+        android:id="@+id/CreditCardEditText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:hint="@string/creditCard"
+        android:inputType="number" />
+
+
+
+
+    <Button
+        android:id="@+id/addClientButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/AddClient" />
+
+    <Space
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+
+</LinearLayout>

@@ -28,6 +28,9 @@ public class AgencyConsts {
     //region Static consts
     public static class BranchConst {
         public static final String ADRESS = "adress";
+        public static final String STREET_NUMBER = "number";
+        public static final String STREET = "street";
+        public static final String CITY = "city";
         public static final String PARKING = "parking";
         public static final String BRANCH_NUMBER = "branchNumber";
 
@@ -73,7 +76,7 @@ public class AgencyConsts {
     //region Types to Content values casting
     public static ContentValues BranchToContentValues(Branch branch) {
         ContentValues contentValues = new ContentValues();
-        contentValues.put(BranchConst.ADRESS, String.valueOf(branch.getAdress()));
+        contentValues.put(BranchConst.ADRESS,(branch.getAdress().toString()));
         contentValues.put(BranchConst.PARKING, branch.getParking());
         contentValues.put(BranchConst.BRANCH_NUMBER, branch.getBranchNumber());
 
@@ -142,7 +145,11 @@ public class AgencyConsts {
     public static Branch ContentValuesToBranch(ContentValues contentValues) {
 
         Branch branch = new Branch();
-        branch.setAdress(Adress.class.cast(contentValues.getAsString(BranchConst.ADRESS)));//TODO: how to add - get as adress - temp function right now.
+        Adress adress = new Adress();
+        adress.setNumber(contentValues.getAsInteger(BranchConst.STREET_NUMBER));
+        adress.setStreet(contentValues.getAsString(BranchConst.STREET));
+        adress.setCity(contentValues.getAsString(BranchConst.CITY));
+        branch.setAdress(adress);
         branch.setParking(contentValues.getAsInteger(BranchConst.PARKING));
         branch.setBranchNumber(contentValues.getAsInteger(BranchConst.BRANCH_NUMBER));
 

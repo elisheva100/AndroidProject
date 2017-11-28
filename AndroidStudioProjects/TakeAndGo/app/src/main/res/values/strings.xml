@@ -4,10 +4,25 @@
     <string name="model">model</string>
     <string name="mileage">mileage</string>
     <string name="number">number</string>
-    <string name="add_car">add_car</string>
+    <string name="add_car">Add car</string>
     <string name="city">city</string>
     <string name="Adress">Adress</string>
     <string name="street">street</string>
     <string name="add_branch">Add Branch</string>
-    <string name="parking">parking</string>
+    <string name="parking">Parking</string>
+    <string name="creditCard">Credit card</string>
+    <string name="birthday">birthday</string>
+    <string name="Email">Email</string>
+    <string name="phoneNumber">Phone</string>
+    <string name="lastName">Last name</string>
+    <string name="firsName">First name</string>
+    <string name="clientId">Id</string>
+    <string name="AddClient">Add client</string>
+    <string name="Code">Code</string>
+    <string name="modelName">Model name</string>
+    <string name="companyName">Company name</string>
+    <string name="engineCapacity">Engine capacity</string>
+    <string name="GearBox">Gearbox</string>
+    <string name="seats">Seats</string>
+    <string name="Color">Color</string>
 </resources>
