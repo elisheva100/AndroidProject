@@ -1,12 +1,13 @@
 package com.example.owner.takeandgo.controller;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 
 import com.example.owner.takeandgo.R;
-//TODO
+
 public class BranchActivity extends Activity implements View.OnClickListener {
 
     @Override
@@ -38,6 +39,16 @@ public class BranchActivity extends Activity implements View.OnClickListener {
         showBranchListButton.setOnClickListener( this );
     }
 
+    private void AddBranch() {
+        Intent intent = new Intent(this,AddBranchActivity.class);
+        startActivity(intent);
+    }
+
+    private void ShowBranchList() {
+        Intent intent = new Intent(this,ShowBranchListActivity.class);
+        startActivity(intent);
+    }
+
     /**
      * Handle button click events<br />
      * <br />
@@ -47,13 +58,13 @@ public class BranchActivity extends Activity implements View.OnClickListener {
     @Override
     public void onClick(View v) {
         if ( v == AddBranchButton ) {
-            // Handle clicks for AddBranchButton
-        } else if ( v == RemoveBranchButton ) {
+            AddBranch(); // Handle clicks for AddBranchButton
+        //} else if ( v == RemoveBranchButton ) {
             // Handle clicks for RemoveBranchButton
-        } else if ( v == UpdateBranchButton ) {
+        //} else if ( v == UpdateBranchButton ) {
             // Handle clicks for UpdateBranchButton
         } else if ( v == showBranchListButton ) {
-            // Handle clicks for showBranchListButton
+            ShowBranchList(); // Handle clicks for showBranchListButton
         }
     }
 
