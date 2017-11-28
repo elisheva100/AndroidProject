@@ -88,7 +88,7 @@ public class List_DBManager implements DB_manager {
     @Override
     //adds client to clients' list
     public String addClient(ContentValues client) throws Exception {
-        Client item = ContentValuesToClient(client);//TODO: to create this func
+        Client item = ContentValuesToClient(client);
         try{clients.add(item);}
         catch (Exception e){ throw new Exception(e.getMessage());}
         return item.getId();
@@ -144,7 +144,7 @@ public class List_DBManager implements DB_manager {
     @Override
     //adds branch to branches' list
     public int addBranch(ContentValues branch) throws Exception {
-        Branch item = ContentValuesToBranch(branch);//TODO: to create this func
+        Branch item = ContentValuesToBranch(branch);
         try {branches.add(item);}
         catch (Exception e){ throw new Exception(e.getMessage());}
         return item.getBranchNumber();
@@ -198,7 +198,7 @@ public class List_DBManager implements DB_manager {
     @Override
     //adds model to car models' list
     public int addCarModel(ContentValues model) throws Exception {
-        CarModel item = ContentValuesToCarModel(model); //TODO: to create this func
+        CarModel item = ContentValuesToCarModel(model);
         try {carModels.add(item);}
         catch (Exception e){ throw new Exception(e.getMessage());}
         return item.getCode();
@@ -244,13 +244,9 @@ public class List_DBManager implements DB_manager {
     public List<CarModel> getCarModels() {
         return carModels;
     }
-<<<<<<< HEAD
 
     //endregion
 
-=======
-    //endregion
->>>>>>> cf30a1906a0456cad623c53b65f837edfb12e854
 }
 
 

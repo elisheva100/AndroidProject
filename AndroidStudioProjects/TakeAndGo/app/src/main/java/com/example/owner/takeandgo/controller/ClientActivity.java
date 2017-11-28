@@ -1,12 +1,13 @@
 package com.example.owner.takeandgo.controller;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 
 import com.example.owner.takeandgo.R;
-//TODO
+
 public class ClientActivity extends Activity implements View.OnClickListener {
 
     @Override
@@ -38,6 +39,16 @@ public class ClientActivity extends Activity implements View.OnClickListener {
         showClientListButton.setOnClickListener( this );
     }
 
+    private void AddClient() {
+        Intent intent = new Intent(this,AddClientActivity.class);
+        startActivity(intent);
+    }
+
+    private void ShowClientList() {
+        Intent intent = new Intent(this,ShowClientListActivity.class);
+        startActivity(intent);
+    }
+
     /**
      * Handle button click events<br />
      * <br />
@@ -47,13 +58,13 @@ public class ClientActivity extends Activity implements View.OnClickListener {
     @Override
     public void onClick(View v) {
         if ( v == AddClientButton ) {
-            // Handle clicks for AddClientButton
+            AddClient(); // Handle clicks for AddClientButton
         } else if ( v == RemoveClientButton ) {
             // Handle clicks for RemoveClientButton
         } else if ( v == UpdateClientButton ) {
             // Handle clicks for UpdateClientButton
         } else if ( v == showClientListButton ) {
-            // Handle clicks for showClientListButton
+            ShowClientList();// Handle clicks for showClientListButton
         }
     }
 
