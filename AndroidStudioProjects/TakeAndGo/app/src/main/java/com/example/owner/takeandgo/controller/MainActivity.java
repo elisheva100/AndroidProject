@@ -18,60 +18,107 @@ public class MainActivity extends Activity implements View.OnClickListener {
         findViews();
     }
 
-    private Button CarButton;
-    private Button BranchButton;
-    private Button CarModelButton;
-    private Button ClientButton;
+    private Button AddCarButton;
+    private Button AddBranchButton;
+    private Button AddCarModelButton;
+    private Button AddClientButton;
+    private Button showCarListButton;
+    private Button showBranchListButton;
+    private Button showCarModelListButton;
+    private Button showClientListButton;
 
     /**
      * Find the Views in the layout<br />
      * <br />
+     * Auto-created on 2017-12-02 20:56:37 by Android Layout Finder
+     * (http://www.buzzingandroid.com/tools/android-layout-finder)
      */
     private void findViews() {
-        CarButton = (Button)findViewById( R.id.CarButton );
-        BranchButton = (Button)findViewById( R.id.BranchButton );
-        CarModelButton = (Button)findViewById( R.id.CarModelButton );
-        ClientButton = (Button)findViewById( R.id.ClientButton );
+        AddCarButton = (Button)findViewById( R.id.AddCarButton );
+        AddBranchButton = (Button)findViewById( R.id.AddBranchButton );
+        AddCarModelButton = (Button)findViewById( R.id.AddCarModelButton );
+        AddClientButton = (Button)findViewById( R.id.AddClientButton );
+        showCarListButton = (Button)findViewById( R.id.showCarListButton );
+        showBranchListButton = (Button)findViewById( R.id.showBranchListButton );
+        showCarModelListButton = (Button)findViewById( R.id.showCarModelListButton );
+        showClientListButton = (Button)findViewById( R.id.showClientListButton );
 
-        CarButton.setOnClickListener(this);
-        BranchButton.setOnClickListener(this);
-        CarModelButton.setOnClickListener(this);
-        ClientButton.setOnClickListener(this);
+        AddCarButton.setOnClickListener( this );
+        AddBranchButton.setOnClickListener( this );
+        AddCarModelButton.setOnClickListener( this );
+        AddClientButton.setOnClickListener( this );
+        showCarListButton.setOnClickListener( this );
+        showBranchListButton.setOnClickListener( this );
+        showCarModelListButton.setOnClickListener( this );
+        showClientListButton.setOnClickListener( this );
     }
 
-    private void Car() {
-        Intent intent = new Intent(this,CarActivity.class);
+    private void AddCar() {
+        Intent intent = new Intent(this,AddCarActivity.class);
         startActivity(intent);
     }
 
-    private void Branch() {
-        Intent intent = new Intent(this,BranchActivity.class);
+    private void AddBranch() {
+        Intent intent = new Intent(this,AddBranchActivity.class);
         startActivity(intent);
     }
 
-    private void CarModel() {
-        Intent intent = new Intent(this,CarModelActivity.class);
+    private void AddCarModel() {
+        Intent intent = new Intent(this,AddCarModelActivity.class);
         startActivity(intent);
     }
 
-    private void Client() {
-        Intent intent = new Intent(this,ClientActivity.class);
+    private void AddClient() {
+        Intent intent = new Intent(this,AddClientActivity.class);
         startActivity(intent);
     }
+
+    private void showCarList() {
+        Intent intent = new Intent(this,ShowCarListActivity.class);
+        startActivity(intent);
+    }
+
+    private void showBranchList() {
+        Intent intent = new Intent(this,ShowBranchListActivity.class);
+        startActivity(intent);
+    }
+
+    private void showCarModelList() {
+        Intent intent = new Intent(this,ShowCarModelListActivity.class);
+        startActivity(intent);
+    }
+
+    private void showClientList() {
+        Intent intent = new Intent(this,ShowClientListActivity.class);
+        startActivity(intent);
+    }
+
     /**
      * Handle button click events<br />
      * <br />
+     * Auto-created on 2017-12-02 20:56:37 by Android Layout Finder
+     * (http://www.buzzingandroid.com/tools/android-layout-finder)
      */
     @Override
     public void onClick(View v) {
-        if ( v == CarButton ) {
-            Car() ;// Handle clicks for CarButton
-        } else if ( v == BranchButton ) {
-            Branch(); // Handle clicks for BranchButton
-        } else if ( v == CarModelButton ) {
-            CarModel(); // Handle clicks for CarModelButton
-        } else if ( v == ClientButton ) {
-            Client(); // Handle clicks for ClientButton
+        if ( v == AddCarButton ) {
+            AddCar();// Handle clicks for AddCarButton
+        } else if ( v == AddBranchButton ) {
+            AddBranch();// Handle clicks for AddBranchButton
+        } else if ( v == AddCarModelButton ) {
+            AddCarModel();// Handle clicks for AddCarModelButton
+        } else if ( v == AddClientButton ) {
+            AddClient();// Handle clicks for AddClientButton
+        } else if ( v == showCarListButton ) {
+            showCarList();// Handle clicks for showCarListButton
+        } else if ( v == showBranchListButton ) {
+            showBranchList();// Handle clicks for showBranchListButton
+        } else if ( v == showCarModelListButton ) {
+            showCarModelList();// Handle clicks for showCarModelListButton
+        } else if ( v == showClientListButton ) {
+            showClientList();// Handle clicks for showClientListButton
         }
     }
 }
+
+

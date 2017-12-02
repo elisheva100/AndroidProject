@@ -13,55 +13,58 @@
         android:orientation="vertical">
 
         <Button
-            android:id="@+id/CarButton"
+            android:id="@+id/AddCarButton"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Car" />
+            android:text="Add Car" />
 
         <Button
-            android:id="@+id/BranchButton"
+            android:id="@+id/AddBranchButton"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Branch" />
+            android:text="Add Branch" />
 
         <Button
-            android:id="@+id/CarModelButton"
+            android:id="@+id/AddCarModelButton"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Car Model" />
+            android:text="Add Car Model" />
 
         <Button
-            android:id="@+id/ClientButton"
+            android:id="@+id/AddClientButton"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Client" />
+            android:text="Add Client" />
 
-        <!-- <Button
-             android:id="@+id/showCarListButton"
-             android:layout_width="match_parent"
-             android:layout_height="wrap_content"
-             android:layout_marginTop="40dp"
-             android:text="Show Car List" />
+        <Button
+            android:id="@+id/showCarListButton"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="40dp"
+            android:text="Show Car List" />
 
-         <Button
-             android:id="@+id/showBranchListButton"
-             android:layout_width="match_parent"
-             android:layout_height="wrap_content"
-             android:text="Show Branch List" />
+        <Button
+            android:id="@+id/showBranchListButton"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Show Branch List" />
 
-         <Button
-             android:id="@+id/showCarModelListButton"
-             android:layout_width="match_parent"
-             android:layout_height="wrap_content"
-             android:text="Show Car Model List" />
+        <Button
+            android:id="@+id/showCarModelListButton"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Show Car Model List" />
 
-         <Button
-             android:id="@+id/showBranchListButton"
-             android:layout_width="match_parent"
-             android:layout_height="wrap_content"
-             android:text="Show Branch List" />-->
-    </LinearLayout>
+        <Button
+            android:id="@+id/showClientListButton"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Show Client List" />
+
+
+   </LinearLayout>
 </ScrollView>
+
 
 
 

@@ -38,10 +38,10 @@ public class ShowCarListActivity extends Activity {
                 TextView productBranchNumberTextView = (TextView) convertView.findViewById(R.id.branchNumberTextView);
                 TextView productionModelTypeTextView = (TextView) convertView.findViewById(R.id.modelTypeTextView);
                 TextView productionMileageTextView = (TextView) convertView.findViewById(R.id.mileageTextView);
-                productNumberTextView.setText((myItemList.get(position).getNumber()));
+                productNumberTextView.setText((int) myItemList.get(position).getNumber());
                 productBranchNumberTextView.setText(( myItemList.get(position).getBranchNumber()));
                 productionModelTypeTextView.setText((myItemList.get(position).getModelType()));
-                productionMileageTextView.setText((myItemList.get(position).getMileage()));
+                productionMileageTextView.setText((int) myItemList.get(position).getMileage());
                 return convertView;
             }
         };

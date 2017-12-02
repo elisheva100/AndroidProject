@@ -41,7 +41,7 @@ public class List_DBManager implements DB_manager {
         return item.getNumber();
     }
 
-    @Override
+    /*@Override
     //removes car from cars' list
     public boolean removeCar(long num) throws Exception {
         if(!isExistCar(num)) //checks if that car exists in the data
@@ -77,7 +77,7 @@ public class List_DBManager implements DB_manager {
             if(item.getNumber()==n)
                 return true;
         return false;
-    }
+    }*/
 
     @Override
     //returns cars' list
@@ -94,7 +94,7 @@ public class List_DBManager implements DB_manager {
         return item.getId();
     }
 
-    @Override
+   /* @Override
     //removes client from the list
     public boolean removeClient(String id) throws Exception {
         if (!isExistClient(id)) //checks if there is a client with that id
@@ -121,7 +121,7 @@ public class List_DBManager implements DB_manager {
                 return true; //Return true if the update succeeded
             }
         return false; //Returns false if the update failed
-    }
+    }*/
 
     @Override
     //checks if there is a client with that id
@@ -150,7 +150,7 @@ public class List_DBManager implements DB_manager {
         return item.getBranchNumber();
     }
 
-    @Override
+    /*@Override
     //removes branch from branches' list
     public boolean removeBranch(int num) throws Exception {
         if (! isExistBranch(num)) //checks if there is a branch with that number
@@ -187,7 +187,7 @@ public class List_DBManager implements DB_manager {
             if(item.getBranchNumber()==n)
                 return true;
         return false;
-    }
+    }*/
 
     @Override
     //returns branches' list
@@ -204,7 +204,7 @@ public class List_DBManager implements DB_manager {
         return item.getCode();
     }
 
-    @Override
+    /*@Override
     //removes model from car models' list
     public boolean removeCarModel(int num) {
         CarModel carModelToRemove = null;
@@ -237,7 +237,7 @@ public class List_DBManager implements DB_manager {
             if(item.getCode()==n)
                 return true;
         return false;
-    }
+    }*/
 
     @Override
     //returns car models' list
