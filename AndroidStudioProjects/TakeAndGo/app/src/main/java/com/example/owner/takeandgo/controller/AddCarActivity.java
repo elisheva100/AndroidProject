@@ -20,6 +20,7 @@ public class AddCarActivity extends AppCompatActivity implements View.OnClickLis
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add_car);
+        findViews();
     }
     private EditText branchNumberEditText;
     private EditText ModelTypeEditText;

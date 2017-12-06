@@ -22,7 +22,7 @@ public class AddClientActivity extends Activity implements View.OnClickListener 
         setContentView(R.layout.activity_add_client);
         Calendar calander = Calendar.getInstance();
         myDay = calander.get(Calendar.DAY_OF_MONTH);
-        myMonth = calander.get(Calendar.MONTH) + 1;
+        myMonth = calander.get(Calendar.MONTH);
         myYear = calander.get(Calendar.YEAR);
         findViews();
     }
@@ -53,7 +53,7 @@ public class AddClientActivity extends Activity implements View.OnClickListener 
             myDay = dayOfMonth;
             Calendar calander = Calendar.getInstance();
             int cDay = calander.get(Calendar.DAY_OF_MONTH);
-            int cMonth = calander.get(Calendar.MONTH) + 1;
+            int cMonth = calander.get(Calendar.MONTH);
             int cYear = calander.get(Calendar.YEAR);
             if (myYear - cYear < 18) {
                 flag =  false;//The user is younger than 18.
@@ -84,7 +84,6 @@ public class AddClientActivity extends Activity implements View.OnClickListener 
         datePickerButton = (Button)findViewById( R.id.datePickerButton );
         CreditCardEditText = (EditText)findViewById( R.id.CreditCardEditText );
         addClientButton = (Button)findViewById( R.id.addClientButton );
-
         datePickerButton.setOnClickListener( this );
         addClientButton.setOnClickListener( this );
     }
