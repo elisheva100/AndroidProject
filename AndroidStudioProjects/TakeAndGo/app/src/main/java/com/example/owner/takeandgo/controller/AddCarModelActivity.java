@@ -1,14 +1,21 @@
 package com.example.owner.takeandgo.controller;
 
 import android.app.Activity;
+import android.content.ContentValues;
+import android.os.AsyncTask;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.example.owner.takeandgo.R;
+import com.example.owner.takeandgo.model.backEnd.AgencyConsts;
+import com.example.owner.takeandgo.model.backEnd.DBManagerFactory;
+import com.example.owner.takeandgo.model.entities.GEARBOX;
 
 public class AddCarModelActivity extends Activity implements View.OnClickListener {
 
@@ -47,6 +54,7 @@ public class AddCarModelActivity extends Activity implements View.OnClickListene
         addClientButton = (Button)findViewById( R.id.addClientButton );
 
         addClientButton.setOnClickListener( this );
+        gearboxSpinner.setAdapter(new ArrayAdapter<GEARBOX>(this,android.R.layout.simple_expandable_list_item_1,GEARBOX.values()));
     }
 
     /**
@@ -58,8 +66,70 @@ public class AddCarModelActivity extends Activity implements View.OnClickListene
     @Override
     public void onClick(View v) {
         if ( v == addClientButton ) {
-            // Handle clicks for addClientButton
+            addCarModel();
         }
+    }
+    private void addCarModel()
+    {
+        final ContentValues contentValues = new ContentValues();
+        try {
+            if(Legal.isNum(this.CodeEditText.getText().toString())){
+                int code = Integer.valueOf(this.CodeEditText.getText().toString());
+                contentValues.put(AgencyConsts.CarModelConst.CODE, code);
+            }
+            else{
+                Toast.makeText(AddCarModelActivity.this, "code is not valid!", Toast.LENGTH_LONG).show();
+            }
+            String company = this.CompanyNameEditText.getText().toString();
+            contentValues.put(AgencyConsts.CarModelConst.COMPANY_NAME, company);
+            String model = this.ModelNameEditText.getText().toString();
+            contentValues.put(AgencyConsts.CarModelConst.MODEL_NAME, model);
+            if(Legal.isNum(this.EngineCApicityEditText.getText().toString())){
+                double capacity = Double.valueOf(this.EngineCApicityEditText.getText().toString());
+                contentValues.put(AgencyConsts.CarModelConst.ENGINE_CAPACITY, capacity);
+            }
+            else{
+                Toast.makeText(AddCarModelActivity.this, "engine capacity is not valid!", Toast.LENGTH_LONG).show();
+            }
+            String gear  = ((GEARBOX)gearboxSpinner.getSelectedItem()).name();
+            contentValues.put(AgencyConsts.CarModelConst.GEARBOX,gear);
+
+            if(!Legal.isNum(this.SeatsEditText.getText().toString()))
+            {
+                Toast.makeText(AddCarModelActivity.this, "number of seats is not valid!", Toast.LENGTH_LONG).show();
+            }
+            else if(Integer.valueOf(this.SeatsEditText.getText().toString()) > 9 || Integer.valueOf(this.SeatsEditText.getText().toString()) < 2)
+            {
+                Toast.makeText(AddCarModelActivity.this, "There is no car with such number of seats! ", Toast.LENGTH_LONG).show();
+            }
+            else {
+                int seats = Integer.valueOf(this.SeatsEditText.getText().toString());
+                contentValues.put(AgencyConsts.CarModelConst.SEATS, seats);
+            }
+
+
+        new AsyncTask<Void, Void, Integer>() {
+            @Override
+            protected void onPostExecute(Integer numResult) {
+                super.onPostExecute(numResult);
+                if (numResult > 0)
+                    Toast.makeText(getBaseContext(), "insert car: " + numResult + "successfully", Toast.LENGTH_LONG).show();
+            }
+
+            @Override
+            protected Integer doInBackground(Void... params) {
+                try {
+                    return DBManagerFactory.getManager().addCarModel(contentValues);
+                } catch (Exception e) {
+                    Toast.makeText(AddCarModelActivity.this, e.getMessage(), Toast.LENGTH_LONG).show();
+                }
+                return -1;
+            }
+        }.execute();
+
+    } catch (Exception e) {
+        Toast.makeText(AddCarModelActivity.this, "Error!", Toast.LENGTH_LONG).show();
+    }
     }
 
 }
