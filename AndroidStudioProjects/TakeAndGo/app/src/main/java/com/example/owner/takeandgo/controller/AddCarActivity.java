@@ -21,7 +21,7 @@ public class AddCarActivity extends AppCompatActivity implements View.OnClickLis
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add_car);
     }
-    private EditText branchNumnerEditText;
+    private EditText branchNumberEditText;
     private EditText ModelTypeEditText;
     private EditText MileageEditText;
     private EditText NumberEditText;
@@ -34,7 +34,7 @@ public class AddCarActivity extends AppCompatActivity implements View.OnClickLis
      * (http://www.buzzingandroid.com/tools/android-layout-finder)
      */
     private void findViews() {
-        branchNumnerEditText = (EditText)findViewById( R.id.branchNumnerEditText );
+        branchNumberEditText = (EditText)findViewById( R.id.branchNumberEditText );
         ModelTypeEditText = (EditText)findViewById( R.id.ModelTypeEditText );
         MileageEditText = (EditText)findViewById( R.id.MileageEditText );
         NumberEditText = (EditText)findViewById( R.id.NumberEditText );
@@ -83,8 +83,8 @@ public class AddCarActivity extends AppCompatActivity implements View.OnClickLis
                 Toast.makeText(AddCarActivity.this, "Mileage value is not valid!", Toast.LENGTH_LONG).show();
                 //strExepetion += "Mileage value is not valid!\n";
             }
-            if(Legal.isNum(this.branchNumnerEditText.getText().toString())) {
-                int branch = Integer.valueOf(this.branchNumnerEditText.getText().toString());
+            if(Legal.isNum(this.branchNumberEditText.getText().toString())) {
+                int branch = Integer.valueOf(this.branchNumberEditText.getText().toString());
                 contentValues.put(AgencyConsts.CarConst.BRANCH_NUMBER, branch);
             }
             else{
@@ -101,7 +101,7 @@ public class AddCarActivity extends AppCompatActivity implements View.OnClickLis
                 protected void onPostExecute(Long numResult) {
                     super.onPostExecute(numResult);
                     if (numResult != null)
-                        Toast.makeText(getBaseContext(), "insert number: " + numResult +" added successfully", Toast.LENGTH_LONG).show();
+                        Toast.makeText(AddCarActivity.this, "insert number: " + numResult +" added successfully", Toast.LENGTH_LONG).show();
                 }
 
                 @Override
