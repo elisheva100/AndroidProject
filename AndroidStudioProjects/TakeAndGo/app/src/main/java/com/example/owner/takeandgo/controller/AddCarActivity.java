@@ -4,6 +4,7 @@ import android.content.ContentValues;
 import android.os.AsyncTask;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -19,8 +20,9 @@ public class AddCarActivity extends AppCompatActivity implements View.OnClickLis
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add_car);
+        findViews();
     }
-    private EditText branchNumnerEditText;
+    private EditText branchNumberEditText;
     private EditText ModelTypeEditText;
     private EditText MileageEditText;
     private EditText NumberEditText;
@@ -33,7 +35,7 @@ public class AddCarActivity extends AppCompatActivity implements View.OnClickLis
      * (http://www.buzzingandroid.com/tools/android-layout-finder)
      */
     private void findViews() {
-        branchNumnerEditText = (EditText)findViewById( R.id.branchNumnerEditText );
+        branchNumberEditText = (EditText)findViewById( R.id.branchNumberEditText );
         ModelTypeEditText = (EditText)findViewById( R.id.ModelTypeEditText );
         MileageEditText = (EditText)findViewById( R.id.MileageEditText );
         NumberEditText = (EditText)findViewById( R.id.NumberEditText );
@@ -56,25 +58,51 @@ public class AddCarActivity extends AppCompatActivity implements View.OnClickLis
     }
     private void addCar() {
         final ContentValues contentValues = new ContentValues();
-        try {
-            long number = Long.valueOf(this.NumberEditText.getText().toString());
-            contentValues.put(AgencyConsts.CarConst.NUMBER, number);
+        String strExepetion = "";
 
-            int model = Integer.valueOf(this.ModelTypeEditText.getText().toString());
-            contentValues.put(AgencyConsts.CarConst.MODEL_TYPE,model);
-
-            double mile = Double.valueOf(this.MileageEditText.getText().toString());
-            contentValues.put(AgencyConsts.CarConst.MILEAGE,mile);
-
-            int branch = Integer.valueOf(this.branchNumnerEditText.getText().toString());
-            contentValues.put(AgencyConsts.CarConst.BRANCH_NUMBER,branch);
+            if(Legal.isNum(NumberEditText.getText().toString())) {
+                long number = Long.valueOf(this.NumberEditText.getText().toString());
+                contentValues.put(AgencyConsts.CarConst.NUMBER, number);
+            }
+            else {
+                Toast.makeText(AddCarActivity.this, "Car number is not valid!", Toast.LENGTH_LONG).show();
+                //strExepetion += "Car number is not valid!\n";
+            }
+            if(Legal.isNum(this.ModelTypeEditText.getText().toString())) {
+                int model = Integer.valueOf(this.ModelTypeEditText.getText().toString());
+                contentValues.put(AgencyConsts.CarConst.MODEL_TYPE, model);
+            }
+            else{
+                Toast.makeText(AddCarActivity.this, "Model type is not valid!", Toast.LENGTH_LONG).show();
+                //strExepetion += "Model type is not valid!\n";
+            }
+            if(Legal.isNum(this.MileageEditText.getText().toString())) {
+                double mile = Double.valueOf(this.MileageEditText.getText().toString());
+                contentValues.put(AgencyConsts.CarConst.MILEAGE, mile);
+            }
+            else{
+                Toast.makeText(AddCarActivity.this, "Mileage value is not valid!", Toast.LENGTH_LONG).show();
+                //strExepetion += "Mileage value is not valid!\n";
+            }
+            if(Legal.isNum(this.branchNumberEditText.getText().toString())) {
+                int branch = Integer.valueOf(this.branchNumberEditText.getText().toString());
+                contentValues.put(AgencyConsts.CarConst.BRANCH_NUMBER, branch);
+            }
+            else{
+                Toast.makeText(AddCarActivity.this, "Branch number is not valid!", Toast.LENGTH_LONG).show();
+                //strExepetion += "Branch number is not valid!\n";
+            }
+           /** if(strExepetion != "")
+            {
+                throw new Exception(strExepetion);
+            }**/
 
             new AsyncTask<Void, Void, Long>() {
                 @Override
                 protected void onPostExecute(Long numResult) {
                     super.onPostExecute(numResult);
                     if (numResult != null)
-                        Toast.makeText(getBaseContext(), "insert number: " + numResult, Toast.LENGTH_LONG).show();
+                        Toast.makeText(AddCarActivity.this, "insert number: " + numResult +" added successfully", Toast.LENGTH_LONG).show();
                 }
 
                 @Override
@@ -82,16 +110,21 @@ public class AddCarActivity extends AppCompatActivity implements View.OnClickLis
                     try {
                         return DBManagerFactory.getManager().addCar(contentValues);
                     } catch (Exception e) {
-                        e.printStackTrace();
+
+                        Toast.makeText(getBaseContext(),e.getMessage(),Toast.LENGTH_LONG).show();
                         return Long.valueOf(-1);
+
                     }
 
                 }
 
             }.execute();
 
-        } catch (Exception e) {
         }
+        catch (Exception e) {
     }
 
-}
+    }
+
+
+

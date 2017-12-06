@@ -8,7 +8,7 @@
     tools:context="com.example.owner.takeandgo.controller.AddCarActivity">
 
     <EditText
-        android:id="@+id/branchNumnerEditText"
+        android:id="@+id/branchNumberEditText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:ems="10"
