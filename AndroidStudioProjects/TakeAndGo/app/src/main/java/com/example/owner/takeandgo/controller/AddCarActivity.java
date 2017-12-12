@@ -1,5 +1,6 @@
 package com.example.owner.takeandgo.controller;
 
+import android.app.Activity;
 import android.content.ContentValues;
 import android.os.AsyncTask;
 import android.support.v7.app.AppCompatActivity;
@@ -14,7 +15,7 @@ import com.example.owner.takeandgo.R;
 import com.example.owner.takeandgo.model.backEnd.AgencyConsts;
 import com.example.owner.takeandgo.model.backEnd.DBManagerFactory;
 
-public class AddCarActivity extends AppCompatActivity implements View.OnClickListener {
+public class AddCarActivity extends Activity implements View.OnClickListener {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -61,7 +62,7 @@ public class AddCarActivity extends AppCompatActivity implements View.OnClickLis
     private void addCar() {
         final ContentValues contentValues = new ContentValues();
         try {
-            String strExepetion = "";
+            //String strExepetion = "";
 
             if (Legal.isNum(NumberEditText.getText().toString())) {
                 long number = Long.valueOf(this.NumberEditText.getText().toString());
@@ -102,14 +103,14 @@ public class AddCarActivity extends AppCompatActivity implements View.OnClickLis
                 @Override
                 protected void onPostExecute(Long numResult) {
                     super.onPostExecute(numResult);
-                    if (numResult != null)
-                        Toast.makeText(getBaseContext(), "insert car: " + numResult + "successfully", Toast.LENGTH_LONG).show();
+                    if (numResult != Long.valueOf(-1))
+                        Toast.makeText(AddCarActivity.this, "insert car: " + numResult + "successfully", Toast.LENGTH_LONG).show();
                 }
 
                 @Override
                 protected Long doInBackground(Void... params) {
                     try {
-                        return DBManagerFactory.getManager().addCar(contentValues);
+                        return Long.valueOf(DBManagerFactory.getManager().addCar(contentValues));
                     } catch (Exception e) {
                         Toast.makeText(AddCarActivity.this, e.getMessage(), Toast.LENGTH_LONG).show();
                     }

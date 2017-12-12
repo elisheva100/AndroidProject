@@ -33,7 +33,7 @@ public class AddCarModelActivity extends Activity implements View.OnClickListene
     private EditText SeatsEditText;
     private TextView colorTextView;
     private Spinner colorSpinner;
-    private Button addClientButton;
+    private Button addCarModelButton;
 
     /**
      * Find the Views in the layout<br />
@@ -51,10 +51,10 @@ public class AddCarModelActivity extends Activity implements View.OnClickListene
         SeatsEditText = (EditText)findViewById( R.id.SeatsEditText );
         colorTextView = (TextView)findViewById( R.id.colorTextView );
         colorSpinner = (Spinner)findViewById( R.id.colorSpinner );
-        addClientButton = (Button)findViewById( R.id.addClientButton );
+        addCarModelButton = (Button)findViewById( R.id.addModelButton );
+        gearboxSpinner.setAdapter(new ArrayAdapter<GEARBOX>(this, android.R.layout.simple_list_item_1,GEARBOX.values()));
 
-        addClientButton.setOnClickListener( this );
-        gearboxSpinner.setAdapter(new ArrayAdapter<GEARBOX>(this,android.R.layout.simple_expandable_list_item_1,GEARBOX.values()));
+        addCarModelButton.setOnClickListener( this );
     }
 
     /**
@@ -65,7 +65,7 @@ public class AddCarModelActivity extends Activity implements View.OnClickListene
      */
     @Override
     public void onClick(View v) {
-        if ( v == addClientButton ) {
+        if ( v == addCarModelButton ) {
             addCarModel();
         }
     }
@@ -91,8 +91,8 @@ public class AddCarModelActivity extends Activity implements View.OnClickListene
             else{
                 Toast.makeText(AddCarModelActivity.this, "engine capacity is not valid!", Toast.LENGTH_LONG).show();
             }
-            String gear  = ((GEARBOX)gearboxSpinner.getSelectedItem()).name();
-            contentValues.put(AgencyConsts.CarModelConst.GEARBOX,gear);
+            String gear  = ((GEARBOX) gearboxSpinner.getSelectedItem()).name();
+            contentValues.put(AgencyConsts.CarModelConst.GEARBOX, gear);
 
             if(!Legal.isNum(this.SeatsEditText.getText().toString()))
             {
@@ -112,8 +112,8 @@ public class AddCarModelActivity extends Activity implements View.OnClickListene
             @Override
             protected void onPostExecute(Integer numResult) {
                 super.onPostExecute(numResult);
-                if (numResult > 0)
-                    Toast.makeText(getBaseContext(), "insert car: " + numResult + "successfully", Toast.LENGTH_LONG).show();
+                if (numResult != -1)
+                    Toast.makeText(AddCarModelActivity.this, "insert car: " + numResult + "successfully", Toast.LENGTH_LONG).show();
             }
 
             @Override
