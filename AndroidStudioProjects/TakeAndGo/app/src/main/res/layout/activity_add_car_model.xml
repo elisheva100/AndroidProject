@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context="com.example.owner.takeandgo.controller.AddCarActivity"
+    tools:context="com.example.owner.takeandgo.controller.AddCarModelActivity"
     android:weightSum="1">
 
     <EditText
@@ -103,6 +103,6 @@
         android:id="@+id/addClientButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/AddClient" />
+        android:text="@string/AddModel" />
 
 </LinearLayout>

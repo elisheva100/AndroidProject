@@ -26,4 +26,5 @@
     <string name="seats">Seats</string>
     <string name="Color">Color</string>
     <string name="pick_date">Pick date</string>
+    <string name="AddModel">Add model</string>
 </resources>
