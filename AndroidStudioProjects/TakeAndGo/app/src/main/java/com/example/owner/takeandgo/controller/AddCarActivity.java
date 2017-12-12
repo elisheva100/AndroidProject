@@ -121,8 +121,8 @@ public class AddCarActivity extends AppCompatActivity implements View.OnClickLis
             }.execute();
 
         }
-        catch (Exception e) {
-    }
+      /*  catch (Exception e) {
+    }*/
 
     }
 

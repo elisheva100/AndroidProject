@@ -24,6 +24,8 @@ public class ShowCarListActivity extends Activity {
         setContentView(R.layout.activity_show_car_list);
     }
 
+
+
     void initItemByListView()
     {
         final ListView listView = new ListView(this);
