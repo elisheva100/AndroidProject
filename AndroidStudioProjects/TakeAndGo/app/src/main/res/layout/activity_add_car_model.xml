@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context="com.example.owner.takeandgo.controller.AddCarActivity"
+    tools:context="com.example.owner.takeandgo.controller.AddCarModelActivity"
     android:weightSum="1">
 
     <EditText
@@ -59,8 +59,10 @@
             android:id="@+id/gearboxSpinner"
             android:layout_width="138dp"
             android:layout_height="wrap_content"
-            android:layout_gravity="right"
-            />
+            android:layout_gravity="right">
+
+        </Spinner>
+
 
     </LinearLayout>
 
@@ -95,14 +97,14 @@
             android:id="@+id/colorSpinner"
             android:layout_width="147dp"
             android:layout_height="wrap_content"
-            android:layout_weight="0.03"
-            android:layout_gravity="right"/>
+            android:layout_gravity="right"
+            android:layout_weight="0.03" />
     </LinearLayout>
 
     <Button
-        android:id="@+id/addClientButton"
+        android:id="@+id/addModelButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/AddClient" />
+        android:text="@string/AddModel" />
 
 </LinearLayout>

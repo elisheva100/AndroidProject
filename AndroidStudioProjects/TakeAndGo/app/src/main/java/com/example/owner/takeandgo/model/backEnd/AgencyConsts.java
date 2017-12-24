@@ -172,7 +172,7 @@ public class AgencyConsts {
         carModel.setCompanyName(contentValues.getAsString(CarModelConst.COMPANY_NAME));
         carModel.setModelName(contentValues.getAsString(CarModelConst.MODEL_NAME));
         carModel.setEngineCapacity(contentValues.getAsDouble(CarModelConst.ENGINE_CAPACITY));
-        carModel.setGearbox(GEARBOX.valueOf(contentValues.getAsString(CarModelConst.GEARBOX)));
+        carModel.setGearbox(GEARBOX.valueOf(contentValues.getAsString(AgencyConsts.CarModelConst.GEARBOX)));
         carModel.setSeats(contentValues.getAsInteger(CarModelConst.SEATS));
         carModel.setColor(COLOR.valueOf(contentValues.getAsString(CarModelConst.COLOR)));
 
