@@ -13,7 +13,7 @@ import static com.example.owner.takeandgo.model.backEnd.AgencyConsts.ContentValu
 import static com.example.owner.takeandgo.model.backEnd.AgencyConsts.ContentValuesToCarModel;
 import static com.example.owner.takeandgo.model.backEnd.AgencyConsts.ContentValuesToClient;
 
-
+//TODO add exist checking
 public class List_DBManager implements DB_manager {
 
     //static lists

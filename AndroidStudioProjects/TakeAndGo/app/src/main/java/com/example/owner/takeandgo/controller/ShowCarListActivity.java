@@ -22,6 +22,7 @@ public class ShowCarListActivity extends Activity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_show_car_list);
+        initItemByListView();
     }
 
 
@@ -52,6 +53,7 @@ public class ShowCarListActivity extends Activity {
                         return convertView;
                     }
                 };
+                //ShowCarListActivity.this.setContentView(listView);
                 listView.setAdapter(adapter);
             }
             @Override
@@ -66,6 +68,6 @@ public class ShowCarListActivity extends Activity {
             }
         }.execute();
 
-        this.setContentView(listView);
+        //this.setContentView(listView);
     }
 }

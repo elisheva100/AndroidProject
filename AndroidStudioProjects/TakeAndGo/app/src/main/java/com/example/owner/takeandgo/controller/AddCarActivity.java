@@ -120,15 +120,16 @@ public class AddCarActivity extends AppCompatActivity implements View.OnClickLis
         } catch (Exception e) {
             Toast.makeText(AddCarActivity.this, "Error!", Toast.LENGTH_LONG).show();
         }
-<<<<<<< HEAD
+
       /*  catch (Exception e) {
     }*/
 
     }
 
-=======
+
     }
-}
->>>>>>> 788e0d2b79f33507032e64f20376cfd3146d0206
+
+
+
 
 
