@@ -57,6 +57,7 @@ public class AgencyConsts {
         public static final String EMAIL = "email";
         public static final String CREDIT_CARD = "creditCard";
         public static final String BIRTHDAY = "birthday";
+        public static final String CELLPHONE = "cellphone";
     }
     public static class OrderConst {
         public static final String CLIENT_NUMBER = "clientNumber";
@@ -112,7 +113,8 @@ public class AgencyConsts {
         contentValues.put(ClientConst.ID, client.getId());
         contentValues.put(ClientConst.EMAIL, client.getEmail());
         contentValues.put(ClientConst.CREDIT_CARD, client.getCreditCard());
-        DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss"); // like MySQL Format
+        contentValues.put(ClientConst.CELLPHONE, client.getCellphoneNumber());
+        DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd"); // like MySQL Format
         String dateString = dateFormat.format(client.getBirthday());
         contentValues.put(ClientConst.BIRTHDAY, dateString);
 
@@ -186,7 +188,8 @@ public class AgencyConsts {
         client.setId(contentValues.getAsString(ClientConst.ID));
         client.setEmail(contentValues.getAsString(ClientConst.EMAIL));
         client.setCreditCard(contentValues.getAsLong(ClientConst.CREDIT_CARD));
-        DateFormat birthDateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss"); // like MySQL Format
+        client.setCellphoneNumber(contentValues.getAsString(ClientConst.CELLPHONE));
+        DateFormat birthDateFormat = new SimpleDateFormat("yyyy-MM-dd"); // like MySQL Format
         String birthDateString = contentValues.getAsString(ClientConst.BIRTHDAY);
         try {
             client.setBirthday(birthDateFormat.parse(birthDateString));

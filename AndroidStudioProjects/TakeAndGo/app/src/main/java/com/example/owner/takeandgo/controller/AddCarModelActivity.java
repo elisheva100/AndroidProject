@@ -53,7 +53,6 @@ public class AddCarModelActivity extends Activity implements View.OnClickListene
         colorSpinner = (Spinner)findViewById( R.id.colorSpinner );
         addCarModelButton = (Button)findViewById( R.id.addModelButton );
         gearboxSpinner.setAdapter(new ArrayAdapter<GEARBOX>(this, android.R.layout.simple_list_item_1,GEARBOX.values()));
-
         addCarModelButton.setOnClickListener( this );
     }
 

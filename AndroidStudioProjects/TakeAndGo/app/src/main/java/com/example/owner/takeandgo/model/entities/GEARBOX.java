@@ -5,16 +5,5 @@ package com.example.owner.takeandgo.model.entities;
  */
 
 public enum GEARBOX {
-    AUTOMATIC("automatic"), MANUAL("manual");
-
-    private String strType;
-
-    GEARBOX(String type) {
-        strType = type;
-    }
-
-    @Override
-    public String toString() {
-        return strType;
-    }
-    }
+    AUTOMATIC, MANUAL
+}
