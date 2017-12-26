@@ -29,46 +29,19 @@ public class ShowBranchListActivity extends Activity {
     }
 
 
-    /*private TextView parkingTextView;
-    private TextView branchNumberTextView;
-    private TextView adressTextView;*/
-
     public void initByListView()
     {
 
-        try{
-            //final ListView listView = new ListView(this);
-            new AsyncTask<Branch, Void, List<Branch>>()
-            {
-            @Override
-            protected void onPostExecute(final List<Branch> myItemList)
-            {
-                //ListView listView = new ListView(this);
-                ADaptor(myItemList);
-                /*ArrayAdapter<Branch> adapter = new ArrayAdapter<Branch>(ShowBranchListActivity.this, R.layout.activity_show_client_list, myItemList)
-                {
-                    @Override
-                    public View getView(int position, View convertView, ViewGroup parent) {
-                        if (convertView == null) {
-                            convertView = View.inflate(ShowBranchListActivity.this, R.layout.activity_show_branch_list, null);
+        try
+        {
+            new AsyncTask<Branch, Void, List<Branch>>() {
+                @Override
+                protected void onPostExecute(final List<Branch> myItemList) {
+                Adaptor(myItemList);
+                }
 
-                        }
-                        TextView parkingTextView = (TextView)convertView.findViewById( R.id.parkingTextView );
-                        TextView branchNumberTextView = (TextView)convertView.findViewById( R.id.branchNumberTextView );
-                        TextView adressTextView = (TextView)convertView.findViewById( R.id.adressTextView );
-                        parkingTextView.setText((myItemList.get(position).getParking()));
-                        adressTextView.setText((CharSequence) myItemList.get(position).getAdress());
-                        branchNumberTextView.setText((myItemList.get(position).getBranchNumber()));
-                        return convertView;
-                    }
-                };
-                listView.setAdapter(adapter);
-                ShowBranchListActivity.this.setContentView(listView);*/
-            }
-
-            @Override
-            protected List<Branch> doInBackground(Branch... params)
-            {
+                @Override
+                protected List<Branch> doInBackground(Branch... params) {
                 try {
                     return DBManagerFactory.getManager().getBranches();
                 }
@@ -79,7 +52,6 @@ public class ShowBranchListActivity extends Activity {
 
             }.execute();
         }
-
         catch (Exception e) {
             Toast.makeText(getBaseContext(),e.getMessage(),Toast.LENGTH_LONG).show();
         }
@@ -87,9 +59,9 @@ public class ShowBranchListActivity extends Activity {
     }
 
 
-    protected void ADaptor(final List<Branch>  myItemList) {
+    protected void Adaptor(final List<Branch>  myItemList) {
         ListView listView = new ListView(this);
-        ArrayAdapter<Branch> adapter = new ArrayAdapter<Branch>(this, R.layout.activity_show_client_list, myItemList) {
+        ArrayAdapter<Branch> adapter = new ArrayAdapter<Branch>(this, R.layout.activity_show_branch_list, myItemList) {
             @Override
             public View getView(int position, View convertView, ViewGroup parent) {
                 if (convertView == null) {
@@ -98,10 +70,10 @@ public class ShowBranchListActivity extends Activity {
                 }
                 TextView parkingTextView = (TextView) convertView.findViewById(R.id.parkingTextView);
                 TextView branchNumberTextView = (TextView) convertView.findViewById(R.id.branchNumberTextView);
-                //TextView adressTextView = (TextView) convertView.findViewById(R.id.adressTextView);
-                parkingTextView.setText((myItemList.get(position).getParking()));
-                //adressTextView.setText((CharSequence) myItemList.get(position).getAdress());
-                branchNumberTextView.setText((myItemList.get(position).getBranchNumber()));
+                TextView adressTextView = (TextView) convertView.findViewById(R.id.adressTextView);
+                parkingTextView.setText(""+(myItemList.get(position).getParking()));
+                adressTextView.setText(myItemList.get(position).getAdress().toString());
+                branchNumberTextView.setText(""+(myItemList.get(position).getBranchNumber()));
                 return convertView;
             }
         };

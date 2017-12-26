@@ -122,26 +122,24 @@ public class AddCarActivity extends Activity implements View.OnClickListener {
             Toast.makeText(AddCarActivity.this, "Error!", Toast.LENGTH_LONG).show();
         }
 
-<<<<<<< HEAD
+
       /*  catch (Exception e) {
     }*/
 
     }
 
 
-=======
 
-    }
 
->>>>>>> 33b09baa5b1ce99691fe1ff0d14f0b9922ab157c
     }
 
 
 
-<<<<<<< HEAD
-=======
 
 
->>>>>>> 33b09baa5b1ce99691fe1ff0d14f0b9922ab157c
+
+
+
+
 
 
