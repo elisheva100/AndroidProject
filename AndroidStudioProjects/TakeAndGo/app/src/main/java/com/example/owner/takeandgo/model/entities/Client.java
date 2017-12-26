@@ -9,7 +9,7 @@ import java.util.Date;
 public class Client {
     private String firstName;
     private String lastName;
-    private String id;//TODO: copy the id algorithm from c# to get legal id.
+    private String id;
     private String email;
     private String cellphoneNumber;
     private long creditCard;

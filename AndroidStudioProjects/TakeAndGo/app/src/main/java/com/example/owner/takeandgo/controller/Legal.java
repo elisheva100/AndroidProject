@@ -57,7 +57,7 @@ public class Legal {
         if (st != null)
         {
             for (char ch : st.toCharArray()){
-                if (('A' <= ch && ch < 'z') || ch == ' ' || ch == '-')
+                if (('A' <= ch && ch <= 'z') || ch == ' ' || ch == '-')
                     return true;
             }
         }

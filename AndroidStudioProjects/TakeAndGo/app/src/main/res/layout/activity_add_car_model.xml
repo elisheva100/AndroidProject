@@ -10,7 +10,7 @@
 
     <EditText
         android:id="@+id/CodeEditText"
-        android:layout_width="wrap_content"
+        android:layout_width="297dp"
         android:layout_height="wrap_content"
         android:ems="10"
         android:hint="@string/Code"
@@ -19,7 +19,7 @@
 
     <EditText
         android:id="@+id/ModelNameEditText"
-        android:layout_width="wrap_content"
+        android:layout_width="297dp"
         android:layout_height="wrap_content"
         android:ems="10"
         android:hint="@string/modelName"
@@ -27,14 +27,14 @@
 
     <EditText
         android:id="@+id/CompanyNameEditText"
-        android:layout_width="wrap_content"
+        android:layout_width="297dp"
         android:layout_height="wrap_content"
         android:ems="10"
         android:hint="@string/companyName"
         android:inputType="text" />
     <EditText
         android:id="@+id/EngineCApicityEditText"
-        android:layout_width="wrap_content"
+        android:layout_width="297dp"
         android:layout_height="wrap_content"
         android:ems="10"
         android:hint="@string/engineCapacity"
@@ -42,7 +42,8 @@
 
     <LinearLayout
         android:layout_width="369dp"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:weightSum="1">
 
         <TextView
             android:id="@+id/gearboxTextView"
@@ -59,16 +60,15 @@
             android:id="@+id/gearboxSpinner"
             android:layout_width="138dp"
             android:layout_height="wrap_content"
-            android:layout_gravity="right">
-
-        </Spinner>
+            android:layout_gravity="right"
+            android:layout_weight="0.53" />
 
 
     </LinearLayout>
 
     <EditText
         android:id="@+id/SeatsEditText"
-        android:layout_width="wrap_content"
+        android:layout_width="297dp"
         android:layout_height="wrap_content"
 
 
@@ -98,7 +98,7 @@
             android:layout_width="147dp"
             android:layout_height="wrap_content"
             android:layout_gravity="right"
-            android:layout_weight="0.03" />
+            android:layout_weight="0.50" />
     </LinearLayout>
 
     <Button

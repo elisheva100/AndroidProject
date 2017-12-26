@@ -9,21 +9,75 @@
     android:weightSum="1">
 
     <EditText
-        android:id="@+id/branchNumberEditText"
+        android:id="@+id/NumberEditText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:ems="10"
-        android:hint="@string/branch"
+        android:hint="@string/number"
         android:inputType="number" />
 
-
-    <EditText
-        android:id="@+id/ModelTypeEditText"
-        android:layout_width="wrap_content"
+    <Space
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:ems="10"
-        android:hint="@string/model"
-        android:inputType="number" />
+        android:layout_weight="0.03" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:gravity="left"
+            android:text="branch"
+            android:textSize="18sp"
+            />
+        <Space
+            android:layout_width="10dp"
+            android:layout_height="wrap_content" />
+        <Spinner
+            android:id="@+id/branchSpinner"
+            android:layout_width="151dp"
+            android:layout_height="wrap_content"
+            android:gravity="right" />
+
+    </LinearLayout>
+
+
+    <Space
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_weight="0.04" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:weightSum="1">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="left"
+            android:text="model:"
+            android:textSize="18sp"
+            />
+        <Space
+            android:layout_width="10dp"
+            android:layout_height="wrap_content" />
+
+        <Spinner
+            android:id="@+id/carModelSpinner"
+            android:layout_width="149dp"
+            android:layout_height="wrap_content"
+            android:gravity="right"
+            android:layout_weight="0.01" />
+
+    </LinearLayout>
+
+    <Space
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_weight="0.03" />
 
     <EditText
         android:id="@+id/MileageEditText"
@@ -32,13 +86,6 @@
         android:ems="10"
         android:hint="@string/mileage"
         android:inputType="numberDecimal" />
-    <EditText
-        android:id="@+id/NumberEditText"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:ems="10"
-        android:hint="@string/number"
-        android:inputType="number" />
 
     <Button
         android:id="@+id/addCarButton"
