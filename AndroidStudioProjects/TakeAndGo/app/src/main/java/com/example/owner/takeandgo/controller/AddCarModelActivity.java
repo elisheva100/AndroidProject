@@ -128,7 +128,7 @@ public class AddCarModelActivity extends Activity implements View.OnClickListene
             protected void onPostExecute(Integer numResult) {
                 super.onPostExecute(numResult);
                 if (numResult != -1)
-                    Toast.makeText(AddCarModelActivity.this, "car number: " + numResult + "successfully", Toast.LENGTH_LONG).show();
+                    Toast.makeText(AddCarModelActivity.this, "car model : " + numResult + " was added successfully", Toast.LENGTH_LONG).show();
             }
 
             @Override

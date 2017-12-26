@@ -184,7 +184,7 @@ public class AddClientActivity extends Activity implements View.OnClickListener 
                 protected void onPostExecute(String result) {
                     super.onPostExecute(result);
                     if (result != null)
-                        Toast.makeText(AddClientActivity.this, "client: " + result + " added successfully", Toast.LENGTH_LONG).show();
+                        Toast.makeText(AddClientActivity.this, "client: " + result + " was added successfully", Toast.LENGTH_LONG).show();
                 }
 
                 @Override

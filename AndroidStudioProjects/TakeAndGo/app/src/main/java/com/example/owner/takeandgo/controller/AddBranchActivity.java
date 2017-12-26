@@ -126,7 +126,7 @@ public class AddBranchActivity extends Activity implements View.OnClickListener 
             protected void onPostExecute(Long numResult) {
                 super.onPostExecute(numResult);
                 if (numResult != Long.valueOf(-1))
-                    Toast.makeText(AddBranchActivity.this, "insert number: " + numResult +" added successfully", Toast.LENGTH_LONG).show();
+                    Toast.makeText(AddBranchActivity.this, "Branch number: " + numResult +" was added successfully", Toast.LENGTH_LONG).show();
             }
 
             @Override
