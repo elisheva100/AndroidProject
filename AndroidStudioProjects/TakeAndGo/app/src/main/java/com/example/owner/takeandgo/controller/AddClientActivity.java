@@ -30,9 +30,13 @@ public class AddClientActivity extends Activity implements View.OnClickListener 
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add_client);
         Calendar calender = Calendar.getInstance();
-        myDay = calender.get(Calendar.DAY_OF_MONTH);
-        myMonth = calender.get(Calendar.MONTH);
-        myYear = calender.get(Calendar.YEAR);
+        //myDay = calender.get(Calendar.DAY_OF_MONTH);
+        //myMonth = calender.get(Calendar.MONTH);
+        //myYear = calender.get(Calendar.YEAR);
+
+        myDay = 27;
+        myMonth = 6;
+        myYear = 1998;
         findViews();
     }
 
@@ -162,7 +166,7 @@ public class AddClientActivity extends Activity implements View.OnClickListener 
                 contentValues.put(AgencyConsts.ClientConst.BIRTHDAY, birthday);
             } else {
                 Toast.makeText(AddClientActivity.this, "Client is to young for renting a car!", Toast.LENGTH_LONG).show();
-            return;
+                return;
             }
             if (Legal.isNum(CreditCardEditText.getText().toString())) {
                 long creditCard = Long.valueOf(this.CreditCardEditText.getText().toString());
