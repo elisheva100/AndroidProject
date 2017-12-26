@@ -15,6 +15,7 @@ import android.widget.Toast;
 import com.example.owner.takeandgo.R;
 import com.example.owner.takeandgo.model.backEnd.AgencyConsts;
 import com.example.owner.takeandgo.model.backEnd.DBManagerFactory;
+import com.example.owner.takeandgo.model.entities.COLOR;
 import com.example.owner.takeandgo.model.entities.GEARBOX;
 
 public class AddCarModelActivity extends Activity implements View.OnClickListener {
@@ -53,7 +54,9 @@ public class AddCarModelActivity extends Activity implements View.OnClickListene
         colorTextView = (TextView)findViewById( R.id.colorTextView );
         colorSpinner = (Spinner)findViewById( R.id.colorSpinner );
         addCarModelButton = (Button)findViewById( R.id.addModelButton );
+
         gearboxSpinner.setAdapter(new ArrayAdapter<GEARBOX>(this, android.R.layout.simple_list_item_1,GEARBOX.values()));
+        colorSpinner.setAdapter(new ArrayAdapter<COLOR>(this, android.R.layout.simple_list_item_1,COLOR.values()));
         addCarModelButton.setOnClickListener( this );
     }
 
@@ -67,11 +70,13 @@ public class AddCarModelActivity extends Activity implements View.OnClickListene
     public void onClick(View v) {
         if ( v == addCarModelButton ) {
             addCarModel();
+            /*
             CodeEditText.getText().clear();
             ModelNameEditText.getText().clear();
              CompanyNameEditText.getText().clear();
             EngineCApicityEditText.getText().clear();
              SeatsEditText.getText().clear();
+            */
         }
     }
     private void addCarModel()
@@ -101,6 +106,8 @@ public class AddCarModelActivity extends Activity implements View.OnClickListene
             }
             String gear  = ((GEARBOX) gearboxSpinner.getSelectedItem()).name();
             contentValues.put(AgencyConsts.CarModelConst.GEARBOX, gear);
+            String color  = ((COLOR) colorSpinner.getSelectedItem()).name();
+            contentValues.put(AgencyConsts.CarModelConst.COLOR, color);
 
             if(!Legal.isNum(this.SeatsEditText.getText().toString()))
             {

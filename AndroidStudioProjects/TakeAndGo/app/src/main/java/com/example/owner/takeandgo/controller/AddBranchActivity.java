@@ -59,11 +59,13 @@ public class AddBranchActivity extends Activity implements View.OnClickListener 
     public void onClick(View v) {
         if ( v == addBranchButton ) {
             addBranch();
+            /*
             StreetNumberEditText.getText().clear();
              StreetEditText.getText().clear();
             CityEditText.getText().clear();
              ParkingEditText.getText().clear();
              BranchNumberEditText.getText().clear();
+             */
         }
     }
 

@@ -108,8 +108,10 @@ public class AddCarActivity extends Activity implements View.OnClickListener {
     public void onClick(View v) {
         if (v == addCarButton) {
             addCar();
+            /*
              MileageEditText.getText().clear();
              NumberEditText.getText().clear();
+             */
         }
     }
 
