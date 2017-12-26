@@ -23,6 +23,7 @@ public class AddCarModelActivity extends Activity implements View.OnClickListene
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add_car_model);
+        findViews();
     }
     private EditText CodeEditText;
     private EditText ModelNameEditText;
@@ -66,18 +67,25 @@ public class AddCarModelActivity extends Activity implements View.OnClickListene
     public void onClick(View v) {
         if ( v == addCarModelButton ) {
             addCarModel();
+            CodeEditText.getText().clear();
+            ModelNameEditText.getText().clear();
+             CompanyNameEditText.getText().clear();
+            EngineCApicityEditText.getText().clear();
+             SeatsEditText.getText().clear();
         }
     }
     private void addCarModel()
     {
         final ContentValues contentValues = new ContentValues();
         try {
+            String strException = "";
             if(Legal.isNum(this.CodeEditText.getText().toString())){
                 int code = Integer.valueOf(this.CodeEditText.getText().toString());
                 contentValues.put(AgencyConsts.CarModelConst.CODE, code);
             }
             else{
-                Toast.makeText(AddCarModelActivity.this, "code is not valid!", Toast.LENGTH_LONG).show();
+                //Toast.makeText(AddCarModelActivity.this, "code is not valid!", Toast.LENGTH_LONG).show();
+                strException += "code is not valid!\n";
             }
             String company = this.CompanyNameEditText.getText().toString();
             contentValues.put(AgencyConsts.CarModelConst.COMPANY_NAME, company);
@@ -88,22 +96,30 @@ public class AddCarModelActivity extends Activity implements View.OnClickListene
                 contentValues.put(AgencyConsts.CarModelConst.ENGINE_CAPACITY, capacity);
             }
             else{
-                Toast.makeText(AddCarModelActivity.this, "engine capacity is not valid!", Toast.LENGTH_LONG).show();
+                //Toast.makeText(AddCarModelActivity.this, "engine capacity is not valid!", Toast.LENGTH_LONG).show();
+                strException += "engine capacity is not valid!\n";
             }
             String gear  = ((GEARBOX) gearboxSpinner.getSelectedItem()).name();
             contentValues.put(AgencyConsts.CarModelConst.GEARBOX, gear);
 
             if(!Legal.isNum(this.SeatsEditText.getText().toString()))
             {
-                Toast.makeText(AddCarModelActivity.this, "number of seats is not valid!", Toast.LENGTH_LONG).show();
+                //Toast.makeText(AddCarModelActivity.this, "number of seats is not valid!", Toast.LENGTH_LONG).show();
+                strException += "number of seats is not valid!\n";
             }
             else if(Integer.valueOf(this.SeatsEditText.getText().toString()) > 9 || Integer.valueOf(this.SeatsEditText.getText().toString()) < 2)
             {
                 Toast.makeText(AddCarModelActivity.this, "There is no car with such number of seats! ", Toast.LENGTH_LONG).show();
+            return;
             }
             else {
                 int seats = Integer.valueOf(this.SeatsEditText.getText().toString());
                 contentValues.put(AgencyConsts.CarModelConst.SEATS, seats);
+            }
+            if(strException != "")
+            {
+                Toast.makeText(AddCarModelActivity.this, strException, Toast.LENGTH_LONG).show();
+                return;
             }
 
 
@@ -112,7 +128,7 @@ public class AddCarModelActivity extends Activity implements View.OnClickListene
             protected void onPostExecute(Integer numResult) {
                 super.onPostExecute(numResult);
                 if (numResult != -1)
-                    Toast.makeText(AddCarModelActivity.this, "insert car: " + numResult + "successfully", Toast.LENGTH_LONG).show();
+                    Toast.makeText(AddCarModelActivity.this, "car number: " + numResult + "successfully", Toast.LENGTH_LONG).show();
             }
 
             @Override

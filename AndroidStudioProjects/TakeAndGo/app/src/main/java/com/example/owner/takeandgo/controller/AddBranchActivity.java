@@ -58,59 +58,67 @@ public class AddBranchActivity extends Activity implements View.OnClickListener 
     @Override
     public void onClick(View v) {
         if ( v == addBranchButton ) {
-            addBranch();// Handle clicks for addBranchButton
+            addBranch();
+            StreetNumberEditText.getText().clear();
+             StreetEditText.getText().clear();
+            CityEditText.getText().clear();
+             ParkingEditText.getText().clear();
+             BranchNumberEditText.getText().clear();
         }
     }
 
     private void addBranch() {
         final ContentValues contentValues = new ContentValues();
-        //String strExepetion = "";
+        String strExepetion = "";//String for concatenation all the exceptions.
         try {
         if(isNum(BranchNumberEditText.getText().toString())) {
             int number = Integer.parseInt((this.BranchNumberEditText.getText().toString()));
             contentValues.put(AgencyConsts.BranchConst.BRANCH_NUMBER , number);
         }
         else {
-            Toast.makeText(AddBranchActivity.this, "Branch number is not valid!", Toast.LENGTH_LONG).show();
-            //strExepetion += "Car number is not valid!\n";
+            //Toast.makeText(AddBranchActivity.this, "Branch number is not valid!", Toast.LENGTH_LONG).show();
+            strExepetion += "number is not valid!\n";
+
         }
         if(isNum(this.ParkingEditText.getText().toString())) {
             int park = Integer.valueOf(this.ParkingEditText.getText().toString());
             contentValues.put(AgencyConsts.BranchConst.PARKING, park);
         }
         else{
-            Toast.makeText(AddBranchActivity.this, "Parking number is not valid!", Toast.LENGTH_LONG).show();
-            //strExepetion += "Model type is not valid!\n";
+            //Toast.makeText(AddBranchActivity.this, "Parking number is not valid!", Toast.LENGTH_LONG).show();
+            strExepetion += "Parking is not valid!\n";
         }
-        if(isString(this.CityEditText.getText().toString())) {
+        if(Legal.isString(this.CityEditText.getText().toString())) {
             String city = this.CityEditText.getText().toString();
             contentValues.put(AgencyConsts.BranchConst.CITY, city);
         }
         else{
-            Toast.makeText(AddBranchActivity.this, "City name is not valid!", Toast.LENGTH_LONG).show();
-            //strExepetion += "Model type is not valid!\n";
+            //Toast.makeText(AddBranchActivity.this, "City name is not valid!", Toast.LENGTH_LONG).show();
+            strExepetion += "City is not valid!\n";
+            CityEditText.getText().clear();
         }
-        if(true/*isString(this.StreetEditText.getText().toString())*/) {
+        if(Legal.isString(this.StreetEditText.getText().toString())) {
             String street = this.StreetEditText.getText().toString();
             contentValues.put(AgencyConsts.BranchConst.STREET, street);
         }
         else{
-            Toast.makeText(AddBranchActivity.this, "Street name is not valid!", Toast.LENGTH_LONG).show();
-            //strExepetion += "Model type is not valid!\n";
+            //Toast.makeText(AddBranchActivity.this, "Street name is not valid!", Toast.LENGTH_LONG).show();
+            strExepetion += "Street is not valid!\n";
         }
-        if(true/*isString(this.StreetNumberEditText.getText().toString())*/) {
-            String street_number = this.StreetNumberEditText.getText().toString();
+        if(Legal.isNum(this.StreetNumberEditText.getText().toString())) {
+            int street_number = Integer.valueOf(this.StreetNumberEditText.getText().toString());
             contentValues.put(AgencyConsts.BranchConst.STREET_NUMBER, street_number);
         }
         else{
-            Toast.makeText(AddBranchActivity.this, "Street number name is not valid!", Toast.LENGTH_LONG).show();
-            //strExepetion += "Model type is not valid!\n";
+            //Toast.makeText(AddBranchActivity.this, "Street number name is not valid!", Toast.LENGTH_LONG).show();
+            strExepetion += "street number is not valid!\n";
         }
 
-        /** if(strExepetion != "")
+         if(strExepetion != "")
          {
-         throw new Exception(strExepetion);
-         }**/
+             Toast.makeText(AddBranchActivity.this, strExepetion, Toast.LENGTH_LONG).show();
+             return;
+         }
 
         new AsyncTask<Void, Void, Long>() {
 

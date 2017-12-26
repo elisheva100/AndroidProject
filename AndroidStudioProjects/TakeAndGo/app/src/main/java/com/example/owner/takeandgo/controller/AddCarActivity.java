@@ -44,6 +44,7 @@ public class AddCarActivity extends Activity implements View.OnClickListener {
         addCarButton = (Button) findViewById(R.id.addCarButton);
 
         addCarButton.setOnClickListener(this);
+        //addCarButton.setEnabled(false);
     }
 
     /**
@@ -56,47 +57,56 @@ public class AddCarActivity extends Activity implements View.OnClickListener {
     public void onClick(View v) {
         if (v == addCarButton) {
             addCar();
+            branchNumberEditText.getText().clear();
+            ModelTypeEditText.getText().clear();
+             MileageEditText.getText().clear();
+             NumberEditText.getText().clear();
         }
     }
 
     private void addCar() {
         final ContentValues contentValues = new ContentValues();
         try {
-            //String strExepetion = "";
 
-            if (Legal.isNum(NumberEditText.getText().toString())) {
+            String strExepetion = "";
+
+
+             if (Legal.isNum(NumberEditText.getText().toString())) {
                 long number = Long.valueOf(this.NumberEditText.getText().toString());
                 contentValues.put(AgencyConsts.CarConst.NUMBER, number);
+
             } else {
-                Toast.makeText(AddCarActivity.this, "Car number is not valid!", Toast.LENGTH_LONG).show();
-                //strExepetion += "Car number is not valid!\n";
+                //Toast.makeText(AddCarActivity.this, "Car number is not valid!", Toast.LENGTH_LONG).show();
+                strExepetion += "Car number is not valid!\n";
             }
             if (Legal.isNum(this.ModelTypeEditText.getText().toString())) {
                 int model = Integer.valueOf(this.ModelTypeEditText.getText().toString());
                 contentValues.put(AgencyConsts.CarConst.MODEL_TYPE, model);
             } else {
-                Toast.makeText(AddCarActivity.this, "Model type is not valid!", Toast.LENGTH_LONG).show();
-                //strExepetion += "Model type is not valid!\n";
+                //Toast.makeText(AddCarActivity.this, "Model type is not valid!", Toast.LENGTH_LONG).show();
+                strExepetion += "Model type is not valid!\n";
             }
             if (Legal.isNum(this.MileageEditText.getText().toString())) {
                 double mile = Double.valueOf(this.MileageEditText.getText().toString());
                 contentValues.put(AgencyConsts.CarConst.MILEAGE, mile);
             } else {
-                Toast.makeText(AddCarActivity.this, "Mileage value is not valid!", Toast.LENGTH_LONG).show();
-
-                //strExepetion += "Mileage value is not valid!\n";
+                //Toast.makeText(AddCarActivity.this, "Mileage value is not valid!", Toast.LENGTH_LONG).show();
+               strExepetion += "Mileage value is not valid!\n";
             }
             if (Legal.isNum(this.branchNumberEditText.getText().toString())) {
                 int branch = Integer.valueOf(this.branchNumberEditText.getText().toString());
                 contentValues.put(AgencyConsts.CarConst.BRANCH_NUMBER, branch);
             } else {
-                Toast.makeText(AddCarActivity.this, "Branch number is not valid!", Toast.LENGTH_LONG).show();
-                //strExepetion += "Branch number is not valid!\n";
+                //Toast.makeText(AddCarActivity.this, "Branch number is not valid!", Toast.LENGTH_LONG).show();
+                strExepetion += "Branch number is not valid!\n";
             }
-            /** if(strExepetion != "")
+
+
+             if(strExepetion != "")
              {
-             throw new Exception(strExepetion);
-             }**/
+                 Toast.makeText(AddCarActivity.this, strExepetion, Toast.LENGTH_LONG).show();
+                 return;
+             }
 
 
             new AsyncTask<Void, Void, Long>() {

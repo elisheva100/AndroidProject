@@ -27,8 +27,8 @@ public class AgencyConsts {
 
     //region Static consts
     public static class BranchConst {
-        public static final String ADRESS = "adress";
-        public static final String STREET_NUMBER = "number";
+        public static final String ADRESS = "address";
+        public static final String STREET_NUMBER = "street_number";
         public static final String STREET = "street";
         public static final String CITY = "city";
         public static final String PARKING = "parking";
@@ -37,9 +37,9 @@ public class AgencyConsts {
     }
     public static class CarConst {
         public static final String BRANCH_NUMBER = "branchNumber";
-        public static final String MODEL_TYPE = "modelType";
+        public static final String MODEL_TYPE = "model_id";
         public static final String MILEAGE= "mileage";
-        public static final String NUMBER = "number";
+        public static final String NUMBER = "_number";
     }
     public static class CarModelConst {
         public static final String CODE = "code";

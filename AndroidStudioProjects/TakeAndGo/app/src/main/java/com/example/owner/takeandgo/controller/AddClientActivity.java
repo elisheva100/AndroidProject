@@ -109,63 +109,74 @@ public class AddClientActivity extends Activity implements View.OnClickListener 
             showDialog(DIALOG);
         } else if (v == addClientButton) {
             addClient();
+            clientIdEditText.getText().clear();
+            FirstNameEditText.getText().clear();
+            LastNameEditText.getText().clear();
+            PhoneNumberEditText.getText().clear();
+            EmailEditText.getText().clear();
+            CreditCardEditText.getText().clear();
         }
     }
 
     private void addClient() {
         final ContentValues contentValues = new ContentValues();
-        //String strExepetion = "";
+        String strException = "";
         try {
             if (Legal.legalId(clientIdEditText.getText().toString())) {
                 String _id = (this.clientIdEditText.getText().toString());
                 contentValues.put(AgencyConsts.ClientConst.ID, _id);
             } else {
-                Toast.makeText(AddClientActivity.this, "Client id is not legal!", Toast.LENGTH_LONG).show();
-
+                //Toast.makeText(AddClientActivity.this, "Client id is not legal!", Toast.LENGTH_LONG).show();
+                strException += "Client's id is not legal!\n";
             }
             if (Legal.isString(FirstNameEditText.getText().toString())) {
                 String firstName = (this.FirstNameEditText.getText().toString());
                 contentValues.put(AgencyConsts.ClientConst.FIRST_NAME, firstName);
             } else {
-                Toast.makeText(AddClientActivity.this, "Client first name is not valid!", Toast.LENGTH_LONG).show();
-
+                //Toast.makeText(AddClientActivity.this, "Client first name is not valid!", Toast.LENGTH_LONG).show();
+                strException += "Client's first name is not valid!!\n";
             }
             if (Legal.isString(LastNameEditText.getText().toString())) {
                 String lastName = (this.LastNameEditText.getText().toString());
                 contentValues.put(AgencyConsts.ClientConst.LAST_NAME, lastName);
             } else {
-                Toast.makeText(AddClientActivity.this, "Client last name is not valid!", Toast.LENGTH_LONG).show();
-
+                //Toast.makeText(AddClientActivity.this, "Client last name is not valid!", Toast.LENGTH_LONG).show();
+                strException += "Client's last name is not valid!!\n";
             }
             if (Legal.isCellPhone(PhoneNumberEditText.getText().toString())) {
                 String phoneNumber = (this.PhoneNumberEditText.getText().toString());
                 contentValues.put(AgencyConsts.ClientConst.CELLPHONE, phoneNumber);
             } else {
-                Toast.makeText(AddClientActivity.this, "Client phone number is not valid!", Toast.LENGTH_LONG).show();
-
+                //Toast.makeText(AddClientActivity.this, "Client phone number is not valid!", Toast.LENGTH_LONG).show();
+                strException += "Client's phone number is not valid!!\n";
             }
             if (Legal.isEmailAddres(EmailEditText.getText().toString())) {
                 String email = (this.EmailEditText.getText().toString());
                 contentValues.put(AgencyConsts.ClientConst.EMAIL, email);
             } else {
-                Toast.makeText(AddClientActivity.this, "Client email address is not valid!", Toast.LENGTH_LONG).show();
-
+                //Toast.makeText(AddClientActivity.this, "Client email address is not valid!", Toast.LENGTH_LONG).show();
+                strException += "Client's email address is not valid!\n";
             }
             if (flag) {
                 String birthday = Integer.toString(myYear) + "-" + Integer.toString(myMonth) + "-" + Integer.toString(myDay);
                 contentValues.put(AgencyConsts.ClientConst.BIRTHDAY, birthday);
             } else {
                 Toast.makeText(AddClientActivity.this, "Client is to young for renting a car!", Toast.LENGTH_LONG).show();
-
+            return;
             }
-            //if (Legal.isNum(CreditCardEditText.getText().toString())) {
+            if (Legal.isNum(CreditCardEditText.getText().toString())) {
                 long creditCard = Long.valueOf(this.CreditCardEditText.getText().toString());
                 contentValues.put(AgencyConsts.ClientConst.CREDIT_CARD, creditCard);
-           // } else {
+            } else {
                 //Toast.makeText(AddClientActivity.this, "Client credit card is not valid!", Toast.LENGTH_LONG).show();
+                strException += "Client's credit card is not valid!\n";
 
-           // }
-
+            }
+            if(strException != "")
+            {
+                Toast.makeText(AddClientActivity.this, strException, Toast.LENGTH_LONG).show();
+                return;
+            }
 
             new AsyncTask<Void, Void, String>() {
 
@@ -189,9 +200,6 @@ public class AddClientActivity extends Activity implements View.OnClickListener 
 
         } catch (Exception e) {
             Toast.makeText(getBaseContext(), e.getMessage(), Toast.LENGTH_LONG).show();
-        }
-        {
-
         }
 
 
