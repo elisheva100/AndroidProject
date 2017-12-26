@@ -113,6 +113,8 @@ public class AddCarModelActivity extends Activity implements View.OnClickListene
             return;
             }
             else {
+                ///vbdjksb
+
                 int seats = Integer.valueOf(this.SeatsEditText.getText().toString());
                 contentValues.put(AgencyConsts.CarModelConst.SEATS, seats);
             }
