@@ -17,10 +17,10 @@ import static com.example.owner.takeandgo.model.backEnd.AgencyConsts.ContentValu
 public class List_DBManager implements DB_manager {
 
     //static lists
-    static List<Car> cars;
-    static List<Branch> branches;
-    static List<CarModel> carModels;
-    static List<Client> clients;
+    public static List<Car> cars;
+    public static List<Branch> branches;
+    public static List<CarModel> carModels;
+    public static List<Client> clients;
 
     //static inner class
     static {

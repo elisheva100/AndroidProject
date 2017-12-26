@@ -7,13 +7,20 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.view.ViewGroup;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Spinner;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.owner.takeandgo.R;
 import com.example.owner.takeandgo.model.backEnd.AgencyConsts;
 import com.example.owner.takeandgo.model.backEnd.DBManagerFactory;
+import com.example.owner.takeandgo.model.entities.Branch;
+import com.example.owner.takeandgo.model.entities.CarModel;
+import static com.example.owner.takeandgo.model.datasource.List_DBManager.*;
 
 public class AddCarActivity extends Activity implements View.OnClickListener {
 
@@ -24,8 +31,10 @@ public class AddCarActivity extends Activity implements View.OnClickListener {
         findViews();
     }
 
-    private EditText branchNumberEditText;
-    private EditText ModelTypeEditText;
+    //private EditText branchNumberEditText;
+    //private EditText ModelTypeEditText;
+    private Spinner branchSpinner;
+    private Spinner carModelSpinner;
     private EditText MileageEditText;
     private EditText NumberEditText;
     private Button addCarButton;
@@ -37,11 +46,53 @@ public class AddCarActivity extends Activity implements View.OnClickListener {
      * (http://www.buzzingandroid.com/tools/android-layout-finder)
      */
     private void findViews() {
-        branchNumberEditText = (EditText) findViewById(R.id.branchNumberEditText);
-        ModelTypeEditText = (EditText) findViewById(R.id.ModelTypeEditText);
+        branchSpinner = (Spinner)findViewById( R.id.branchSpinner);
+        carModelSpinner = (Spinner)findViewById( R.id.carModelSpinner );
+        //branchNumberEditText = (EditText) findViewById(R.id.branchNumberEditText);
+        //ModelTypeEditText = (EditText) findViewById(R.id.ModelTypeEditText);
         MileageEditText = (EditText) findViewById(R.id.MileageEditText);
         NumberEditText = (EditText) findViewById(R.id.NumberEditText);
         addCarButton = (Button) findViewById(R.id.addCarButton);
+        branchSpinner.setAdapter(new ArrayAdapter<Branch>(this,android.R.layout.simple_expandable_list_item_1,branches));
+
+        carModelSpinner.setAdapter(new ArrayAdapter<CarModel>(this,R.layout.car_models,carModels)
+                                    {
+
+                                        @Override
+                                        public View getView(int position, View convertView, ViewGroup parent) {
+                                            return getCarModelView(position, convertView, parent);
+                                        }
+
+                                        @Override
+                                        public View getDropDownView(int position, View convertView, ViewGroup parent) {
+                                            return getCarModelView(position, convertView, parent);
+                                        }
+                                        View getCarModelView(int position, View convertView, ViewGroup parent)
+                                        {
+                                            if (convertView == null)
+                                            {
+                                                convertView = View.inflate(AddCarActivity.this,R.layout.car_models,null);
+                                            }
+                                            TextView productCodeModelTextView = (TextView) convertView
+                                                    .findViewById(R.id.CodeTextView);
+
+                                            TextView productCompanyNameTextView = (TextView) convertView
+                                                    .findViewById(R.id.CompanyNameTextView);
+
+                                            TextView productionModelNameTextView = (TextView) convertView
+                                                    .findViewById(R.id.ModelNameTextView);
+
+                                            TextView productionSeatsTextView = (TextView) convertView
+                                                    .findViewById(R.id.SeatsTextView);
+
+                                            productCodeModelTextView.setText((carModels.get(position).getCode()));
+                                            productCompanyNameTextView.setText((carModels.get(position).getCompanyName()));
+                                            productionModelNameTextView.setText((carModels.get(position).getModelName()));
+                                            productionSeatsTextView.setText(carModels.get(position).getSeats());
+
+                                            return convertView;
+                                        }
+                                    });
 
         addCarButton.setOnClickListener(this);
         //addCarButton.setEnabled(false);
@@ -57,8 +108,6 @@ public class AddCarActivity extends Activity implements View.OnClickListener {
     public void onClick(View v) {
         if (v == addCarButton) {
             addCar();
-            branchNumberEditText.getText().clear();
-            ModelTypeEditText.getText().clear();
              MileageEditText.getText().clear();
              NumberEditText.getText().clear();
         }
@@ -79,13 +128,13 @@ public class AddCarActivity extends Activity implements View.OnClickListener {
                 //Toast.makeText(AddCarActivity.this, "Car number is not valid!", Toast.LENGTH_LONG).show();
                 strExepetion += "Car number is not valid!\n";
             }
-            if (Legal.isNum(this.ModelTypeEditText.getText().toString())) {
+            /*if (Legal.isNum(this.ModelTypeEditText.getText().toString())) {
                 int model = Integer.valueOf(this.ModelTypeEditText.getText().toString());
                 contentValues.put(AgencyConsts.CarConst.MODEL_TYPE, model);
             } else {
                 //Toast.makeText(AddCarActivity.this, "Model type is not valid!", Toast.LENGTH_LONG).show();
                 strExepetion += "Model type is not valid!\n";
-            }
+            }*/
             if (Legal.isNum(this.MileageEditText.getText().toString())) {
                 double mile = Double.valueOf(this.MileageEditText.getText().toString());
                 contentValues.put(AgencyConsts.CarConst.MILEAGE, mile);
@@ -93,12 +142,26 @@ public class AddCarActivity extends Activity implements View.OnClickListener {
                 //Toast.makeText(AddCarActivity.this, "Mileage value is not valid!", Toast.LENGTH_LONG).show();
                strExepetion += "Mileage value is not valid!\n";
             }
-            if (Legal.isNum(this.branchNumberEditText.getText().toString())) {
+            /*if (Legal.isNum(this.branchNumberEditText.getText().toString())) {
                 int branch = Integer.valueOf(this.branchNumberEditText.getText().toString());
                 contentValues.put(AgencyConsts.CarConst.BRANCH_NUMBER, branch);
             } else {
                 //Toast.makeText(AddCarActivity.this, "Branch number is not valid!", Toast.LENGTH_LONG).show();
                 strExepetion += "Branch number is not valid!\n";
+            }*/
+            if( branchSpinner.getSelectedItem() != null) {
+                int branchNumber = ((Branch) branchSpinner.getSelectedItem()).getBranchNumber();
+                contentValues.put(AgencyConsts.CarConst.BRANCH_NUMBER, branchNumber);
+            }
+            else {
+                strExepetion += "There are no branches!\n";
+            }
+            if(carModelSpinner.getSelectedItem() != null) {
+                int carModelCode = ((CarModel) carModelSpinner.getSelectedItem()).getCode();
+                contentValues.put(AgencyConsts.CarConst.MODEL_TYPE, carModelCode);
+            }
+            else{
+                strExepetion += "There are no car models!\n";
             }
 
 
