@@ -3,16 +3,12 @@ package com.example.owner.takeandgo.controller;
 import android.app.Activity;
 import android.content.ContentValues;
 import android.os.AsyncTask;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
-import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Spinner;
-import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.owner.takeandgo.R;
@@ -20,14 +16,51 @@ import com.example.owner.takeandgo.model.backEnd.AgencyConsts;
 import com.example.owner.takeandgo.model.backEnd.DBManagerFactory;
 import com.example.owner.takeandgo.model.entities.Branch;
 import com.example.owner.takeandgo.model.entities.CarModel;
+
+import java.util.ArrayList;
+import java.util.List;
+
 import static com.example.owner.takeandgo.model.datasource.List_DBManager.*;
 
 public class AddCarActivity extends Activity implements View.OnClickListener {
+
+    private Integer[] getBranches() {
+        Integer[] numbers = new Integer[]{};
+        List<Integer> lst = new ArrayList<Integer>();
+        for (Branch branch : branches) {
+            lst.add(branch.getBranchNumber());
+        }
+        return lst.toArray(numbers);
+    }
+
+    private Integer[] getModels() {
+        Integer[] numbers = new Integer[]{};
+        List<Integer> lst = new ArrayList<Integer>();
+        for (CarModel carModel : carModels) {
+            lst.add(carModel.getCode());
+        }
+        return lst.toArray(numbers);
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add_car);
+        //Set sppiner views
+        new AsyncTask<Void, Void, Void>() {
+            @Override
+            protected void onPostExecute(Void result) {
+                super.onPostExecute(result);
+                initSpinners();
+            }
+
+            @Override
+            protected Void doInBackground(Void... voids) {
+            carModelList = DBManagerFactory.getManager().getCarModels();
+                branchList = DBManagerFactory.getManager().getBranches();
+                return null;
+            }
+        }.execute();
         findViews();
     }
 
@@ -38,6 +71,20 @@ public class AddCarActivity extends Activity implements View.OnClickListener {
     private EditText MileageEditText;
     private EditText NumberEditText;
     private Button addCarButton;
+    //List for sppiners
+    List<CarModel> carModelList;
+    List<Branch> branchList;
+    private void initSpinners(){
+        Integer [] branches = getBranches();
+        ArrayAdapter<Integer> branchAdapter = new ArrayAdapter<Integer>(this,android.R.layout.simple_spinner_item,branches);
+        branchAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        branchSpinner.setAdapter(branchAdapter);
+
+        Integer [] models = getModels();
+        ArrayAdapter<Integer> modelAdapter = new ArrayAdapter<Integer>(this,android.R.layout.simple_spinner_item,models);
+        modelAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        carModelSpinner.setAdapter(modelAdapter);
+    }
 
     /**
      * Find the Views in the layout<br />
@@ -46,56 +93,16 @@ public class AddCarActivity extends Activity implements View.OnClickListener {
      * (http://www.buzzingandroid.com/tools/android-layout-finder)
      */
     private void findViews() {
-        branchSpinner = (Spinner)findViewById( R.id.branchSpinner);
-        carModelSpinner = (Spinner)findViewById( R.id.carModelSpinner );
+        branchSpinner = (Spinner) findViewById(R.id.branchSpinner);
+        carModelSpinner = (Spinner) findViewById(R.id.carModelSpinner);
         //branchNumberEditText = (EditText) findViewById(R.id.branchNumberEditText);
         //ModelTypeEditText = (EditText) findViewById(R.id.ModelTypeEditText);
         MileageEditText = (EditText) findViewById(R.id.MileageEditText);
         NumberEditText = (EditText) findViewById(R.id.NumberEditText);
         addCarButton = (Button) findViewById(R.id.addCarButton);
-        branchSpinner.setAdapter(new ArrayAdapter<Branch>(this,android.R.layout.simple_expandable_list_item_1,branches));
-
-        carModelSpinner.setAdapter(new ArrayAdapter<CarModel>(this,R.layout.car_models,carModels)
-                                    {
-
-                                        @Override
-                                        public View getView(int position, View convertView, ViewGroup parent) {
-                                            return getCarModelView(position, convertView, parent);
-                                        }
-
-                                        @Override
-                                        public View getDropDownView(int position, View convertView, ViewGroup parent) {
-                                            return getCarModelView(position, convertView, parent);
-                                        }
-                                        View getCarModelView(int position, View convertView, ViewGroup parent)
-                                        {
-                                            if (convertView == null)
-                                            {
-                                                convertView = View.inflate(AddCarActivity.this,R.layout.car_models,null);
-                                            }
-                                            TextView productCodeModelTextView = (TextView) convertView
-                                                    .findViewById(R.id.CodeTextView);
-
-                                            TextView productCompanyNameTextView = (TextView) convertView
-                                                    .findViewById(R.id.CompanyNameTextView);
-
-                                            TextView productionModelNameTextView = (TextView) convertView
-                                                    .findViewById(R.id.ModelNameTextView);
-
-                                            TextView productionSeatsTextView = (TextView) convertView
-                                                    .findViewById(R.id.SeatsTextView);
-
-                                            productCodeModelTextView.setText((carModels.get(position).getCode()));
-                                            productCompanyNameTextView.setText((carModels.get(position).getCompanyName()));
-                                            productionModelNameTextView.setText((carModels.get(position).getModelName()));
-                                            productionSeatsTextView.setText(carModels.get(position).getSeats());
-
-                                            return convertView;
-                                        }
-                                    });
-
         addCarButton.setOnClickListener(this);
-        //addCarButton.setEnabled(false);
+
+
     }
 
     /**
@@ -105,15 +112,12 @@ public class AddCarActivity extends Activity implements View.OnClickListener {
      * (http://www.buzzingandroid.com/tools/android-layout-finder)
      */
     @Override
-    public void onClick(View v) {
-        if (v == addCarButton) {
-            addCar();
-            /*
-             MileageEditText.getText().clear();
-             NumberEditText.getText().clear();
-             */
+    public void onClick(View v){
+        if(v==addCarButton){
+        addCar();
+
         }
-    }
+        }
 
     private void addCar() {
         final ContentValues contentValues = new ContentValues();
@@ -122,7 +126,7 @@ public class AddCarActivity extends Activity implements View.OnClickListener {
             String strExepetion = "";
 
 
-             if (Legal.isNum(NumberEditText.getText().toString())) {
+            if (Legal.isNum(NumberEditText.getText().toString())) {
                 long number = Long.valueOf(this.NumberEditText.getText().toString());
                 contentValues.put(AgencyConsts.CarConst.NUMBER, number);
 
@@ -142,7 +146,7 @@ public class AddCarActivity extends Activity implements View.OnClickListener {
                 contentValues.put(AgencyConsts.CarConst.MILEAGE, mile);
             } else {
                 //Toast.makeText(AddCarActivity.this, "Mileage value is not valid!", Toast.LENGTH_LONG).show();
-               strExepetion += "Mileage value is not valid!\n";
+                strExepetion += "Mileage value is not valid!\n";
             }
             /*if (Legal.isNum(this.branchNumberEditText.getText().toString())) {
                 int branch = Integer.valueOf(this.branchNumberEditText.getText().toString());
@@ -151,35 +155,35 @@ public class AddCarActivity extends Activity implements View.OnClickListener {
                 //Toast.makeText(AddCarActivity.this, "Branch number is not valid!", Toast.LENGTH_LONG).show();
                 strExepetion += "Branch number is not valid!\n";
             }*/
-            if( branchSpinner.getSelectedItem() != null) {
-                int branchNumber = ((Branch) branchSpinner.getSelectedItem()).getBranchNumber();
+            if (branchSpinner.getSelectedItem() != null) {
+                int branchNumber = (Integer) branchSpinner.getSelectedItem();
                 contentValues.put(AgencyConsts.CarConst.BRANCH_NUMBER, branchNumber);
-            }
-            else {
+            } else {
                 strExepetion += "There are no branches!\n";
             }
-            if(carModelSpinner.getSelectedItem() != null) {
-                int carModelCode = ((CarModel) carModelSpinner.getSelectedItem()).getCode();
+            if (carModelSpinner.getSelectedItem() != null) {
+                int carModelCode = (Integer) carModelSpinner.getSelectedItem();
                 contentValues.put(AgencyConsts.CarConst.MODEL_TYPE, carModelCode);
-            }
-            else{
+            } else {
                 strExepetion += "There are no car models!\n";
             }
 
 
-             if(strExepetion != "")
-             {
-                 Toast.makeText(AddCarActivity.this, strExepetion, Toast.LENGTH_LONG).show();
-                 return;
-             }
+            if (strExepetion != "") {
+                Toast.makeText(AddCarActivity.this, strExepetion, Toast.LENGTH_LONG).show();
+                return;
+            }
 
 
             new AsyncTask<Void, Void, Long>() {
                 @Override
                 protected void onPostExecute(Long numResult) {
                     super.onPostExecute(numResult);
-                    if (numResult != Long.valueOf(-1))
-                        Toast.makeText(AddCarActivity.this, "car number: " + numResult + " was added successfully", Toast.LENGTH_LONG).show();
+                    if (numResult != Long.valueOf(-1)) {
+                        Toast.makeText(AddCarActivity.this, "car number: " + numResult + ", added successfully", Toast.LENGTH_LONG).show();
+                        //MileageEditText.getText().clear();
+                        //NumberEditText.getText().clear();
+                    }
                 }
 
                 @Override

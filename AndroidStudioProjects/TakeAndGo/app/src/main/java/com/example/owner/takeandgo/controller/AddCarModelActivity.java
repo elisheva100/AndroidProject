@@ -70,13 +70,7 @@ public class AddCarModelActivity extends Activity implements View.OnClickListene
     public void onClick(View v) {
         if ( v == addCarModelButton ) {
             addCarModel();
-            /*
-            CodeEditText.getText().clear();
-            ModelNameEditText.getText().clear();
-             CompanyNameEditText.getText().clear();
-            EngineCApicityEditText.getText().clear();
-             SeatsEditText.getText().clear();
-            */
+
         }
     }
     private void addCarModel()
@@ -136,8 +130,16 @@ public class AddCarModelActivity extends Activity implements View.OnClickListene
             @Override
             protected void onPostExecute(Integer numResult) {
                 super.onPostExecute(numResult);
-                if (numResult != -1)
-                    Toast.makeText(AddCarModelActivity.this, "car model : " + numResult + " was added successfully", Toast.LENGTH_LONG).show();
+                if (numResult != -1){
+                    Toast.makeText(AddCarModelActivity.this, "car model : " + numResult + " added successfully", Toast.LENGTH_LONG).show();
+
+                CodeEditText.getText().clear();
+                ModelNameEditText.getText().clear();
+                CompanyNameEditText.getText().clear();
+                EngineCApicityEditText.getText().clear();
+                SeatsEditText.getText().clear();
+
+            }
             }
 
             @Override
