@@ -113,12 +113,14 @@ public class AddClientActivity extends Activity implements View.OnClickListener 
             showDialog(DIALOG);
         } else if (v == addClientButton) {
             addClient();
+            /*
             clientIdEditText.getText().clear();
             FirstNameEditText.getText().clear();
             LastNameEditText.getText().clear();
             PhoneNumberEditText.getText().clear();
             EmailEditText.getText().clear();
             CreditCardEditText.getText().clear();
+            */
         }
     }
 
