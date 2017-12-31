@@ -12,7 +12,7 @@ import java.util.List;
 /**
  *
  */
-
+//TODO add is exist function???
 public interface DB_manager {
     //region Car
     long addCar(ContentValues car) throws Exception;

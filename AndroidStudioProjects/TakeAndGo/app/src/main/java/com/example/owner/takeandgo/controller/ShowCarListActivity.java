@@ -57,7 +57,6 @@ public class ShowCarListActivity extends Activity {
     }
 
 
-
     protected void Adaptor(final List<Car>  myItemList) {
         ListView listView = new ListView(this);
         ArrayAdapter<Car> adapter = new ArrayAdapter<Car>(this, R.layout.activity_show_car_list, myItemList) {
@@ -71,10 +70,10 @@ public class ShowCarListActivity extends Activity {
                 TextView productBranchNumberTextView = (TextView) convertView.findViewById(R.id.branchNumberTextView);
                 TextView productionModelTypeTextView = (TextView) convertView.findViewById(R.id.modelTypeTextView);
                 TextView productionMileageTextView = (TextView) convertView.findViewById(R.id.mileageTextView);
-                productNumberTextView.setText((int) myItemList.get(position).getNumber());
-                productBranchNumberTextView.setText(( myItemList.get(position).getBranchNumber()));
-                productionModelTypeTextView.setText((myItemList.get(position).getModelType()));
-                productionMileageTextView.setText((int) myItemList.get(position).getMileage());
+                productNumberTextView.setText("" + myItemList.get(position).getNumber());
+                productBranchNumberTextView.setText("" + myItemList.get(position).getBranchNumber());
+                productionModelTypeTextView.setText("" + myItemList.get(position).getModelType());
+                productionMileageTextView.setText("" + myItemList.get(position).getMileage());
                 return convertView;
             }
         };

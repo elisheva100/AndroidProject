@@ -32,17 +32,17 @@ public class AgencyConsts {
         public static final String STREET = "street";
         public static final String CITY = "city";
         public static final String PARKING = "parking";
-        public static final String BRANCH_NUMBER = "branchNumber";
+        public static final String BRANCH_NUMBER = "_id";
 
     }
     public static class CarConst {
         public static final String BRANCH_NUMBER = "branchNumber";
         public static final String MODEL_TYPE = "model_id";
         public static final String MILEAGE= "mileage";
-        public static final String NUMBER = "_number";
+        public static final String NUMBER = "_id";
     }
     public static class CarModelConst {
-        public static final String CODE = "code";
+        public static final String CODE = "_id";
         public static final String COMPANY_NAME = "companyName";
         public static final String MODEL_NAME = "modelName";
         public static final String ENGINE_CAPACITY = "engineCapacity";
