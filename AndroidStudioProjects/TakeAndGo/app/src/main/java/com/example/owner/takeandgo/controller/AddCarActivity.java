@@ -180,7 +180,7 @@ public class AddCarActivity extends Activity implements View.OnClickListener {
                 protected void onPostExecute(Long numResult) {
                     super.onPostExecute(numResult);
                     if (numResult != Long.valueOf(-1)) {
-                        Toast.makeText(AddCarActivity.this, "car number: " + numResult + ", added successfully", Toast.LENGTH_LONG).show();
+                        Toast.makeText(AddCarActivity.this, "car number: " + numResult + " added successfully", Toast.LENGTH_LONG).show();
                         //MileageEditText.getText().clear();
                         //NumberEditText.getText().clear();
                     }
