@@ -133,11 +133,12 @@ public class AddCarModelActivity extends Activity implements View.OnClickListene
                 if (numResult != -1){
                     Toast.makeText(AddCarModelActivity.this, "car model : " + numResult + " added successfully", Toast.LENGTH_LONG).show();
 
-                CodeEditText.getText().clear();
+                /*CodeEditText.getText().clear();
                 ModelNameEditText.getText().clear();
                 CompanyNameEditText.getText().clear();
                 EngineCApicityEditText.getText().clear();
                 SeatsEditText.getText().clear();
+                */
 
             }
             }
