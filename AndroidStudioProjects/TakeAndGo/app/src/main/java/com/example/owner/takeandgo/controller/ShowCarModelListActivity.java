@@ -65,10 +65,10 @@ public class ShowCarModelListActivity extends Activity {
                     convertView = View.inflate(ShowCarModelListActivity.this, R.layout.activity_show_car_model_list, null);
 
                 }
-                TextView codeTextView = (TextView)findViewById( R.id.codeTextView );
-                TextView modelNameTextView = (TextView)findViewById( R.id.modelNameTextView );
-                TextView companyNameTextView = (TextView)findViewById( R.id.companyNameTextView );
-                TextView seatsTextView = (TextView)findViewById( R.id.seatsTextView );
+                TextView codeTextView = (TextView)convertView.findViewById( R.id.codeTextView );
+                TextView modelNameTextView = (TextView)convertView.findViewById( R.id.modelNameTextView );
+                TextView companyNameTextView = (TextView)convertView.findViewById( R.id.companyNameTextView );
+                TextView seatsTextView = (TextView)convertView.findViewById( R.id.seatsTextView );
                 codeTextView.setText("" + myItemList.get(position).getCode());
                 modelNameTextView.setText(myItemList.get(position).getModelName());
                 companyNameTextView.setText(myItemList.get(position).getCompanyName());
