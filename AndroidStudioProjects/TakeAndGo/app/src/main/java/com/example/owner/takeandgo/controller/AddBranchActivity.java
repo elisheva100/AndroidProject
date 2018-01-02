@@ -55,7 +55,9 @@ public class AddBranchActivity extends Activity implements View.OnClickListener 
      * Auto-created on 2017-12-06 20:55:55 by Android Layout Finder
      * (http://www.buzzingandroid.com/tools/android-layout-finder)
      */
+    boolean flag = true;
     @Override
+
     public void onClick(View v) {
         if ( v == addBranchButton ) {
             addBranch();
@@ -66,6 +68,7 @@ public class AddBranchActivity extends Activity implements View.OnClickListener 
              ParkingEditText.getText().clear();
              BranchNumberEditText.getText().clear();
              */
+
         }
     }
 
@@ -128,7 +131,8 @@ public class AddBranchActivity extends Activity implements View.OnClickListener 
             protected void onPostExecute(Long numResult) {
                 super.onPostExecute(numResult);
                 if (numResult != Long.valueOf(-1))
-                    Toast.makeText(AddBranchActivity.this, "Branch number: " + numResult +" was added successfully", Toast.LENGTH_LONG).show();
+                    Toast.makeText(AddBranchActivity.this, "Branch number: " + numResult +" added successfully", Toast.LENGTH_LONG).show();
+
             }
 
             @Override
@@ -147,5 +151,6 @@ public class AddBranchActivity extends Activity implements View.OnClickListener 
         }
 
     }
+
 
 }

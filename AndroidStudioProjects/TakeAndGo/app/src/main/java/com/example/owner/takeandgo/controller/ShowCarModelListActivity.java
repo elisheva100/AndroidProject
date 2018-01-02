@@ -65,19 +65,13 @@ public class ShowCarModelListActivity extends Activity {
                     convertView = View.inflate(ShowCarModelListActivity.this, R.layout.activity_show_car_model_list, null);
 
                 }
-<<<<<<< HEAD
-                TextView codeTextView = (TextView)findViewById(R.id.codeTextView);
-                TextView modelNameTextView = (TextView)findViewById(R.id.modelNameTextView);
-                TextView companyNameTextView = (TextView)findViewById(R.id.companyNameTextView);
-                TextView seatsTextView = (TextView)findViewById(R.id.seatsTextView);
+
+                TextView codeTextView = (TextView)convertView.findViewById(R.id.codeTextView);
+                TextView modelNameTextView = (TextView)convertView.findViewById(R.id.modelNameTextView);
+                TextView companyNameTextView = (TextView)convertView.findViewById(R.id.companyNameTextView);
+                TextView seatsTextView = (TextView)convertView.findViewById(R.id.seatsTextView);
                 codeTextView.setText("" + (myItemList.get(position).getCode()));
-=======
-                TextView codeTextView = (TextView)convertView.findViewById( R.id.codeTextView );
-                TextView modelNameTextView = (TextView)convertView.findViewById( R.id.modelNameTextView );
-                TextView companyNameTextView = (TextView)convertView.findViewById( R.id.companyNameTextView );
-                TextView seatsTextView = (TextView)convertView.findViewById( R.id.seatsTextView );
-                codeTextView.setText("" + myItemList.get(position).getCode());
->>>>>>> 1271e2c0b4c07540175b390a5d2917db6cb46c6d
+
                 modelNameTextView.setText(myItemList.get(position).getModelName());
                 companyNameTextView.setText(myItemList.get(position).getCompanyName());
                 seatsTextView.setText("" + (myItemList.get(position).getSeats()));
