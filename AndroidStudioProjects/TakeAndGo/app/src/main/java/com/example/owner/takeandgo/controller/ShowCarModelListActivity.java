@@ -71,10 +71,6 @@ public class ShowCarModelListActivity extends Activity {
                 TextView companyNameTextView = (TextView)convertView.findViewById(R.id.companyNameTextView);
                 TextView seatsTextView = (TextView)convertView.findViewById(R.id.seatsTextView);
                 codeTextView.setText("" + (myItemList.get(position).getCode()));
-<<<<<<< HEAD
-
-=======
->>>>>>> 56a3ef81a05af1d21a6d774d37b35fb68494f423
                 modelNameTextView.setText(myItemList.get(position).getModelName());
                 companyNameTextView.setText(myItemList.get(position).getCompanyName());
                 seatsTextView.setText("" + (myItemList.get(position).getSeats()));

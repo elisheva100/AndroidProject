@@ -6,6 +6,7 @@ import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
@@ -19,8 +20,10 @@ import com.example.owner.takeandgo.model.backEnd.DBManagerFactory;
 import com.example.owner.takeandgo.model.entities.COLOR;
 import com.example.owner.takeandgo.model.entities.GEARBOX;
 
-public class AddCarModelActivity extends AppCompatActivity implements View.OnClickListener {
-
+public class AddCarModelActivity extends AppCompatActivity implements View.OnClickListener, AdapterView.OnItemSelectedListener {
+    final String[]  colorNames={"red","yellow","white","silver","blue"};
+    int colors[] = {R.drawable.red, R.drawable.yellow, R.drawable.white, R.drawable.silver, R.drawable.blue};
+    String colorName = "";
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -37,6 +40,16 @@ public class AddCarModelActivity extends AppCompatActivity implements View.OnCli
     private TextView colorTextView;
     private Spinner colorSpinner;
     private Button addCarModelButton;
+    @Override
+    public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+        //Toast.makeText(getApplicationContext(), colorNames[position], Toast.LENGTH_LONG).show();
+        colorName = colorNames[position];
+    }
+
+    @Override
+    public void onNothingSelected(AdapterView<?> parent) {
+
+    }
 
     /**
      * Find the Views in the layout<br />
@@ -57,7 +70,12 @@ public class AddCarModelActivity extends AppCompatActivity implements View.OnCli
         addCarModelButton = (Button)findViewById( R.id.addModelButton );
 
         gearboxSpinner.setAdapter(new ArrayAdapter<GEARBOX>(this, android.R.layout.simple_list_item_1,GEARBOX.values()));
-        colorSpinner.setAdapter(new ArrayAdapter<COLOR>(this, android.R.layout.simple_list_item_1,COLOR.values()));
+        //colorSpinner.setAdapter(new ArrayAdapter<COLOR>(this, android.R.layout.simple_list_item_1,COLOR.values()));
+        colorSpinner.setOnItemSelectedListener(this);
+
+        CustomAdapter customAdapter=new CustomAdapter(getApplicationContext(),colors,colorNames);
+        colorSpinner.setAdapter(customAdapter);
+
         addCarModelButton.setOnClickListener( this );
     }
 
@@ -101,8 +119,14 @@ public class AddCarModelActivity extends AppCompatActivity implements View.OnCli
             }
             String gear  = ((GEARBOX) gearboxSpinner.getSelectedItem()).name();
             contentValues.put(AgencyConsts.CarModelConst.GEARBOX, gear);
-            String color  = ((COLOR) colorSpinner.getSelectedItem()).name();
-            contentValues.put(AgencyConsts.CarModelConst.COLOR, color);
+            //String color  = ((COLOR) colorSpinner.getSelectedItem()).name();
+            if(colorName != "") {
+                contentValues.put(AgencyConsts.CarModelConst.COLOR, colorName);
+                //Toast.makeText(AddCarModelActivity.this, "color : " + colorName + " !!", Toast.LENGTH_LONG).show();
+            }
+            else{
+                strException += "No color was chosen!\n";
+            }
 
             if(!Legal.isNum(this.SeatsEditText.getText().toString()))
             {
@@ -115,7 +139,7 @@ public class AddCarModelActivity extends AppCompatActivity implements View.OnCli
             return;
             }
             else {
-                ///vbdjksb
+
 
                 int seats = Integer.valueOf(this.SeatsEditText.getText().toString());
                 contentValues.put(AgencyConsts.CarModelConst.SEATS, seats);
@@ -159,5 +183,7 @@ public class AddCarModelActivity extends AppCompatActivity implements View.OnCli
         Toast.makeText(AddCarModelActivity.this, "Error!", Toast.LENGTH_LONG).show();
     }
     }
+
+
 
 }

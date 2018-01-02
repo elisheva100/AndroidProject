@@ -55,7 +55,7 @@ public class AddBranchActivity extends Activity implements View.OnClickListener 
      * Auto-created on 2017-12-06 20:55:55 by Android Layout Finder
      * (http://www.buzzingandroid.com/tools/android-layout-finder)
      */
-    boolean flag = true;
+    //boolean flag = true;
     @Override
 
     public void onClick(View v) {
