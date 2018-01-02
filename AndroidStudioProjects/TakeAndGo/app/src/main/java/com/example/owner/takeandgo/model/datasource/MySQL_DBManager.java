@@ -22,7 +22,7 @@ import java.util.List;
 public class MySQL_DBManager implements DB_manager {
 
     private final String UserName="taicohen";
-    private final String WEB_URL = "http://"+UserName+".vlab.jct.ac.il/Academy/"; //TODO i am not sure that this is the correct url
+    private final String WEB_URL = "http://"+UserName+".vlab.jct.ac.il/php_files/"; //TODO i am not sure that this is the correct url
 
     private boolean updateFlag = false;
     private void SetUpdate() { updateFlag = true; }
@@ -74,14 +74,14 @@ public class MySQL_DBManager implements DB_manager {
     public String addClient(ContentValues client) throws Exception {
         try {
             String result = PHPtools.POST(WEB_URL + "/add_client.php", client);
-            long id = Long.parseLong(result);
-            if (id > 0)
+            //long id = Long.parseLong(result);
+            if (result != null)
                 SetUpdate();
             printLog("addClient:\n" + result);
-            return ""+id; //TODO is that o.k??
+            return result;
         } catch (IOException e) {
             printLog("addClient Exception:\n" + e);
-            return ""+-1; //TODO is that o.k??
+            return null;
         }
     }
 
@@ -116,11 +116,11 @@ public class MySQL_DBManager implements DB_manager {
     public int addBranch(ContentValues branch) throws Exception {
         try {
             String result = PHPtools.POST(WEB_URL + "/add_branch.php", branch);
-            long id = Long.parseLong(result);
+            int id = Integer.parseInt(result);
             if (id > 0)
                 SetUpdate();
             printLog("addBranch:\n" + result);
-            return (int) id;
+            return  id;
         } catch (IOException e) {
             printLog("addBranch Exception:\n" + e);
             return -1;
@@ -153,11 +153,11 @@ public class MySQL_DBManager implements DB_manager {
     public int addCarModel(ContentValues model) throws Exception {
         try {
             String result = PHPtools.POST(WEB_URL + "/add_car_model.php", model);
-            long id = Long.parseLong(result);
+            int id = Integer.parseInt(result);
             if (id > 0)
                 SetUpdate();
             printLog("addCar:\n" + result);
-            return (int) id;
+            return id;
         } catch (IOException e) {
             printLog("addCar Exception:\n" + e);
             return -1;
