@@ -77,9 +77,9 @@ public class AgencyConsts {
     //region Types to Content values casting
     public static ContentValues BranchToContentValues(Branch branch) {
         ContentValues contentValues = new ContentValues();
-        contentValues.put(BranchConst.ADRESS,(branch.getAdress().toString()));
-        contentValues.put(BranchConst.PARKING, branch.getParking());
         contentValues.put(BranchConst.BRANCH_NUMBER, branch.getBranchNumber());
+        contentValues.put(BranchConst.PARKING, branch.getParking());
+        contentValues.put(BranchConst.ADRESS,(branch.getAdress().toString()));
 
         return contentValues;
     }
@@ -102,7 +102,8 @@ public class AgencyConsts {
         contentValues.put(CarModelConst.ENGINE_CAPACITY,carModel.getEngineCapacity());
         contentValues.put(CarModelConst.GEARBOX, String.valueOf(carModel.getGearbox()));
         contentValues.put(CarModelConst.SEATS,carModel.getSeats());
-        contentValues.put(CarModelConst.COLOR, String.valueOf(carModel.getColor()));
+        //contentValues.put(CarModelConst.COLOR, String.valueOf(carModel.getColor()));
+        contentValues.put(CarModelConst.COLOR, carModel.getColor());
         return contentValues;
     }
     public static ContentValues ClientToContentValues(Client client) {
@@ -176,7 +177,8 @@ public class AgencyConsts {
         carModel.setEngineCapacity(contentValues.getAsDouble(CarModelConst.ENGINE_CAPACITY));
         carModel.setGearbox(GEARBOX.valueOf(contentValues.getAsString(AgencyConsts.CarModelConst.GEARBOX)));
         carModel.setSeats(contentValues.getAsInteger(CarModelConst.SEATS));
-        carModel.setColor(COLOR.valueOf(contentValues.getAsString(CarModelConst.COLOR)));
+        //carModel.setColor(COLOR.valueOf(contentValues.getAsString(CarModelConst.COLOR)));
+        carModel.setColor(contentValues.getAsString(CarModelConst.COLOR));
 
         return carModel;
     }

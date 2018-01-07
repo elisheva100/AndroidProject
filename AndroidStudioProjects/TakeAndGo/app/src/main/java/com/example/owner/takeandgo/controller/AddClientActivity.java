@@ -6,6 +6,7 @@ import android.app.Dialog;
 import android.content.ContentValues;
 import android.os.AsyncTask;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Button;
 import android.widget.DatePicker;
@@ -20,7 +21,7 @@ import com.example.owner.takeandgo.model.backEnd.DBManagerFactory;
 import java.util.Calendar;
 import java.util.Date;
 
-public class AddClientActivity extends Activity implements View.OnClickListener {
+public class AddClientActivity extends AppCompatActivity implements View.OnClickListener {
     int myYear, myMonth, myDay; //The user's birthday.
     static final int DIALOG = 0;
     static boolean flag = true;
@@ -28,6 +29,9 @@ public class AddClientActivity extends Activity implements View.OnClickListener 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        getSupportActionBar().setLogo(R.mipmap.my_car);
+        getSupportActionBar().setDisplayUseLogoEnabled(true);
+        getSupportActionBar().setDisplayShowHomeEnabled(true);
         setContentView(R.layout.activity_add_client);
         Calendar calender = Calendar.getInstance();
         //myDay = calender.get(Calendar.DAY_OF_MONTH);
@@ -36,7 +40,7 @@ public class AddClientActivity extends Activity implements View.OnClickListener 
 
         myDay = 27;
         myMonth = 6;
-        myYear = 1998;
+        myYear = 1990;
         findViews();
     }
 
@@ -189,8 +193,10 @@ public class AddClientActivity extends Activity implements View.OnClickListener 
                 @Override
                 protected void onPostExecute(String result) {
                     super.onPostExecute(result);
-                    if (result != null)
-                        Toast.makeText(AddClientActivity.this, "client: " + result + " was added successfully", Toast.LENGTH_LONG).show();
+                    if (result != null) {
+                        Toast.makeText(AddClientActivity.this, "client: " + result + " added successfully", Toast.LENGTH_LONG).show();
+                        finish();
+                    }
                 }
 
                 @Override
@@ -198,7 +204,7 @@ public class AddClientActivity extends Activity implements View.OnClickListener 
                     try {
                         return String.valueOf(DBManagerFactory.getManager().addClient(contentValues));
                     } catch (Exception e) {
-                        Toast.makeText(getBaseContext(), e.getMessage(), Toast.LENGTH_LONG).show();
+                        //Toast.makeText(getBaseContext(), e.getMessage(), Toast.LENGTH_LONG).show();
                         return null;
                     }
                 }

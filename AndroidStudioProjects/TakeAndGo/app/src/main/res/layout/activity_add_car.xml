@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/activity_add_car"
     android:layout_width="match_parent"
@@ -8,13 +9,19 @@
     tools:context="com.example.owner.takeandgo.controller.AddCarActivity"
     android:weightSum="1">
 
+    <Space
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_weight="0.32" />
+
     <EditText
         android:id="@+id/NumberEditText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:ems="10"
         android:hint="@string/number"
-        android:inputType="number" />
+        android:inputType="number"
+        android:singleLine="false" />
 
     <Space
         android:layout_width="match_parent"
@@ -23,7 +30,8 @@
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:weightSum="1">
 
         <TextView
             android:layout_width="wrap_content"
@@ -37,9 +45,10 @@
             android:layout_height="wrap_content" />
         <Spinner
             android:id="@+id/branchSpinner"
-            android:layout_width="151dp"
+            android:layout_width="142dp"
             android:layout_height="wrap_content"
-            android:gravity="right" />
+            android:gravity="right"
+            android:layout_weight="0.09" />
 
     </LinearLayout>
 
@@ -69,8 +78,8 @@
             android:id="@+id/carModelSpinner"
             android:layout_width="149dp"
             android:layout_height="wrap_content"
-            android:gravity="right"
-            android:layout_weight="0.01" />
+            android:layout_weight="0.06"
+            android:gravity="right" />
 
     </LinearLayout>
 
@@ -87,10 +96,30 @@
         android:hint="@string/mileage"
         android:inputType="numberDecimal" />
 
-    <Button
-        android:id="@+id/addCarButton"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/add_car" />
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="211dp"
+        android:layout_weight="0.31">
+
+        <Button
+            android:id="@+id/addCarButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="22dp"
+            android:text="@string/add_car"
+            android:layout_alignParentBottom="true"
+            android:textColor="@color/DodgerBlue"
+            android:layout_alignParentStart="true" />
+
+        <ImageView
+            android:id="@+id/imageView3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:srcCompat="@drawable/cars3"
+            android:layout_marginTop="138dp"
+            android:layout_alignParentTop="true"
+            android:layout_toEndOf="@+id/addCarButton"
+            android:layout_marginStart="15dp" />
+    </RelativeLayout>
 
 </LinearLayout>

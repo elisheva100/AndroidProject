@@ -4,6 +4,7 @@ import android.app.Activity;
 import android.content.ContentValues;
 import android.os.AsyncTask;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -16,11 +17,14 @@ import com.example.owner.takeandgo.model.backEnd.DBManagerFactory;
 import static com.example.owner.takeandgo.controller.Legal.isNum;
 import static com.example.owner.takeandgo.controller.Legal.isString;
 
-public class AddBranchActivity extends Activity implements View.OnClickListener {
+public class AddBranchActivity extends AppCompatActivity implements View.OnClickListener {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        getSupportActionBar().setLogo(R.mipmap.my_car);
+        getSupportActionBar().setDisplayUseLogoEnabled(true);
+        getSupportActionBar().setDisplayShowHomeEnabled(true);
         setContentView(R.layout.activity_add_branch);
         findViews();
     }
@@ -55,7 +59,9 @@ public class AddBranchActivity extends Activity implements View.OnClickListener 
      * Auto-created on 2017-12-06 20:55:55 by Android Layout Finder
      * (http://www.buzzingandroid.com/tools/android-layout-finder)
      */
+    boolean flag = false;
     @Override
+
     public void onClick(View v) {
         if ( v == addBranchButton ) {
             addBranch();
@@ -66,6 +72,7 @@ public class AddBranchActivity extends Activity implements View.OnClickListener 
              ParkingEditText.getText().clear();
              BranchNumberEditText.getText().clear();
              */
+
         }
     }
 
@@ -128,7 +135,10 @@ public class AddBranchActivity extends Activity implements View.OnClickListener 
             protected void onPostExecute(Long numResult) {
                 super.onPostExecute(numResult);
                 if (numResult != Long.valueOf(-1))
-                    Toast.makeText(AddBranchActivity.this, "Branch number: " + numResult +" was added successfully", Toast.LENGTH_LONG).show();
+                    Toast.makeText(AddBranchActivity.this, "Branch number: " + numResult + " added successfully", Toast.LENGTH_LONG).show();
+                else
+                    Toast.makeText(AddBranchActivity.this, "Insert failed", Toast.LENGTH_LONG).show();
+                finish();
             }
 
             @Override
@@ -136,16 +146,21 @@ public class AddBranchActivity extends Activity implements View.OnClickListener 
                 try {
                     return Long.valueOf(DBManagerFactory.getManager().addBranch(contentValues));
                 } catch (Exception e) {
-                    Toast.makeText(getBaseContext(),e.getMessage(),Toast.LENGTH_LONG).show();
+                     //Toast.makeText(getBaseContext(),e.getMessage(),Toast.LENGTH_LONG).show();
+                    //Toast.makeText(AddBranchActivity.this, e.getMessage(), Toast.LENGTH_LONG).show();
                     return Long.valueOf(-1);
                 }
             }
         }.execute();
 
         } catch (Exception e) {
-            Toast.makeText(getBaseContext(),e.getMessage(),Toast.LENGTH_LONG).show();
+            Toast.makeText(getBaseContext(), e.getMessage(), Toast.LENGTH_LONG).show();
         }
 
+        }
     }
 
-}
+
+
+
+

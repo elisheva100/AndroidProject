@@ -13,12 +13,18 @@ android:orientation="vertical">
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:gravity="left"
+        android:textSize="18sp"
+        android:textColor="@color/LightSeaGreen"
+        android:textStyle="bold"
         android:text="parking" />
     <TextView
         android:id="@+id/branchNumberTextView"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:gravity="right"
+        android:textSize="18sp"
+        android:textColor="@color/LightSeaGreen"
+        android:textStyle="bold"
         android:text="branch number" />
 </LinearLayout>
 <LinearLayout
@@ -30,6 +36,9 @@ android:orientation="vertical">
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:gravity="center"
+        android:textSize="18sp"
+        android:textColor="@color/LightSeaGreen"
+        android:textStyle="bold"
         android:text="adress" />
 
 </LinearLayout>

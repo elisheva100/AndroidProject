@@ -15,12 +15,18 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:gravity="left"
+            android:textSize="18sp"
+            android:textColor="@color/LightSeaGreen"
+            android:textStyle="bold"
             android:text="code" />
         <TextView
             android:id="@+id/modelNameTextView"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:gravity="right"
+            android:textSize="18sp"
+            android:textColor="@color/LightSeaGreen"
+            android:textStyle="bold"
             android:text="model name" />
     </LinearLayout>
     <LinearLayout
@@ -31,12 +37,18 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:gravity="left"
+            android:textSize="18sp"
+            android:textColor="@color/LightSeaGreen"
+            android:textStyle="bold"
             android:text="company name" />
         <TextView
             android:id="@+id/seatsTextView"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:gravity="right"
+            android:textSize="18sp"
+            android:textColor="@color/LightSeaGreen"
+            android:textStyle="bold"
             android:text="seats" />
     </LinearLayout>
 

@@ -45,6 +45,6 @@ public class Adress {
 
     @Override
     public String toString() {
-        return this.number + " " + this.street + " " + this.city;
+        return this.street + " " + this.number + " " + this.city;
     }
 }

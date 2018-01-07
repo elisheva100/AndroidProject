@@ -1,31 +1,46 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.example.owner.takeandgo">
-    <uses-permission android:name="android.permission.INTERNET"/>
+
+    <uses-permission android:name="android.permission.INTERNET" />
 
     <application
         android:allowBackup="true"
-        android:icon="@mipmap/ic_launcher"
+        android:icon="@mipmap/my_car"
         android:label="@string/app_name"
-        android:roundIcon="@mipmap/ic_launcher_round"
+        android:roundIcon="@mipmap/round_car"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity android:name=".controller.MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".controller.AddCarActivity" android:label="Add_Car"/>
-        <activity android:name=".controller.AddClientActivity" android:label="Add_Client" />
-        <activity android:name=".controller.AddCarModelActivity" android:label="Add_Car_Model"/>
-        <activity android:name=".controller.ShowCarListActivity" android:label="Show_Car_List" />
-        <activity android:name=".controller.ShowCarModelListActivity" android:label="Show_Car_Model_List" />
-        <activity android:name=".controller.ShowBranchListActivity" android:label="Show_Branch_List" />
-        <activity android:name=".controller.ShowClientListActivity" android:label="Show_Client_List"/>
-        <activity android:name=".controller.AddBranchActivity" android:label="Add_Branch">
-        </activity>
+        <activity
+            android:name=".controller.AddCarActivity"
+            android:label="Add Car" />
+        <activity
+            android:name=".controller.AddClientActivity"
+            android:label="Add Client" />
+        <activity
+            android:name=".controller.AddCarModelActivity"
+            android:label="Add Car Model" />
+        <activity
+            android:name=".controller.ShowCarListActivity"
+            android:label="Show Car List" />
+        <activity
+            android:name=".controller.ShowCarModelListActivity"
+            android:label="Show Car Model List" />
+        <activity
+            android:name=".controller.ShowBranchListActivity"
+            android:label="Show Branch List" />
+        <activity
+            android:name=".controller.ShowClientListActivity"
+            android:label="Show Client List" />
+        <activity
+            android:name=".controller.AddBranchActivity"
+            android:label="Add Branch"></activity>
     </application>
 
 </manifest>

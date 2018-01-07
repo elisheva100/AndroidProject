@@ -15,12 +15,18 @@ tools:layout_editor_absoluteX="8dp">
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:gravity="left"
+        android:textSize="18sp"
+        android:textColor="@color/LightSeaGreen"
+        android:textStyle="bold"
         android:text="number" />
     <TextView
         android:id="@+id/branchNumberTextView"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:gravity="right"
+        android:textSize="18sp"
+        android:textColor="@color/LightSeaGreen"
+        android:textStyle="bold"
         android:text="branch number" />
 </LinearLayout>
 <LinearLayout
@@ -31,12 +37,18 @@ tools:layout_editor_absoluteX="8dp">
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:gravity="left"
+        android:textSize="18sp"
+        android:textColor="@color/LightSeaGreen"
+        android:textStyle="bold"
         android:text="model type" />
     <TextView
         android:id="@+id/mileageTextView"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:gravity="right"
+        android:textSize="18sp"
+        android:textColor="@color/LightSeaGreen"
+        android:textStyle="bold"
         android:text="mileage" />
 </LinearLayout>
 

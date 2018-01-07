@@ -11,9 +11,11 @@ public class DBManagerFactory {
     static DB_manager manager = null;
 
     public static DB_manager getManager() {
-        if (manager == null)
+
+        if (manager == null) {
+            //manager = new List_DBManager();
             manager = new MySQL_DBManager();
-            //manager = new List_DBManager(); //MySQL_DBManager();
+        }
 
         return manager;
     }

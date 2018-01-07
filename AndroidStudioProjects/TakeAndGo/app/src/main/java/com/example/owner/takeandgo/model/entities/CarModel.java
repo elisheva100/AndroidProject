@@ -11,8 +11,8 @@ public class CarModel {
     private double engineCapacity;
     private GEARBOX gearbox;
     private int seats;
-    private COLOR color;
-
+    //private COLOR color;
+private String color;
     public CarModel() {
 
     }
@@ -65,15 +65,23 @@ public class CarModel {
         this.seats = seats;
     }
 
-    public COLOR getColor() {
+    /*public COLOR getColor() {
         return color;
     }
 
     public void setColor(COLOR color) {
         this.color = color;
     }
+    */
+    public String getColor() {
+        return color;
+    }
 
-    public CarModel(int code, String companyName, String modelName, double engineCapacity, GEARBOX gearbox, int seats, COLOR color) {
+    public void setColor(String color) {
+        this.color = color;
+    }
+
+    public CarModel(int code, String companyName, String modelName, double engineCapacity, GEARBOX gearbox, int seats, String color) {
         this.code = code;
         this.companyName = companyName;
         this.modelName = modelName;
