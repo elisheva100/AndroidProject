@@ -3,6 +3,7 @@ package com.example.owner.takeandgo.controller;
 import android.app.Activity;
 import android.os.AsyncTask;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
@@ -16,11 +17,14 @@ import com.example.owner.takeandgo.model.entities.CarModel;
 
 import java.util.List;
 
-public class ShowCarModelListActivity extends Activity {
+public class ShowCarModelListActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        getSupportActionBar().setLogo(R.mipmap.my_car);
+        getSupportActionBar().setDisplayUseLogoEnabled(true);
+        getSupportActionBar().setDisplayShowHomeEnabled(true);
         setContentView(R.layout.activity_show_car_model_list);
         initByListView();
     }

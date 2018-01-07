@@ -3,6 +3,7 @@ package com.example.owner.takeandgo.controller;
 import android.app.Activity;
 import android.os.AsyncTask;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -19,11 +20,14 @@ import java.util.List;
 
 import static com.example.owner.takeandgo.R.id.branchNumberTextView;
 
-public class ShowBranchListActivity extends Activity {
+public class ShowBranchListActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        getSupportActionBar().setLogo(R.mipmap.my_car);
+        getSupportActionBar().setDisplayUseLogoEnabled(true);
+        getSupportActionBar().setDisplayShowHomeEnabled(true);
         setContentView(R.layout.activity_show_branch_list);
         initByListView();
     }

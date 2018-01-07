@@ -4,6 +4,7 @@ import android.app.Activity;
 import android.content.ContentValues;
 import android.os.AsyncTask;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
@@ -22,7 +23,7 @@ import java.util.List;
 
 import static com.example.owner.takeandgo.model.datasource.List_DBManager.*;
 
-public class AddCarActivity extends Activity implements View.OnClickListener {
+public class AddCarActivity extends AppCompatActivity implements View.OnClickListener {
 
     private Integer[] getBranches() {
         Integer[] numbers = new Integer[]{};
@@ -45,6 +46,9 @@ public class AddCarActivity extends Activity implements View.OnClickListener {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        getSupportActionBar().setLogo(R.mipmap.my_car);
+        getSupportActionBar().setDisplayUseLogoEnabled(true);
+        getSupportActionBar().setDisplayShowHomeEnabled(true);
         setContentView(R.layout.activity_add_car);
         //Set sppiner views
         new AsyncTask<Void, Void, Void>() {
@@ -180,9 +184,8 @@ public class AddCarActivity extends Activity implements View.OnClickListener {
                 protected void onPostExecute(Long numResult) {
                     super.onPostExecute(numResult);
                     if (numResult != Long.valueOf(-1)) {
-                        Toast.makeText(AddCarActivity.this, "car number: " + numResult + " added successfully", Toast.LENGTH_LONG).show();
-                        //MileageEditText.getText().clear();
-                        //NumberEditText.getText().clear();
+                        Toast.makeText(AddCarActivity.this, "car number: " + numResult + ", added successfully", Toast.LENGTH_LONG).show();
+                        finish();
                     }
                 }
 

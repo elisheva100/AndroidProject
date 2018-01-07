@@ -36,6 +36,7 @@ public class MySQL_DBManager implements DB_manager {
     public long addCar(ContentValues car) throws Exception {
         try {
             String result = PHPtools.POST(WEB_URL + "/add_car.php", car);
+            result = result.trim();
             long id = Long.parseLong(result);
             if (id > 0)
                 SetUpdate();
@@ -74,7 +75,7 @@ public class MySQL_DBManager implements DB_manager {
     public String addClient(ContentValues client) throws Exception {
         try {
             String result = PHPtools.POST(WEB_URL + "/add_client.php", client);
-            //long id = Long.parseLong(result);
+            result = result.trim();
             if (result != null)
                 SetUpdate();
             printLog("addClient:\n" + result);
@@ -116,6 +117,7 @@ public class MySQL_DBManager implements DB_manager {
     public int addBranch(ContentValues branch) throws Exception {
         try {
             String result = PHPtools.POST(WEB_URL + "/add_branch.php", branch);
+            result = result.trim();
             int id = Integer.parseInt(result);
             if (id > 0)
                 SetUpdate();
@@ -153,6 +155,7 @@ public class MySQL_DBManager implements DB_manager {
     public int addCarModel(ContentValues model) throws Exception {
         try {
             String result = PHPtools.POST(WEB_URL + "/add_car_model.php", model);
+            result = result.trim();
             int id = Integer.parseInt(result);
             if (id > 0)
                 SetUpdate();

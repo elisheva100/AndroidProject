@@ -4,6 +4,7 @@ import android.app.Activity;
 import android.content.ClipData;
 import android.os.AsyncTask;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
@@ -17,11 +18,14 @@ import com.example.owner.takeandgo.model.entities.Client;
 
 import java.util.List;
 
-public class ShowClientListActivity extends Activity {
+public class ShowClientListActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        getSupportActionBar().setLogo(R.mipmap.my_car);
+        getSupportActionBar().setDisplayUseLogoEnabled(true);
+        getSupportActionBar().setDisplayShowHomeEnabled(true);
         setContentView(R.layout.activity_show_client_list);
         initByListView();
     }

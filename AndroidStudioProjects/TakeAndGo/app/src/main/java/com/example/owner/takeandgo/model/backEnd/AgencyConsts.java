@@ -77,9 +77,9 @@ public class AgencyConsts {
     //region Types to Content values casting
     public static ContentValues BranchToContentValues(Branch branch) {
         ContentValues contentValues = new ContentValues();
-        contentValues.put(BranchConst.ADRESS,(branch.getAdress().toString()));
-        contentValues.put(BranchConst.PARKING, branch.getParking());
         contentValues.put(BranchConst.BRANCH_NUMBER, branch.getBranchNumber());
+        contentValues.put(BranchConst.PARKING, branch.getParking());
+        contentValues.put(BranchConst.ADRESS,(branch.getAdress().toString()));
 
         return contentValues;
     }
