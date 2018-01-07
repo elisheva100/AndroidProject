@@ -68,7 +68,7 @@ public class List_DBManager implements DB_manager {
                 return true; //Return true if the update succeeded
             }
         return false; //Returns false if the update failed
-    }
+    }*/
 
     @Override
     //checks if there is a car with the same number
@@ -77,7 +77,7 @@ public class List_DBManager implements DB_manager {
             if(item.getNumber()==n)
                 return true;
         return false;
-    }*/
+    }
 
     @Override
     //returns cars' list
@@ -177,7 +177,7 @@ public class List_DBManager implements DB_manager {
                 return true; //Return true if the update succeeded
             }
         return false; //Returns false if the update failed
-    }
+    }*/
 
     @Override
     //checks if there is a client with that id
@@ -187,7 +187,7 @@ public class List_DBManager implements DB_manager {
             if(item.getBranchNumber()==n)
                 return true;
         return false;
-    }*/
+    }
 
     @Override
     //returns branches' list
@@ -227,7 +227,7 @@ public class List_DBManager implements DB_manager {
                 return true; //Return true if the update succeeded
             }
         return false; //Returns false if the update failed
-    }
+    }*/
 
     @Override
     //checks if there is a model with that code
@@ -237,7 +237,7 @@ public class List_DBManager implements DB_manager {
             if(item.getCode()==n)
                 return true;
         return false;
-    }*/
+    }
 
     @Override
     //returns car models' list

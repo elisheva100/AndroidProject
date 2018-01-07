@@ -22,7 +22,8 @@ import java.util.List;
 public class MySQL_DBManager implements DB_manager {
 
     private final String UserName="taicohen";
-    private final String WEB_URL = "http://"+UserName+".vlab.jct.ac.il/Academy/"; //TODO i am not sure that this is the correct url
+   // private final String WEB_URL = "http://"+UserName+".vlab.jct.ac.il/Academy/"; //TODO i am not sure that this is the correct url
+   private final String WEB_URL = "http://" +UserName+ ".vlab.jct.ac.il/php_files/";
 
     private boolean updateFlag = false;
     private void SetUpdate() { updateFlag = true; }
@@ -45,6 +46,14 @@ public class MySQL_DBManager implements DB_manager {
             printLog("addCar Exception:\n" + e);
             return -1;
         }
+    }
+
+    @Override
+    public boolean isExistCar(long n) {
+        for (Car item : this.getCars())
+            if(item.getNumber()==n)
+                return true;
+        return false;
     }
 
     @Override
@@ -86,7 +95,12 @@ public class MySQL_DBManager implements DB_manager {
     }
 
     @Override
-    public boolean isExistClient(String i) { //TODO this func- have to create php for it
+    //checks if there is a client with that id
+    public boolean isExistClient(String i)
+    {
+        for (Client item : this.getClients())
+            if(item.getId()==i)
+                return true;
         return false;
     }
 
@@ -128,6 +142,16 @@ public class MySQL_DBManager implements DB_manager {
     }
 
     @Override
+    //checks if there is a client with that id
+    public boolean isExistBranch(int n)
+    {
+        for (Branch item : this.getBranches())
+            if(item.getBranchNumber()==n)
+                return true;
+        return false;
+    }
+
+    @Override
     public List<Branch> getBranches() {
         List<Branch> result = new ArrayList<Branch>();
         try {
@@ -162,6 +186,15 @@ public class MySQL_DBManager implements DB_manager {
             printLog("addCar Exception:\n" + e);
             return -1;
         }
+    }
+
+    @Override
+    public boolean isExistModel(int n)
+    {
+        for (CarModel item : this.getCarModels())
+            if(item.getCode()==n)
+                return true;
+        return false;
     }
 
     @Override
