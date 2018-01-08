@@ -16,7 +16,7 @@
                 android:layout_height="wrap_content"
                 android:gravity="left"
                 android:textSize="18sp"
-                android:textColor="@color/LightSeaGreen"
+                android:textColor="@color/DodgerBlue"
                 android:textStyle="bold"
                 android:text="id" />
             <TextView
@@ -25,7 +25,7 @@
                 android:layout_height="wrap_content"
                 android:gravity="right"
                 android:textSize="18sp"
-                android:textColor="@color/LightSeaGreen"
+                android:textColor="@color/DodgerBlue"
                 android:textStyle="bold"
                 android:text="cellphone number" />
     </LinearLayout>
@@ -38,7 +38,7 @@
             android:layout_height="wrap_content"
             android:gravity="left"
             android:textSize="18sp"
-            android:textColor="@color/LightSeaGreen"
+            android:textColor="@color/DodgerBlue"
             android:textStyle="bold"
             android:text="name" />
         <TextView
@@ -47,7 +47,7 @@
             android:layout_height="wrap_content"
             android:gravity="right"
             android:textSize="18sp"
-            android:textColor="@color/LightSeaGreen"
+            android:textColor="@color/DodgerBlue"
             android:textStyle="bold"
             android:text="email" />
     </LinearLayout>

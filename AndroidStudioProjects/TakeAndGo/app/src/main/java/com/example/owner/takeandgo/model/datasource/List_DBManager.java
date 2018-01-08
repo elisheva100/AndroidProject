@@ -34,8 +34,9 @@ public class List_DBManager implements DB_manager {
     @Override
     //add car to cars' list
     public long addCar(ContentValues car) throws Exception {
-
         Car item = ContentValuesToCar(car);
+        if (isExistCar(item.getNumber()))
+            throw new Exception ("This car is already exists!!");
         try{ cars.add(item);}
         catch (Exception e){ throw new Exception(e.getMessage());}
         return item.getNumber();
@@ -89,6 +90,8 @@ public class List_DBManager implements DB_manager {
     //adds client to clients' list
     public String addClient(ContentValues client) throws Exception {
         Client item = ContentValuesToClient(client);
+        if (isExistClient(item.getId()))
+            throw new Exception("This client is already exists!!");
         try{clients.add(item);}
         catch (Exception e){ throw new Exception(e.getMessage());}
         return item.getId();
@@ -145,6 +148,8 @@ public class List_DBManager implements DB_manager {
     //adds branch to branches' list
     public int addBranch(ContentValues branch) throws Exception {
         Branch item = ContentValuesToBranch(branch);
+        if (isExistBranch(item.getBranchNumber()))
+            throw new Exception("This branch is already exists!!");
         try {branches.add(item);}
         catch (Exception e){ throw new Exception(e.getMessage());}
         return item.getBranchNumber();
@@ -199,6 +204,8 @@ public class List_DBManager implements DB_manager {
     //adds model to car models' list
     public int addCarModel(ContentValues model) throws Exception {
         CarModel item = ContentValuesToCarModel(model);
+        if (isExistModel(item.getCode()))
+            throw new Exception("This model is already exists!!");
         try {carModels.add(item);}
         catch (Exception e){ throw new Exception(e.getMessage());}
         return item.getCode();
