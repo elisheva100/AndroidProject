@@ -35,10 +35,10 @@ public class MySQL_DBManager implements DB_manager {
     //region car
     @Override
     public long addCar(ContentValues car) throws Exception {
+        Car c =AgencyConsts.ContentValuesToCar(car);
+        if (isExistCar(c.getNumber()))
+            throw new Exception ("This car is already exists!!");
         try {
-          /*  Car c =AgencyConsts.ContentValuesToCar(car);
-            if (isExistCar(c.getNumber()))
-                throw new Exception ("This car is already exists!!");*/
             String result = PHPtools.POST(WEB_URL + "/add_car.php", car);
             result = result.trim();
             long id = Long.parseLong(result);
@@ -85,6 +85,9 @@ public class MySQL_DBManager implements DB_manager {
     //region client
     @Override
     public String addClient(ContentValues client) throws Exception {
+        Client c =AgencyConsts.ContentValuesToClient(client);
+        if (isExistClient(c.getId()))
+            throw new Exception("This client is already exists!!");
         try {
             String result = PHPtools.POST(WEB_URL + "/add_client.php", client);
             result = result.trim();
@@ -183,6 +186,9 @@ public class MySQL_DBManager implements DB_manager {
     //region car model
     @Override
     public int addCarModel(ContentValues model) throws Exception {
+        CarModel c =AgencyConsts.ContentValuesToCarModel(model);
+        if (isExistModel(c.getCode()))
+            throw new Exception("This model is already exists!!");
         try {
             String result = PHPtools.POST(WEB_URL + "/add_car_model.php", model);
             result = result.trim();
