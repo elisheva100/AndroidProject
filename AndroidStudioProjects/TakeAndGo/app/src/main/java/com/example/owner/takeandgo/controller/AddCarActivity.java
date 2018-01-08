@@ -50,6 +50,7 @@ public class AddCarActivity extends AppCompatActivity implements View.OnClickLis
         getSupportActionBar().setDisplayUseLogoEnabled(true);
         getSupportActionBar().setDisplayShowHomeEnabled(true);
         setContentView(R.layout.activity_add_car);
+        findViews();
         //Set sppiner views
         new AsyncTask<Void, Void, Void>() {
             @Override
@@ -60,12 +61,14 @@ public class AddCarActivity extends AppCompatActivity implements View.OnClickLis
 
             @Override
             protected Void doInBackground(Void... voids) {
+                if(android.os.Debug.isDebuggerConnected())
+                    android.os.Debug.waitForDebugger();
             carModelList = DBManagerFactory.getManager().getCarModels();
                 branchList = DBManagerFactory.getManager().getBranches();
                 return null;
             }
         }.execute();
-        findViews();
+
     }
 
     //private EditText branchNumberEditText;
