@@ -132,7 +132,7 @@ public class AddCarActivity extends AppCompatActivity implements View.OnClickLis
 
             String strExepetion = "";
 
-
+            contentValues.put(AgencyConsts.CarConst.AVAILABLE, true); // no order yet.
             if (Legal.isNum(NumberEditText.getText().toString())) {
                 long number = Long.valueOf(this.NumberEditText.getText().toString());
                 contentValues.put(AgencyConsts.CarConst.NUMBER, number);

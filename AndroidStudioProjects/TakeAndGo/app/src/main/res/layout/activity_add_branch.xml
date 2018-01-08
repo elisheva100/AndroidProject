@@ -86,6 +86,7 @@
             android:layout_marginStart="20dp"
             android:text="@string/add_branch"
             android:textColor="@color/DodgerBlue"
+            android:background="@color/PowderBlue"
             android:layout_alignBottom="@+id/imageView10"
             android:layout_alignParentStart="true" />
 

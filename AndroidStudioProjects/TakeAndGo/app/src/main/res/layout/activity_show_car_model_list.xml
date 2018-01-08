@@ -19,6 +19,10 @@
             android:textColor="@color/DodgerBlue"
             android:textStyle="bold"
             android:text="code" />
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" >
         <TextView
             android:id="@+id/modelNameTextView"
             android:layout_width="match_parent"
@@ -41,6 +45,10 @@
             android:textColor="@color/DodgerBlue"
             android:textStyle="bold"
             android:text="company name" />
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" >
         <TextView
             android:id="@+id/seatsTextView"
             android:layout_width="match_parent"
