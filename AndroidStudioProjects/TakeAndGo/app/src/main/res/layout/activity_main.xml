@@ -18,7 +18,6 @@
             android:layout_height="wrap_content"
             android:textSize="18sp"
             android:textColor="@color/DodgerBlue"
-            android:background="@color/PowderBlue"
             android:text="Add Branch" />
 
         <Button
@@ -27,7 +26,6 @@
             android:layout_height="wrap_content"
             android:textSize="18sp"
             android:textColor="@color/DodgerBlue"
-            android:background="@color/PowderBlue"
             android:text="Add Car Model" />
 
         <Button
@@ -36,7 +34,6 @@
             android:layout_height="wrap_content"
             android:textSize="18sp"
             android:textColor="@color/DodgerBlue"
-            android:background="@color/PowderBlue"
             android:text="Add Car" />
 
         <Button
@@ -45,7 +42,6 @@
             android:layout_height="wrap_content"
             android:textSize="18sp"
             android:textColor="@color/DodgerBlue"
-            android:background="@color/PowderBlue"
             android:text="Add Client" />
 
         <Button
@@ -55,7 +51,6 @@
             android:layout_marginTop="40dp"
             android:textSize="18sp"
             android:textColor="@color/DodgerBlue"
-            android:background="@color/PowderBlue"
             android:text="Show Car List" />
 
         <Button
@@ -64,7 +59,6 @@
             android:layout_height="wrap_content"
             android:textSize="18sp"
             android:textColor="@color/DodgerBlue"
-            android:background="@color/PowderBlue"
             android:text="Show Branch List" />
 
         <Button
@@ -73,7 +67,6 @@
             android:layout_height="wrap_content"
             android:textSize="18sp"
             android:textColor="@color/DodgerBlue"
-            android:background="@color/PowderBlue"
             android:text="Show Car Model List" />
 
         <Button
@@ -82,7 +75,6 @@
             android:layout_height="wrap_content"
             android:textSize="18sp"
             android:textColor="@color/DodgerBlue"
-            android:background="@color/PowderBlue"
             android:text="Show Client List" />
 
    </LinearLayout>

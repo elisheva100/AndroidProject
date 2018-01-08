@@ -15,7 +15,6 @@ tools:layout_editor_absoluteX="8dp">
         android:layout_height="wrap_content"
         android:gravity="left"
         android:textSize="18sp"
-        android:textColor="@color/DodgerBlue"
         android:textStyle="bold"
         android:text="number: " />
     <TextView
@@ -25,7 +24,6 @@ tools:layout_editor_absoluteX="8dp">
         android:gravity="left"
         android:textSize="18sp"
         android:textColor="@color/DodgerBlue"
-        android:textStyle="bold"
         android:text="number" />
 </LinearLayout>
     <LinearLayout
@@ -36,7 +34,6 @@ tools:layout_editor_absoluteX="8dp">
             android:layout_height="wrap_content"
             android:gravity="left"
             android:textSize="18sp"
-            android:textColor="@color/DodgerBlue"
             android:textStyle="bold"
             android:text="branch number: " />
     <TextView
@@ -46,7 +43,6 @@ tools:layout_editor_absoluteX="8dp">
         android:gravity="left"
         android:textSize="18sp"
         android:textColor="@color/DodgerBlue"
-        android:textStyle="bold"
         android:text="branch number" />
 </LinearLayout>
 <LinearLayout
@@ -57,7 +53,6 @@ tools:layout_editor_absoluteX="8dp">
         android:layout_height="wrap_content"
         android:gravity="left"
         android:textSize="18sp"
-        android:textColor="@color/DodgerBlue"
         android:textStyle="bold"
         android:text="model type: " />
     <TextView
@@ -67,7 +62,6 @@ tools:layout_editor_absoluteX="8dp">
         android:gravity="left"
         android:textSize="18sp"
         android:textColor="@color/DodgerBlue"
-        android:textStyle="bold"
         android:text="model type" />
 </LinearLayout>
     <LinearLayout
@@ -78,7 +72,6 @@ tools:layout_editor_absoluteX="8dp">
             android:layout_height="wrap_content"
             android:gravity="left"
             android:textSize="18sp"
-            android:textColor="@color/DodgerBlue"
             android:textStyle="bold"
             android:text="mileage: " />
     <TextView
@@ -88,7 +81,6 @@ tools:layout_editor_absoluteX="8dp">
         android:gravity="left"
         android:textSize="18sp"
         android:textColor="@color/DodgerBlue"
-        android:textStyle="bold"
         android:text="mileage" />
 </LinearLayout>
 

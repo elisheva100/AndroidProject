@@ -14,7 +14,6 @@ android:orientation="vertical">
         android:layout_height="wrap_content"
         android:gravity="left"
         android:textSize="18sp"
-        android:textColor="@color/DodgerBlue"
         android:textStyle="bold"
         android:text="branch number: " />
     <TextView
@@ -24,7 +23,6 @@ android:orientation="vertical">
         android:gravity="left"
         android:textSize="18sp"
         android:textColor="@color/DodgerBlue"
-        android:textStyle="bold"
         android:text="branch number" />
 </LinearLayout>
 <LinearLayout
@@ -35,7 +33,6 @@ android:orientation="vertical">
         android:layout_height="wrap_content"
         android:gravity="left"
         android:textSize="18sp"
-        android:textColor="@color/DodgerBlue"
         android:textStyle="bold"
         android:text="parking: " />
     <TextView
@@ -45,7 +42,6 @@ android:orientation="vertical">
         android:gravity="left"
         android:textSize="18sp"
         android:textColor="@color/DodgerBlue"
-        android:textStyle="bold"
         android:text="parking" />
 </LinearLayout>
     <LinearLayout
@@ -56,7 +52,6 @@ android:orientation="vertical">
             android:layout_height="wrap_content"
             android:gravity="left"
             android:textSize="18sp"
-            android:textColor="@color/DodgerBlue"
             android:textStyle="bold"
             android:text="adress: " />
     <TextView
@@ -66,7 +61,6 @@ android:orientation="vertical">
         android:gravity="left"
         android:textSize="18sp"
         android:textColor="@color/DodgerBlue"
-        android:textStyle="bold"
         android:text="adress" />
     </LinearLayout>
 
