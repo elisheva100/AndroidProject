@@ -28,7 +28,7 @@ public class AddCarActivity extends AppCompatActivity implements View.OnClickLis
     private Integer[] getBranches() {
         Integer[] numbers = new Integer[]{};
         List<Integer> lst = new ArrayList<Integer>();
-        for (Branch branch : branches) {
+        for (Branch branch : branchList) {
             lst.add(branch.getBranchNumber());
         }
         return lst.toArray(numbers);
@@ -37,7 +37,7 @@ public class AddCarActivity extends AppCompatActivity implements View.OnClickLis
     private Integer[] getModels() {
         Integer[] numbers = new Integer[]{};
         List<Integer> lst = new ArrayList<Integer>();
-        for (CarModel carModel : carModels) {
+        for (CarModel carModel : carModelList) {
             lst.add(carModel.getCode());
         }
         return lst.toArray(numbers);
@@ -83,7 +83,7 @@ public class AddCarActivity extends AppCompatActivity implements View.OnClickLis
     List<Branch> branchList;
     private void initSpinners(){
         Integer [] branches = getBranches();
-        ArrayAdapter<Integer> branchAdapter = new ArrayAdapter<Integer>(this,android.R.layout.simple_spinner_item,branches);
+        ArrayAdapter<Integer> branchAdapter = new ArrayAdapter<Integer>(this,android.R.layout.simple_list_item_1,branches);
         branchAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         branchSpinner.setAdapter(branchAdapter);
 
