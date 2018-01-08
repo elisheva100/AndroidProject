@@ -23,9 +23,9 @@ public class ShowClientListActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        getSupportActionBar().setLogo(R.mipmap.my_car);
-        getSupportActionBar().setDisplayUseLogoEnabled(true);
-        getSupportActionBar().setDisplayShowHomeEnabled(true);
+        //getSupportActionBar().setLogo(R.mipmap.my_car);
+        //getSupportActionBar().setDisplayUseLogoEnabled(true);
+        //getSupportActionBar().setDisplayShowHomeEnabled(true);
         setContentView(R.layout.activity_show_client_list);
         initByListView();
     }
@@ -60,7 +60,6 @@ public class ShowClientListActivity extends AppCompatActivity {
 
     }
 
-
     protected void Adaptor(final List<Client>  myItemList) {
         ListView listView = new ListView(this);
         ArrayAdapter<Client> adapter = new ArrayAdapter<Client>(this, R.layout.activity_show_client_list, myItemList) {
@@ -68,7 +67,6 @@ public class ShowClientListActivity extends AppCompatActivity {
             public View getView(int position, View convertView, ViewGroup parent) {
                 if (convertView == null) {
                     convertView = View.inflate(ShowClientListActivity.this, R.layout.activity_show_client_list, null);
-
                 }
                 TextView productIdTextView = (TextView) convertView.findViewById(R.id.idTextView);
                 TextView productNameTextView = (TextView) convertView.findViewById(R.id.nameTextView);
@@ -76,8 +74,8 @@ public class ShowClientListActivity extends AppCompatActivity {
                 TextView productionEmailTextView = (TextView) convertView.findViewById(R.id.emailTextView);
                 productIdTextView.setText(("" + myItemList.get(position).getId()));
                 productNameTextView.setText(myItemList.get(position).getFirstName() + " " + myItemList.get(position).getLastName());
-                productionCellphoneNumberTextView.setText((myItemList.get(position).getCellphoneNumber().toString()));
-                productionEmailTextView.setText((myItemList.get(position).getEmail().toString()));
+                productionCellphoneNumberTextView.setText((myItemList.get(position).getCellphoneNumber()));
+                productionEmailTextView.setText((myItemList.get(position).getEmail()));
                 return convertView;
             }
         };
