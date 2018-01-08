@@ -109,6 +109,7 @@
             android:text="@string/add_car"
             android:layout_alignParentBottom="true"
             android:textColor="@color/DodgerBlue"
+            android:background="@color/PowderBlue"
             android:layout_alignParentStart="true" />
 
         <ImageView

@@ -9,10 +9,10 @@ public class Car {
     private int modelType;
     private double mileage;
     private long number;
+    private boolean available;
 
-    public Car() {
 
-    }
+    public Car() {}
 
     public int getBranchNumber() {
         return branchNumber;
@@ -44,10 +44,17 @@ public class Car {
         this.number = number;
     }
 
-    public Car(int branchNumber, int modelType, double mileage, long number) {
+    public boolean isAvailable() { return available; }
+
+    public void setAvailable(boolean available) { this.available = available; }
+
+    public Car(int branchNumber, int modelType, double mileage, long number, boolean available) {
         this.branchNumber = branchNumber;
         this.modelType = modelType;
         this.mileage = mileage;
         this.number = number;
+        this.available = available;
     }
+
+
 }
