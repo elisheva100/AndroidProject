@@ -40,6 +40,7 @@ public class AgencyConsts {
         public static final String MODEL_TYPE = "model_id";
         public static final String MILEAGE= "mileage";
         public static final String NUMBER = "_id";
+        public static final String AVAILABLE = "available";
     }
     public static class CarModelConst {
         public static final String CODE = "_id";
@@ -90,6 +91,7 @@ public class AgencyConsts {
         contentValues.put(CarConst.MODEL_TYPE, car.getModelType());
         contentValues.put(CarConst.MILEAGE, car.getMileage());
         contentValues.put(CarConst.NUMBER, car.getNumber());
+        contentValues.put(CarConst.AVAILABLE, car.isAvailable());
 
         return contentValues;
     }
@@ -165,6 +167,7 @@ public class AgencyConsts {
         car.setModelType(contentValues.getAsInteger(CarConst.MODEL_TYPE));
         car.setMileage(contentValues.getAsDouble(CarConst.MILEAGE));
         car.setNumber(contentValues.getAsLong(CarConst.NUMBER));
+        car.setAvailable(contentValues.getAsBoolean(CarConst.AVAILABLE));
 
         return car;
     }
