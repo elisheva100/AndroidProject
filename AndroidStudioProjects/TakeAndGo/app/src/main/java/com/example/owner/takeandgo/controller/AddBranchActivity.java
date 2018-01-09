@@ -131,6 +131,8 @@ public class AddBranchActivity extends AppCompatActivity implements View.OnClick
 
         new AsyncTask<Void, Void, Long>() {
 
+            String strError = "";
+
             @Override
             protected void onPostExecute(Long numResult) {
                 super.onPostExecute(numResult);
@@ -141,12 +143,9 @@ public class AddBranchActivity extends AppCompatActivity implements View.OnClick
                 finish();
             }
 
-            String strError = "";
-
             @Override
             protected Long doInBackground(Void... params) {
                 try {
-                    //strError = "";
                     return Long.valueOf(DBManagerFactory.getManager().addBranch(contentValues));
                 } catch (Exception e) {
                     strError = e.getMessage();
