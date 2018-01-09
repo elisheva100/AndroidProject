@@ -183,17 +183,24 @@ public class AddCarActivity extends AppCompatActivity implements View.OnClickLis
                 @Override
                 protected void onPostExecute(Long numResult) {
                     super.onPostExecute(numResult);
-                    if (numResult != Long.valueOf(-1)) {
+                    if (numResult != Long.valueOf(-1))
                         Toast.makeText(AddCarActivity.this, "car number: " + numResult + ", added successfully", Toast.LENGTH_LONG).show();
+                    else
+                        Toast.makeText(AddCarActivity.this, "Insert failed\n" + strError, Toast.LENGTH_LONG).show();
+
                         finish();
-                    }
+
                 }
+
+                String strError = "";
+
 
                 @Override
                 protected Long doInBackground(Void... params) {
                     try {
                         return Long.valueOf(DBManagerFactory.getManager().addCar(contentValues));
                     } catch (Exception e) {
+                        strError = e.getMessage();
                         //Toast.makeText(AddCarActivity.this, e.getMessage(), Toast.LENGTH_LONG).show();
                     }
                     return Long.valueOf(-1);

@@ -137,15 +137,19 @@ public class AddBranchActivity extends AppCompatActivity implements View.OnClick
                 if (numResult != Long.valueOf(-1))
                     Toast.makeText(AddBranchActivity.this, "Branch number: " + numResult + " added successfully", Toast.LENGTH_LONG).show();
                 else
-                    Toast.makeText(AddBranchActivity.this, "Insert failed", Toast.LENGTH_LONG).show();
+                    Toast.makeText(AddBranchActivity.this, "Insert failed\n" + strError, Toast.LENGTH_LONG).show();
                 finish();
             }
+
+            String strError = "";
 
             @Override
             protected Long doInBackground(Void... params) {
                 try {
+                    //strError = "";
                     return Long.valueOf(DBManagerFactory.getManager().addBranch(contentValues));
                 } catch (Exception e) {
+                    strError = e.getMessage();
                      //Toast.makeText(getBaseContext(),e.getMessage(),Toast.LENGTH_LONG).show();
                     //Toast.makeText(AddBranchActivity.this, e.getMessage(), Toast.LENGTH_LONG).show();
                     return Long.valueOf(-1);
