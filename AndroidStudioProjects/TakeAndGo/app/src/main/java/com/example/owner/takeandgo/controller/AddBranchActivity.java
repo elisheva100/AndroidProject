@@ -150,10 +150,9 @@ public class AddBranchActivity extends AppCompatActivity implements View.OnClick
                 } catch (Exception e) {
                     strError = e.getMessage();
                      //Toast.makeText(getBaseContext(),e.getMessage(),Toast.LENGTH_LONG).show();
-                    //Toast.makeText(AddBranchActivity.this, e.getMessage(), Toast.LENGTH_LONG).show();
                     return Long.valueOf(-1);
-
-                }          }
+                }
+            }
 
 
 

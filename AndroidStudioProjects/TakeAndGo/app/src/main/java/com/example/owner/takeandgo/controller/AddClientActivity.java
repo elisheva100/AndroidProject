@@ -188,15 +188,18 @@ public class AddClientActivity extends AppCompatActivity implements View.OnClick
                 return;
             }
 
-            new AsyncTask<Void, Void, String>() {
+            new AsyncTask<Void, Void, String>()
+            {
+                String strError = "";
 
                 @Override
                 protected void onPostExecute(String result) {
                     super.onPostExecute(result);
-                    if (result != null) {
+                    if (result != null)
                         Toast.makeText(AddClientActivity.this, "client: " + result + " added successfully", Toast.LENGTH_LONG).show();
-                        finish();
-                    }
+                    else
+                        Toast.makeText(AddClientActivity.this, "Insert failed\n" + strError, Toast.LENGTH_LONG).show();
+                    finish();
                 }
 
                 @Override
@@ -204,6 +207,7 @@ public class AddClientActivity extends AppCompatActivity implements View.OnClick
                     try {
                         return String.valueOf(DBManagerFactory.getManager().addClient(contentValues));
                     } catch (Exception e) {
+                        strError = e.getMessage();
                         //Toast.makeText(getBaseContext(), e.getMessage(), Toast.LENGTH_LONG).show();
                         return null;
                     }

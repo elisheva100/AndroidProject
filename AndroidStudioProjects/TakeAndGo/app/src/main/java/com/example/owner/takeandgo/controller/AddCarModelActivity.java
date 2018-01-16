@@ -149,14 +149,19 @@ public class AddCarModelActivity extends AppCompatActivity implements View.OnCli
             }
 
 
-            new AsyncTask<Void, Void, Integer>() {
+            new AsyncTask<Void, Void, Integer>()
+            {
+                String strError = "";
+
                 @Override
                 protected void onPostExecute(Integer numResult) {
                     super.onPostExecute(numResult);
-                    if (numResult != -1) {
+                    if (numResult != -1)
                         Toast.makeText(AddCarModelActivity.this, "car model : " + numResult + ", added successfully", Toast.LENGTH_LONG).show();
-                        finish();
-                    }
+                    else
+                        Toast.makeText(AddCarModelActivity.this, "Insert failed\n" + strError, Toast.LENGTH_LONG).show();
+                    finish();
+
                 }
 
 
@@ -165,6 +170,7 @@ public class AddCarModelActivity extends AppCompatActivity implements View.OnCli
                         try {
                             return DBManagerFactory.getManager().addCarModel(contentValues);
                         } catch (Exception e) {
+                            strError = e.getMessage();
                             // Toast.makeText(AddCarModelActivity.this, e.getMessage(), Toast.LENGTH_LONG).show();
                             return -1;
                         }

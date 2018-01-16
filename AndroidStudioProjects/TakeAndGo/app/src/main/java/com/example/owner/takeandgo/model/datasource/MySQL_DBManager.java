@@ -106,7 +106,7 @@ public class MySQL_DBManager implements DB_manager {
     public boolean isExistClient(String i)
     {
         for (Client item : this.getClients())
-            if(item.getId()==i)
+            if(item.getId().equals(i) == true)
                 return true;
         return false;
     }

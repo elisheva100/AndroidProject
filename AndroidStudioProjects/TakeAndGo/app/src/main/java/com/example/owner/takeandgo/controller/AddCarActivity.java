@@ -182,7 +182,10 @@ public class AddCarActivity extends AppCompatActivity implements View.OnClickLis
             }
 
 
-            new AsyncTask<Void, Void, Long>() {
+            new AsyncTask<Void, Void, Long>()
+            {
+                String strError = "";
+
                 @Override
                 protected void onPostExecute(Long numResult) {
                     super.onPostExecute(numResult);
@@ -194,9 +197,6 @@ public class AddCarActivity extends AppCompatActivity implements View.OnClickLis
                         finish();
 
                 }
-
-                String strError = "";
-
 
                 @Override
                 protected Long doInBackground(Void... params) {
