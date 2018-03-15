@@ -1,6 +1,5 @@
 package com.example.owner.takeandgo.controller;
 
-import android.app.Activity;
 import android.content.ContentValues;
 import android.os.AsyncTask;
 import android.os.Bundle;
@@ -17,7 +16,6 @@ import android.widget.Toast;
 import com.example.owner.takeandgo.R;
 import com.example.owner.takeandgo.model.backEnd.AgencyConsts;
 import com.example.owner.takeandgo.model.backEnd.DBManagerFactory;
-import com.example.owner.takeandgo.model.entities.COLOR;
 import com.example.owner.takeandgo.model.entities.GEARBOX;
 
 
@@ -25,6 +23,7 @@ import com.example.owner.takeandgo.model.entities.GEARBOX;
  * The class is responsible for adding a new car model
  */
 public class AddCarModelActivity extends AppCompatActivity implements View.OnClickListener, AdapterView.OnItemSelectedListener {
+    //color consts
     final String[] colorNames = {"red", "yellow", "white", "silver", "blue"};
     int colors[] = {R.drawable.red, R.drawable.yellow, R.drawable.white, R.drawable.silver, R.drawable.blue};
     String colorName = "";
@@ -81,7 +80,7 @@ public class AddCarModelActivity extends AppCompatActivity implements View.OnCli
         colorSpinner.setOnItemSelectedListener(this);
 
         CustomAdapter customAdapter = new CustomAdapter(getApplicationContext(), colors, colorNames);
-        colorSpinner.setAdapter(customAdapter);
+        colorSpinner.setAdapter(customAdapter); //Initializes colors spinner.
 
         addCarModelButton.setOnClickListener(this);
     }
