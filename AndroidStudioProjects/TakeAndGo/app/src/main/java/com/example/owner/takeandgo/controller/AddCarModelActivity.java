@@ -20,6 +20,10 @@ import com.example.owner.takeandgo.model.backEnd.DBManagerFactory;
 import com.example.owner.takeandgo.model.entities.COLOR;
 import com.example.owner.takeandgo.model.entities.GEARBOX;
 
+
+/**
+ * The class is responsible for adding a new car model
+ */
 public class AddCarModelActivity extends AppCompatActivity implements View.OnClickListener, AdapterView.OnItemSelectedListener {
     final String[] colorNames = {"red", "yellow", "white", "silver", "blue"};
     int colors[] = {R.drawable.red, R.drawable.yellow, R.drawable.white, R.drawable.silver, R.drawable.blue};
@@ -48,13 +52,11 @@ public class AddCarModelActivity extends AppCompatActivity implements View.OnCli
 
     @Override
     public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-        //Toast.makeText(getApplicationContext(), colorNames[position], Toast.LENGTH_LONG).show();
         colorName = colorNames[position];
     }
 
     @Override
     public void onNothingSelected(AdapterView<?> parent) {
-
     }
 
     /**
@@ -76,7 +78,6 @@ public class AddCarModelActivity extends AppCompatActivity implements View.OnCli
         addCarModelButton = (Button) findViewById(R.id.addModelButton);
 
         gearboxSpinner.setAdapter(new ArrayAdapter<GEARBOX>(this, android.R.layout.simple_list_item_1, GEARBOX.values()));
-        //colorSpinner.setAdapter(new ArrayAdapter<COLOR>(this, android.R.layout.simple_list_item_1,COLOR.values()));
         colorSpinner.setOnItemSelectedListener(this);
 
         CustomAdapter customAdapter = new CustomAdapter(getApplicationContext(), colors, colorNames);
@@ -99,6 +100,9 @@ public class AddCarModelActivity extends AppCompatActivity implements View.OnCli
         }
     }
 
+    /**
+     * The function add a new car model
+     */
     private void addCarModel() {
         final ContentValues contentValues = new ContentValues();
         try {
@@ -107,7 +111,6 @@ public class AddCarModelActivity extends AppCompatActivity implements View.OnCli
                 int code = Integer.valueOf(this.CodeEditText.getText().toString());
                 contentValues.put(AgencyConsts.CarModelConst.CODE, code);
             } else {
-                //Toast.makeText(AddCarModelActivity.this, "code is not valid!", Toast.LENGTH_LONG).show();
                 strException += "code is not valid!\n";
             }
             String company = this.CompanyNameEditText.getText().toString();
@@ -118,21 +121,17 @@ public class AddCarModelActivity extends AppCompatActivity implements View.OnCli
                 double capacity = Double.valueOf(this.EngineCApicityEditText.getText().toString());
                 contentValues.put(AgencyConsts.CarModelConst.ENGINE_CAPACITY, capacity);
             } else {
-                //Toast.makeText(AddCarModelActivity.this, "engine capacity is not valid!", Toast.LENGTH_LONG).show();
                 strException += "engine capacity is not valid!\n";
             }
             String gear = ((GEARBOX) gearboxSpinner.getSelectedItem()).name();
             contentValues.put(AgencyConsts.CarModelConst.GEARBOX, gear);
-            //String color  = ((COLOR) colorSpinner.getSelectedItem()).name();
             if (colorName != "") {
                 contentValues.put(AgencyConsts.CarModelConst.COLOR, colorName);
-                //Toast.makeText(AddCarModelActivity.this, "color : " + colorName + " !!", Toast.LENGTH_LONG).show();
             } else {
                 strException += "No color was chosen!\n";
             }
 
             if (!Legal.isNum(this.SeatsEditText.getText().toString())) {
-                //Toast.makeText(AddCarModelActivity.this, "number of seats is not valid!", Toast.LENGTH_LONG).show();
                 strException += "number of seats is not valid!\n";
             } else if (Integer.valueOf(this.SeatsEditText.getText().toString()) > 9 || Integer.valueOf(this.SeatsEditText.getText().toString()) < 2) {
                 Toast.makeText(AddCarModelActivity.this, "There is no car with such number of seats! ", Toast.LENGTH_LONG).show();
@@ -171,7 +170,6 @@ public class AddCarModelActivity extends AppCompatActivity implements View.OnCli
                             return DBManagerFactory.getManager().addCarModel(contentValues);
                         } catch (Exception e) {
                             strError = e.getMessage();
-                            // Toast.makeText(AddCarModelActivity.this, e.getMessage(), Toast.LENGTH_LONG).show();
                             return -1;
                         }
 

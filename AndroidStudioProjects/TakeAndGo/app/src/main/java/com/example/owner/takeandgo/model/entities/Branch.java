@@ -2,6 +2,7 @@ package com.example.owner.takeandgo.model.entities;
 
 /**
  * Created by Owner on 08/11/2017.
+ * The class represents branch
  */
 
 public class Branch {
@@ -10,9 +11,9 @@ public class Branch {
     private int branchNumber;
 
     public Branch() {
-        
     }
 
+    //set and get:
     public Adress getAdress() {
         return adress;
     }
@@ -43,8 +44,5 @@ public class Branch {
         this.branchNumber = branchNumber;
     }
 
-    public void setAdress(String asString) {
-
-    }
 
 }

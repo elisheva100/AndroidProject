@@ -13,7 +13,6 @@ import static com.example.owner.takeandgo.model.backEnd.AgencyConsts.ContentValu
 import static com.example.owner.takeandgo.model.backEnd.AgencyConsts.ContentValuesToCarModel;
 import static com.example.owner.takeandgo.model.backEnd.AgencyConsts.ContentValuesToClient;
 
-//TODO add exist checking
 public class List_DBManager implements DB_manager {
 
     //static lists
@@ -42,35 +41,6 @@ public class List_DBManager implements DB_manager {
         return item.getNumber();
     }
 
-    /*@Override
-    //removes car from cars' list
-    public boolean removeCar(long num) throws Exception {
-        if(!isExistCar(num)) //checks if that car exists in the data
-            throw new Exception("This car number isn't exist");
-        Car carToRemove = null;
-        for (Car item : cars) //search for item with the same number
-            if (item.getNumber() == num) {
-                carToRemove = item;
-                break;
-            }
-        return cars.remove(carToRemove);
-    }
-
-    @Override
-    //updates item in cars' list
-    public boolean updateCar(long num, ContentValues values) throws Exception {
-        if(!isExistCar(num)) //checks if that car exists in the data
-            throw new Exception("This car number isn't exist");
-        Car car = ContentValuesToCar(values); //sets car details
-        car.setNumber(num);
-        for (int i = 0; i < cars.size(); i++)
-            if (cars.get(i).getNumber() == num) {
-                cars.set(i,car);
-                return true; //Return true if the update succeeded
-            }
-        return false; //Returns false if the update failed
-    }*/
-
     @Override
     //checks if there is a car with the same number
     public boolean isExistCar(long n) {
@@ -96,35 +66,6 @@ public class List_DBManager implements DB_manager {
         catch (Exception e){ throw new Exception(e.getMessage());}
         return item.getId();
     }
-
-   /* @Override
-    //removes client from the list
-    public boolean removeClient(String id) throws Exception {
-        if (!isExistClient(id)) //checks if there is a client with that id
-            throw new Exception("This client id isn't exist");
-        Client clientToRemove = null;
-        for (Client item : clients) //search for item with the same number
-            if (item.getId() == id) {
-                clientToRemove = item;
-                break;
-            }
-        return clients.remove(clientToRemove);
-    }
-
-    @Override
-    //updates item in clients' list
-    public boolean updateClient(String id, ContentValues values) throws Exception {
-        if (!isExistClient(id)) //checks if there is a client with that id
-            throw new Exception("This client id isn't exist");
-        Client client = ContentValuesToClient(values); //sets client details
-        client.setId(id);
-        for (int i = 0; i < clients.size(); i++)
-            if (clients.get(i).getId() == id) {
-                clients.set(i,client);
-                return true; //Return true if the update succeeded
-            }
-        return false; //Returns false if the update failed
-    }*/
 
     @Override
     //checks if there is a client with that id
@@ -155,35 +96,6 @@ public class List_DBManager implements DB_manager {
         return item.getBranchNumber();
     }
 
-    /*@Override
-    //removes branch from branches' list
-    public boolean removeBranch(int num) throws Exception {
-        if (! isExistBranch(num)) //checks if there is a branch with that number
-            throw new Exception("This branch number isn't exist");
-        Branch branchToRemove = null;
-        for (Branch item : branches) //search for item with the same number
-            if (item.getBranchNumber() == num) {
-                branchToRemove = item;
-                break;
-            }
-        return branches.remove(branchToRemove);
-    }
-
-    @Override
-    //updates item in branches' list
-    public boolean updateBranch(int num, ContentValues values) throws Exception {
-        if (! isExistBranch(num)) //checks if there is a branch with that number
-            throw new Exception("This branch number isn't exist");
-        Branch branch = ContentValuesToBranch(values); //sets branch details
-        branch.setBranchNumber(num);
-        for (int i = 0; i < branches.size(); i++)
-            if (branches.get(i).getBranchNumber() == num) {
-                branches.set(i,branch);
-                return true; //Return true if the update succeeded
-            }
-        return false; //Returns false if the update failed
-    }*/
-
     @Override
     //checks if there is a client with that id
     public boolean isExistBranch(int n)
@@ -210,31 +122,6 @@ public class List_DBManager implements DB_manager {
         catch (Exception e){ throw new Exception(e.getMessage());}
         return item.getCode();
     }
-
-    /*@Override
-    //removes model from car models' list
-    public boolean removeCarModel(int num) {
-        CarModel carModelToRemove = null;
-        for (CarModel item : carModels) //search for item with the same number
-            if (item.getCode() == num) {
-                carModelToRemove = item;
-                break;
-            }
-        return cars.remove(carModelToRemove);
-    }
-
-    @Override
-    //updates item in car models' list
-    public boolean updateCarModel(int num, ContentValues values) {
-        CarModel carModel = ContentValuesToCarModel(values); //sets car model details
-        carModel.setCode(num);
-        for (int i = 0; i < carModels.size(); i++)
-            if (carModels.get(i).getCode() == num) {
-                carModels.set(i,carModel);
-                return true; //Return true if the update succeeded
-            }
-        return false; //Returns false if the update failed
-    }*/
 
     @Override
     //checks if there is a model with that code

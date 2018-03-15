@@ -18,12 +18,11 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
-//TODO continue that process : creare sql for table
 public class MySQL_DBManager implements DB_manager {
 
+    //create url path
     private final String UserName="taicohen";
     private final String WEB_URL = "http://"+UserName+".vlab.jct.ac.il/php_files/";
-
 
     private boolean updateFlag = false;
     private void SetUpdate() { updateFlag = true; }
@@ -34,6 +33,7 @@ public class MySQL_DBManager implements DB_manager {
 
     //region car
     @Override
+    //add new car to data
     public long addCar(ContentValues car) throws Exception {
         Car c =AgencyConsts.ContentValuesToCar(car);
         if (isExistCar(c.getNumber()))
@@ -53,6 +53,7 @@ public class MySQL_DBManager implements DB_manager {
     }
 
     @Override
+    //checks if a specific car exists in the data
     public boolean isExistCar(long n) {
         for (Car item : this.getCars())
             if(item.getNumber()==n)
@@ -60,6 +61,7 @@ public class MySQL_DBManager implements DB_manager {
         return false;
     }
 
+    //gets all the car in the data
     @Override
     public List<Car> getCars() {
         List<Car> result = new ArrayList<Car>();
@@ -84,6 +86,7 @@ public class MySQL_DBManager implements DB_manager {
 
     //region client
     @Override
+    //add new client to the data
     public String addClient(ContentValues client) throws Exception {
         Client c =AgencyConsts.ContentValuesToClient(client);
         if (isExistClient(c.getId()))
@@ -112,6 +115,7 @@ public class MySQL_DBManager implements DB_manager {
     }
 
     @Override
+    //gets all clients list
     public List<Client> getClients() {
         List<Client> result = new ArrayList<Client>();
         try {
@@ -134,6 +138,7 @@ public class MySQL_DBManager implements DB_manager {
 
     //region branch
     @Override
+    //add new branch to data
     public int addBranch(ContentValues branch) throws Exception {
         Branch b =AgencyConsts.ContentValuesToBranch(branch);
             if (isExistBranch(b.getBranchNumber()))
@@ -162,6 +167,7 @@ public class MySQL_DBManager implements DB_manager {
         return false;
     }
 
+    //gets all branches list
     @Override
     public List<Branch> getBranches() {
         List<Branch> result = new ArrayList<Branch>();
@@ -185,6 +191,7 @@ public class MySQL_DBManager implements DB_manager {
 
     //region car model
     @Override
+    //add new car model to the data
     public int addCarModel(ContentValues model) throws Exception {
         CarModel c =AgencyConsts.ContentValuesToCarModel(model);
         if (isExistModel(c.getCode()))
@@ -204,6 +211,7 @@ public class MySQL_DBManager implements DB_manager {
     }
 
     @Override
+    //checks if exists car model with the same value
     public boolean isExistModel(int n)
     {
         for (CarModel item : this.getCarModels())
@@ -212,6 +220,7 @@ public class MySQL_DBManager implements DB_manager {
         return false;
     }
 
+    //gets all car model list
     @Override
     public List<CarModel> getCarModels() {
         List<CarModel> result = new ArrayList<CarModel>();

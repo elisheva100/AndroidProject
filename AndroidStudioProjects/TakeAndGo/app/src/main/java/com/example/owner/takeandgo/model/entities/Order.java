@@ -4,6 +4,7 @@ import java.util.Date;
 
 /**
  * Created by Owner on 08/11/2017.
+ * The class represents order
  */
 
 public class Order {

@@ -8,13 +8,18 @@ import android.view.View;
 import android.widget.Button;
 import com.example.owner.takeandgo.R;
 
-
-
+/**
+ * main contain menu
+ * the user has to chose what he want to do:
+ * add client/car/car model/branch
+ * or to see the all the clients/cars/cars model/branches
+ */
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        //creates logo
         getSupportActionBar().setLogo(R.mipmap.my_car);
         getSupportActionBar().setDisplayUseLogoEnabled(true);
         getSupportActionBar().setDisplayShowHomeEnabled(true);
@@ -22,6 +27,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         findViews();
     }
 
+    //creates buttons
     private Button AddCarButton;
     private Button AddBranchButton;
     private Button AddCarModelButton;

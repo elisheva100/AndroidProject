@@ -17,6 +17,9 @@ import com.example.owner.takeandgo.model.backEnd.DBManagerFactory;
 import static com.example.owner.takeandgo.controller.Legal.isNum;
 import static com.example.owner.takeandgo.controller.Legal.isString;
 
+/**
+ * The class is responsible for adding a new branch
+ */
 public class AddBranchActivity extends AppCompatActivity implements View.OnClickListener {
 
     @Override
@@ -65,17 +68,12 @@ public class AddBranchActivity extends AppCompatActivity implements View.OnClick
     public void onClick(View v) {
         if ( v == addBranchButton ) {
             addBranch();
-            /*
-            StreetNumberEditText.getText().clear();
-             StreetEditText.getText().clear();
-            CityEditText.getText().clear();
-             ParkingEditText.getText().clear();
-             BranchNumberEditText.getText().clear();
-             */
-
         }
     }
 
+    /**
+     * The function add a new branch
+     */
     private void addBranch() {
         final ContentValues contentValues = new ContentValues();
         String strExepetion = "";//String for concatenation all the exceptions.
@@ -85,7 +83,6 @@ public class AddBranchActivity extends AppCompatActivity implements View.OnClick
             contentValues.put(AgencyConsts.BranchConst.BRANCH_NUMBER , number);
         }
         else {
-            //Toast.makeText(AddBranchActivity.this, "Branch number is not valid!", Toast.LENGTH_LONG).show();
             strExepetion += "number is not valid!\n";
 
         }
@@ -94,7 +91,6 @@ public class AddBranchActivity extends AppCompatActivity implements View.OnClick
             contentValues.put(AgencyConsts.BranchConst.PARKING, park);
         }
         else{
-            //Toast.makeText(AddBranchActivity.this, "Parking number is not valid!", Toast.LENGTH_LONG).show();
             strExepetion += "Parking is not valid!\n";
         }
         if(Legal.isString(this.CityEditText.getText().toString())) {
@@ -102,7 +98,6 @@ public class AddBranchActivity extends AppCompatActivity implements View.OnClick
             contentValues.put(AgencyConsts.BranchConst.CITY, city);
         }
         else{
-            //Toast.makeText(AddBranchActivity.this, "City name is not valid!", Toast.LENGTH_LONG).show();
             strExepetion += "City is not valid!\n";
             CityEditText.getText().clear();
         }
@@ -111,7 +106,6 @@ public class AddBranchActivity extends AppCompatActivity implements View.OnClick
             contentValues.put(AgencyConsts.BranchConst.STREET, street);
         }
         else{
-            //Toast.makeText(AddBranchActivity.this, "Street name is not valid!", Toast.LENGTH_LONG).show();
             strExepetion += "Street is not valid!\n";
         }
         if(Legal.isNum(this.StreetNumberEditText.getText().toString())) {
@@ -119,7 +113,6 @@ public class AddBranchActivity extends AppCompatActivity implements View.OnClick
             contentValues.put(AgencyConsts.BranchConst.STREET_NUMBER, street_number);
         }
         else{
-            //Toast.makeText(AddBranchActivity.this, "Street number name is not valid!", Toast.LENGTH_LONG).show();
             strExepetion += "street number is not valid!\n";
         }
 
@@ -149,20 +142,14 @@ public class AddBranchActivity extends AppCompatActivity implements View.OnClick
                     return Long.valueOf(DBManagerFactory.getManager().addBranch(contentValues));
                 } catch (Exception e) {
                     strError = e.getMessage();
-                     //Toast.makeText(getBaseContext(),e.getMessage(),Toast.LENGTH_LONG).show();
                     return Long.valueOf(-1);
                 }
             }
-
-
-
-
         }.execute();
 
         } catch (Exception e) {
             Toast.makeText(getBaseContext(), e.getMessage(), Toast.LENGTH_LONG).show();
         }
-
         }
     }
 

@@ -2,6 +2,7 @@ package com.example.owner.takeandgo.model.entities;
 
 /**
  * Created by Owner on 08/11/2017.
+ * The class represents address
  */
 
 public class Adress {
@@ -10,9 +11,9 @@ public class Adress {
     private int number;
 
     public Adress() {
-
     }
 
+    //get and set:
     public String getCity() {
         return city;
     }
@@ -37,6 +38,7 @@ public class Adress {
         this.number = number;
     }
 
+    //constructor
     public Adress(String city, String street, int number) {
         this.city = city;
         this.street = street;

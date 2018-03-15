@@ -22,7 +22,6 @@ import static android.R.attr.src;
  * Created by Owner on 11/11/2017.
  */
 
-//TODO: Take care of casting all the formats like: dates, enums and classes
 public class AgencyConsts {
 
     //region Static consts
@@ -104,7 +103,6 @@ public class AgencyConsts {
         contentValues.put(CarModelConst.ENGINE_CAPACITY,carModel.getEngineCapacity());
         contentValues.put(CarModelConst.GEARBOX, String.valueOf(carModel.getGearbox()));
         contentValues.put(CarModelConst.SEATS,carModel.getSeats());
-        //contentValues.put(CarModelConst.COLOR, String.valueOf(carModel.getColor()));
         contentValues.put(CarModelConst.COLOR, carModel.getColor());
         return contentValues;
     }
@@ -180,7 +178,6 @@ public class AgencyConsts {
         carModel.setEngineCapacity(contentValues.getAsDouble(CarModelConst.ENGINE_CAPACITY));
         carModel.setGearbox(GEARBOX.valueOf(contentValues.getAsString(AgencyConsts.CarModelConst.GEARBOX)));
         carModel.setSeats(contentValues.getAsInteger(CarModelConst.SEATS));
-        //carModel.setColor(COLOR.valueOf(contentValues.getAsString(CarModelConst.COLOR)));
         carModel.setColor(contentValues.getAsString(CarModelConst.COLOR));
 
         return carModel;

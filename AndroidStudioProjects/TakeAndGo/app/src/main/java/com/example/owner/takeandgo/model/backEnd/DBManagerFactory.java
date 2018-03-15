@@ -10,6 +10,7 @@ import com.example.owner.takeandgo.model.datasource.MySQL_DBManager;
 public class DBManagerFactory {
     static DB_manager manager = null;
 
+    //return a new instance of the class that contain the backgroud functions
     public static DB_manager getManager() {
 
         if (manager == null) {

@@ -23,6 +23,9 @@ import java.util.List;
 
 import static com.example.owner.takeandgo.model.datasource.List_DBManager.*;
 
+/**
+ * The class is responsible for adding a new car
+ */
 public class AddCarActivity extends AppCompatActivity implements View.OnClickListener {
 
     private Integer[] getBranches() {
@@ -71,8 +74,6 @@ public class AddCarActivity extends AppCompatActivity implements View.OnClickLis
 
     }
 
-    //private EditText branchNumberEditText;
-    //private EditText ModelTypeEditText;
     private Spinner branchSpinner;
     private Spinner carModelSpinner;
     private EditText MileageEditText;
@@ -102,8 +103,6 @@ public class AddCarActivity extends AppCompatActivity implements View.OnClickLis
     private void findViews() {
         branchSpinner = (Spinner) findViewById(R.id.branchSpinner);
         carModelSpinner = (Spinner) findViewById(R.id.carModelSpinner);
-        //branchNumberEditText = (EditText) findViewById(R.id.branchNumberEditText);
-        //ModelTypeEditText = (EditText) findViewById(R.id.ModelTypeEditText);
         MileageEditText = (EditText) findViewById(R.id.MileageEditText);
         NumberEditText = (EditText) findViewById(R.id.NumberEditText);
         addCarButton = (Button) findViewById(R.id.addCarButton);
@@ -126,6 +125,9 @@ public class AddCarActivity extends AppCompatActivity implements View.OnClickLis
         }
         }
 
+    /**
+     * The function add a new car
+     */
     private void addCar() {
         final ContentValues contentValues = new ContentValues();
         try {
@@ -138,30 +140,14 @@ public class AddCarActivity extends AppCompatActivity implements View.OnClickLis
                 contentValues.put(AgencyConsts.CarConst.NUMBER, number);
 
             } else {
-                //Toast.makeText(AddCarActivity.this, "Car number is not valid!", Toast.LENGTH_LONG).show();
                 strExepetion += "Car number is not valid!\n";
             }
-            /*if (Legal.isNum(this.ModelTypeEditText.getText().toString())) {
-                int model = Integer.valueOf(this.ModelTypeEditText.getText().toString());
-                contentValues.put(AgencyConsts.CarConst.MODEL_TYPE, model);
-            } else {
-                //Toast.makeText(AddCarActivity.this, "Model type is not valid!", Toast.LENGTH_LONG).show();
-                strExepetion += "Model type is not valid!\n";
-            }*/
             if (Legal.isNum(this.MileageEditText.getText().toString())) {
                 double mile = Double.valueOf(this.MileageEditText.getText().toString());
                 contentValues.put(AgencyConsts.CarConst.MILEAGE, mile);
             } else {
-                //Toast.makeText(AddCarActivity.this, "Mileage value is not valid!", Toast.LENGTH_LONG).show();
                 strExepetion += "Mileage value is not valid!\n";
             }
-            /*if (Legal.isNum(this.branchNumberEditText.getText().toString())) {
-                int branch = Integer.valueOf(this.branchNumberEditText.getText().toString());
-                contentValues.put(AgencyConsts.CarConst.BRANCH_NUMBER, branch);
-            } else {
-                //Toast.makeText(AddCarActivity.this, "Branch number is not valid!", Toast.LENGTH_LONG).show();
-                strExepetion += "Branch number is not valid!\n";
-            }*/
             if (branchSpinner.getSelectedItem() != null) {
                 int branchNumber = (Integer) branchSpinner.getSelectedItem();
                 contentValues.put(AgencyConsts.CarConst.BRANCH_NUMBER, branchNumber);
@@ -204,7 +190,6 @@ public class AddCarActivity extends AppCompatActivity implements View.OnClickLis
                         return Long.valueOf(DBManagerFactory.getManager().addCar(contentValues));
                     } catch (Exception e) {
                         strError = e.getMessage();
-                        //Toast.makeText(AddCarActivity.this, e.getMessage(), Toast.LENGTH_LONG).show();
                     }
                     return Long.valueOf(-1);
                 }
@@ -213,12 +198,6 @@ public class AddCarActivity extends AppCompatActivity implements View.OnClickLis
         } catch (Exception e) {
             Toast.makeText(AddCarActivity.this, "Error!", Toast.LENGTH_LONG).show();
         }
-
-
-      /*  catch (Exception e) {
-    }*/
-
-
     }
 }
 

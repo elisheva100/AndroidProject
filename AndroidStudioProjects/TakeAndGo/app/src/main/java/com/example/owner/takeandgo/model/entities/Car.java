@@ -2,6 +2,7 @@ package com.example.owner.takeandgo.model.entities;
 
 /**
  * Created by Owner on 08/11/2017.
+ * The class represents car
  */
 
 public class Car {
@@ -48,6 +49,7 @@ public class Car {
 
     public void setAvailable(boolean available) { this.available = available; }
 
+    //constructor:
     public Car(int branchNumber, int modelType, double mileage, long number, boolean available) {
         this.branchNumber = branchNumber;
         this.modelType = modelType;

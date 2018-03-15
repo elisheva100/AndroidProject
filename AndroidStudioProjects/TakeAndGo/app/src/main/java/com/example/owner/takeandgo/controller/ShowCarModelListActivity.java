@@ -17,11 +17,15 @@ import com.example.owner.takeandgo.model.entities.CarModel;
 
 import java.util.List;
 
+/**
+ *The class represnts all the cars model that exists in the system
+ */
 public class ShowCarModelListActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        //creates logo
         getSupportActionBar().setLogo(R.mipmap.my_car);
         getSupportActionBar().setDisplayUseLogoEnabled(true);
         getSupportActionBar().setDisplayShowHomeEnabled(true);
@@ -30,6 +34,9 @@ public class ShowCarModelListActivity extends AppCompatActivity {
     }
 
 
+    /**
+     * initByListView creates AsyncTask that gets the cars model list from background
+     */
     public void initByListView()
     {
         try
@@ -38,9 +45,9 @@ public class ShowCarModelListActivity extends AppCompatActivity {
 
                 @Override
                 protected void onPostExecute(final List<CarModel> myItemList) {
-                    Adaptor(myItemList);
+                    Adaptor(myItemList); //sent cars model list to adaptor
                 }
-
+                //gets cars model list from background:
                 @Override
                 protected List<CarModel> doInBackground(CarModel... params) {
                     try {
@@ -60,6 +67,9 @@ public class ShowCarModelListActivity extends AppCompatActivity {
     }
 
 
+    /**
+     * creates ArrayAdapter
+     */
     protected void Adaptor(final List<CarModel>  myItemList) {
         ListView listView = new ListView(this);
         ArrayAdapter<CarModel> adapter = new ArrayAdapter<CarModel>(this, R.layout.activity_show_car_model_list, myItemList) {

@@ -20,11 +20,15 @@ import java.util.List;
 
 import static com.example.owner.takeandgo.R.id.branchNumberTextView;
 
+/**
+ * The class show all the branches that exists in the system
+ */
 public class ShowBranchListActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        //creates logo
         getSupportActionBar().setLogo(R.mipmap.my_car);
         getSupportActionBar().setDisplayUseLogoEnabled(true);
         getSupportActionBar().setDisplayShowHomeEnabled(true);
@@ -33,9 +37,9 @@ public class ShowBranchListActivity extends AppCompatActivity {
     }
 
 
+    //initByListView contains AsyncTask that gets the branches list from background
     public void initByListView()
     {
-
         try
         {
             new AsyncTask<Branch, Void, List<Branch>>() {
@@ -43,17 +47,15 @@ public class ShowBranchListActivity extends AppCompatActivity {
                 protected void onPostExecute(final List<Branch> myItemList) {
                 Adaptor(myItemList);
                 }
-
                 @Override
                 protected List<Branch> doInBackground(Branch... params) {
-                try {
+                try { //gets branches list from background
                     return DBManagerFactory.getManager().getBranches();
                 }
                 catch (Exception e) {
                     return null;
                 }
-            }
-
+                }
             }.execute();
         }
         catch (Exception e) {
@@ -63,6 +65,7 @@ public class ShowBranchListActivity extends AppCompatActivity {
     }
 
 
+    //creates ArrayAdapter
     protected void Adaptor(final List<Branch>  myItemList) {
         ListView listView = new ListView(this);
         ArrayAdapter<Branch> adapter = new ArrayAdapter<Branch>(this, R.layout.activity_show_branch_list, myItemList) {
@@ -72,9 +75,11 @@ public class ShowBranchListActivity extends AppCompatActivity {
                     convertView = View.inflate(ShowBranchListActivity.this, R.layout.activity_show_branch_list, null);
 
                 }
+                //creates text view
                 TextView parkingTextView = (TextView) convertView.findViewById(R.id.parkingTextView);
                 TextView branchNumberTextView = (TextView) convertView.findViewById(R.id.branchNumberTextView);
                 TextView adressTextView = (TextView) convertView.findViewById(R.id.adressTextView);
+                //sets text:
                 parkingTextView.setText(""+(myItemList.get(position).getParking()));
                 adressTextView.setText(myItemList.get(position).getAdress().toString());
                 branchNumberTextView.setText(""+(myItemList.get(position).getBranchNumber()));

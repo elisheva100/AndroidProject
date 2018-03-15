@@ -2,6 +2,7 @@ package com.example.owner.takeandgo.model.entities;
 
 /**
  * Created by Owner on 08/11/2017.
+ * The class represents car model
  */
 
 public class CarModel {
@@ -11,10 +12,9 @@ public class CarModel {
     private double engineCapacity;
     private GEARBOX gearbox;
     private int seats;
-    //private COLOR color;
-private String color;
-    public CarModel() {
+    private String color;
 
+    public CarModel() {
     }
 
     public int getCode() {
@@ -65,14 +65,6 @@ private String color;
         this.seats = seats;
     }
 
-    /*public COLOR getColor() {
-        return color;
-    }
-
-    public void setColor(COLOR color) {
-        this.color = color;
-    }
-    */
     public String getColor() {
         return color;
     }
