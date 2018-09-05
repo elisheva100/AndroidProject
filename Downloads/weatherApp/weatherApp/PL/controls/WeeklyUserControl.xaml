@@ -1,0 +1,32 @@
+﻿<UserControl x:Class="PLWPF.controls.WeeklyUserControl"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:PLWPF.controls"
+             mc:Ignorable="d" 
+             d:DesignHeight="300" d:DesignWidth="300">
+    <Grid >
+        <Grid.RowDefinitions>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="auto"/>
+        </Grid.RowDefinitions>
+        <Label Name="cityName" Content="{Binding City}" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="30" FontFamily="Comic Sans MS" Foreground="#FF45BAE6" />
+        <ListBox  ItemsSource="{Binding Forecasts}" IsHitTestVisible="False"  Background="{x:Null}" BorderBrush="{x:Null}" Grid.Row="1" >
+            <ListBox.ItemTemplate >
+                <DataTemplate>
+                    <StackPanel  Orientation="Horizontal">
+                        <TextBlock TextWrapping="NoWrap" Text="{Binding Date.DayOfWeek}" FontFamily="Comic Sans MS" Foreground="#FFFFAE00" FontWeight="Bold" HorizontalAlignment="Stretch" VerticalAlignment="Center"  Width="80" FontSize="20" />
+                        <TextBlock Text="   " FontFamily="Comic Sans MS"/>
+                        <TextBlock TextWrapping="Wrap" FontFamily="Comic Sans MS" Text="{Binding MaxTemperature, StringFormat={}{0:F0}°C}" Foreground="#FF0C0D32" FontWeight="Bold" HorizontalAlignment="Stretch" VerticalAlignment="Center" Width="60" FontSize="20"/>
+                        <TextBlock Text="/" HorizontalAlignment="Stretch" VerticalAlignment="Center" FontFamily="Comic Sans MS" FontWeight="Bold" FontSize="20" Foreground="#FFFBFBFB" />
+                        <TextBlock TextWrapping="Wrap" Text="{Binding MinTemperature, StringFormat={}{0:F0}°C}" FontFamily="Comic Sans MS" Foreground="#FF02168D" FontWeight="Bold" HorizontalAlignment="Stretch" VerticalAlignment="Center" Width="60" FontSize="20" Opacity="0.5" />
+                        <Image Source="{Binding IconImage}" Width="60" Height="50" HorizontalAlignment="Stretch" VerticalAlignment="Center"  />
+                    </StackPanel>
+                </DataTemplate>
+            </ListBox.ItemTemplate>
+        </ListBox>
+        <ComboBox Grid.Row="2" Name="cities" SelectedItem="{Binding City}" VerticalAlignment="Center" />
+    </Grid>
+</UserControl>
